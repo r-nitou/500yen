@@ -5,19 +5,9 @@ using Utage;
 public class AdvController : MonoBehaviour
 {
     [Header("UtageのAdvEngine")]
-    public AdvEngine advEngine;
+    public AdvEngine advEngine = null;
 
-    [Header("ADV表示用のルートオブジェクト（Canvasなど）")]
-    public Canvas advUIRoot;
-
-    private void Start()
-    {
-        // 最初はADV画面を非表示にしておく
-        if (advUIRoot != null)
-        {
-            advUIRoot.gameObject.SetActive(false);
-        }
-    }
+    private bool isPlaying = false;
 
     /// <summary>
     /// ボタンから呼び出すメソッド
@@ -26,7 +16,7 @@ public class AdvController : MonoBehaviour
     public void PlayADV(string scenarioLabel)
     {
         // 既にシナリオ再生中、またはエンジンが初期化されていない場合は処理しない
-        if (advEngine.IsWaitBootLoading || advUIRoot.gameObject.activeSelf)
+        if (advEngine.IsWaitBootLoading || isPlaying)
         {
             Debug.LogWarning("ADVエンジンの準備ができていないか、既に再生中です。");
             return;
@@ -38,7 +28,7 @@ public class AdvController : MonoBehaviour
     private IEnumerator PlayScenario(string scenarioLabel)
     {
         // 1. ADVのUIを表示する
-        advUIRoot.gameObject.SetActive(true);
+        isPlaying = true;
 
         // 2. 指定したラベルからシナリオを再生開始
         advEngine.JumpScenario(scenarioLabel);
@@ -53,7 +43,7 @@ public class AdvController : MonoBehaviour
         }
 
         // 4. シナリオが終了したら、ADVのUIを非表示にして元に戻す
-        advUIRoot.gameObject.SetActive(false);
+        isPlaying = false;
 
         Debug.Log("シナリオ再生が終了し、元の画面に戻りました。");
     }
