@@ -4,10 +4,10 @@ using Utage;
 
 public class AdvController : MonoBehaviour
 {
-    [Header("UtageのAdvEngine")]
-    public AdvEngine advEngine = null;
-
-    private bool isPlaying = false;
+    [Header("UtageのAdvEngine"), SerializeField]
+    private AdvEngine advEngine = null;
+    
+    private bool isPlaying = false;// 再生中フラグ
 
     /// <summary>
     /// ボタンから呼び出すメソッド
@@ -23,6 +23,11 @@ public class AdvController : MonoBehaviour
         }
 
         StartCoroutine(PlayScenario(scenarioLabel));
+    }
+
+    public bool IsPlaying()
+    {
+        return isPlaying;
     }
 
     private IEnumerator PlayScenario(string scenarioLabel)
