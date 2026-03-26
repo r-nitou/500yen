@@ -104,6 +104,9 @@ public class PlayerMove : MonoBehaviour
 
         transform.position = position;
         isMoveing = false;
+
+        //移動完了後、足元に自動遷移トリガーがあるかチェック
+        CheckAutoTransition();
     }
 
     //プレイヤーの向きを更新する処理
@@ -119,6 +122,22 @@ public class PlayerMove : MonoBehaviour
         {
             //左右方向の向きをとる
             lookDirection = new Vector2(0, input.y > 0 ? 1 : -1);
+        }
+    }
+
+    //足元に自動遷移トリガーがあるかチェックする処理
+    private void CheckAutoTransition()
+    {
+        //足元にTransitiontレイヤーがあるかチェック
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, COLLISION_RADIUS, LayerMask.GetMask("Transition"));
+
+        if (hit != null)
+        {
+            SceneTransitionTrigger trigger = hit.GetComponent<SceneTransitionTrigger>();
+            if (trigger != null && trigger.Type == SceneTransitionTrigger.EntranceType.Auto)
+            {
+                UImanager.instance.ExcuteDirectionTransition(trigger.TargetSceneName).Forget();
+            }
         }
     }
     private void OnDrawGizmosSelected()
