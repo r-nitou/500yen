@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Windows;
 
@@ -72,7 +73,7 @@ public class UImanager : MonoBehaviour
         if (isYes == true)
         {
             //シーン遷移
-            //await UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(trigger.TargetSceneName);
+            await SceneManager.LoadSceneAsync(trigger.TargetSceneName);
             //今はデバッグログ
              Debug.Log($"{trigger.TargetSceneName}にいきます");
         }
@@ -93,15 +94,15 @@ public class UImanager : MonoBehaviour
 
         Debug.Log("ウィンドウを閉じる");
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    //選択肢ウィンドウを挟まず、直接移動する処理
+    public async UniTaskVoid ExcuteDirectionTransition(string sceneName)
     {
-        
+        //プレイヤーの操作停止
+        InputAction.Player.Disable();
+
+        //シーン遷移
+        await SceneManager.LoadSceneAsync(sceneName);
+        Debug.Log($"{sceneName}に行きます");
     }
 }

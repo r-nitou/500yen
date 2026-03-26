@@ -60,14 +60,13 @@ public class PlayerInteract : MonoBehaviour
 
             if (trigger != null)
             {
-                //UIManagerに行先ウィンドウを表示させる
-                await UImanager.instance.OpenDestinationWindow(trigger);
-                Debug.Log("表示するよ");
+                if (trigger.Type == SceneTransitionTrigger.EntranceType.Manual)
+                {
+                    //UIManagerに行先ウィンドウを表示させる
+                    await UImanager.instance.OpenDestinationWindow(trigger);
+                    Debug.Log("表示するよ");
+                }
             }
-        }
-        else
-        {
-            Debug.Log("何もないよ");
         }
     }
 
