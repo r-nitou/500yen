@@ -11,15 +11,24 @@ public class PlayerMove : MonoBehaviour
     private const float COLLISION_RADIUS = 0.2f;       //障害物判定の円の半径
     private const float GRID_UNIT = 1.0f;               //1マスの単位
 
+    public PlayerInputAction InputAction { get; set; }
+
     [Header("プレイヤーの移動速度")]
     [SerializeField] private float moveSpeed = 5f;
+
+    [Header("仲間の参照")]
+    [SerializeField] private FollowerMove follower;
+
     [Header("障害物レイヤー")]
     [SerializeField] private LayerMask obstacleLayer;
 
-    private PlayerInputAction input;
+    private Animator animator;
+
     private Vector2 moveInput;
     //PlayerInputでプレイヤーの向きを保持
     private Vector2 lookDirection = Vector2.down;
+    //移動前の座標
+    private Vector3 previousPosition;
 
     private bool isMoveing;
     private CancellationToken token;
@@ -31,29 +40,41 @@ public class PlayerMove : MonoBehaviour
     {
         //オブジェクト破棄時にタスクを止める
         token = this.GetCancellationTokenOnDestroy();
-    }
 
+        //InputActionのインスタンス化
+        InputAction = new PlayerInputAction();
+
+        animator = GetComponent<Animator>();
+    }
+    //InputSystemを有効化
+    private void OnEnable() => InputAction.Enable();
+    //InputSystemを無効化
+    private void OnDisable() => InputAction.Disable();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        input = UImanager.instance.InputAction;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        //キーボードからの入力を受ける
+        moveInput = InputAction.Player.Move.ReadValue<Vector2>();
+
         //移動中でなければ入力を受け付ける
         if (isMoveing)  
         {
             return;
         }
 
-        //キーボードからの入力を受ける
-        moveInput = input.Player.Move.ReadValue<Vector2>();
         //移動量が0でないなら
         if (moveInput != Vector2.zero)
         {
             UpdateDirection(moveInput);
+
+            UpdateAnimation(false);
+
             TryMove(moveInput);
         }
     }
@@ -89,7 +110,19 @@ public class PlayerMove : MonoBehaviour
     //1マス動かす処理
     private async UniTaskVoid MoveGrid(Vector3 position)
     {
+        //移動前の座標を保存
+        previousPosition = transform.position;
+        Vector2 currentDirection = lookDirection;
+
+        //移動完了後、仲間を動かす
+        if (follower != null)
+        {
+            follower.FollowMove(previousPosition, currentDirection).Forget();
+        }
+
         isMoveing = true;
+        //アニメーションを更新する
+        UpdateAnimation(true);
 
         while (Vector3.Distance(transform.position, position) > MOVE_THRESHOLD)
         {
@@ -104,6 +137,9 @@ public class PlayerMove : MonoBehaviour
 
         transform.position = position;
         isMoveing = false;
+
+        //アニメーションを止める
+        UpdateAnimation(false);
 
         //移動完了後、足元に自動遷移トリガーがあるかチェック
         CheckAutoTransition();
@@ -125,6 +161,20 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    //アニメーションを更新する処理
+    private void UpdateAnimation(bool moving)
+    {
+        if (animator == null)
+        {
+            return;
+        }
+
+        animator.SetFloat("MoveX", lookDirection.x);
+        animator.SetFloat("MoveY", lookDirection.y);
+
+        animator.SetBool("IsMoving", moving);
+    }
+
     //足元に自動遷移トリガーがあるかチェックする処理
     private void CheckAutoTransition()
     {
@@ -136,7 +186,7 @@ public class PlayerMove : MonoBehaviour
             SceneTransitionTrigger trigger = hit.GetComponent<SceneTransitionTrigger>();
             if (trigger != null && trigger.Type == SceneTransitionTrigger.EntranceType.Auto)
             {
-                UImanager.instance.ExcuteDirectionTransition(trigger.TargetSceneName).Forget();
+                SceneLoader.instance.ExcuteDirectionTransition(trigger,this).Forget();
             }
         }
     }

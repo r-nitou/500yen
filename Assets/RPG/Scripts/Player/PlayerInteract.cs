@@ -3,6 +3,7 @@ using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerInteract : MonoBehaviour
@@ -14,12 +15,6 @@ public class PlayerInteract : MonoBehaviour
 
     [Header("スクリプト参照")]
     [SerializeField] private PlayerMove playerMove;
-
-    //[Header("UI設定")]
-    //[SerializeField] private GameObject destinationWindow;
-    //[SerializeField] private TMP_Text questionText;
-    //[SerializeField] private Button yewButton;
-    //[SerializeField] private Button noButton;
 
     private CancellationToken token;
 
@@ -37,7 +32,7 @@ public class PlayerInteract : MonoBehaviour
 
     private void Start()
     {
-        UImanager.instance.InputAction.Player.Interact.performed += OnInteractPerformed;
+        playerMove.InputAction.Player.Interact.performed += OnInteractPerformed;
     }
 
     //プレイヤーの「調べる」を行う処理
@@ -60,11 +55,21 @@ public class PlayerInteract : MonoBehaviour
 
             if (trigger != null)
             {
+                //ドアのタイプがマニュアル(民家とかのドア)だったら
                 if (trigger.Type == SceneTransitionTrigger.EntranceType.Manual)
                 {
-                    //UIManagerに行先ウィンドウを表示させる
-                    await UImanager.instance.OpenDestinationWindow(trigger);
-                    Debug.Log("表示するよ");
+                    //選択の結果を取得する
+                    bool isYes = await UImanager.instance.ShowSelectionWindow($"{trigger.DestinationText}に行きますか？");
+
+                    if (isYes)
+                    {
+                        Debug.Log($"{trigger.TargetSceneName}シーンに遷移");
+                        await SceneManager.LoadSceneAsync(trigger.TargetSceneName);
+                    }
+                    else
+                    {
+                        Debug.Log("ウィンドウを閉じました");
+                    }
                 }
             }
         }
