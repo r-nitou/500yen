@@ -185,6 +185,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Battle",
+            "id": "52b096a9-969f-4880-a5b6-1e9ce8226a52",
+            "actions": [
+                {
+                    "name": "ReturnScene",
+                    "type": "Button",
+                    "id": "6e38e622-bf1a-43e7-9262-97ad5e082583",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "51cdfcee-23af-4570-99a0-5f59ea740237",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ReturnScene",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

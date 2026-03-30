@@ -61,15 +61,4 @@ public class UImanager : MonoBehaviour
     {
         playerInput?.Disable();
     }
-
-    //選択肢ウィンドウを挟まず、直接移動する処理
-    public async UniTaskVoid ExcuteDirectionTransition(string sceneName)
-    {
-        //プレイヤーの操作停止
-        playerInput.Player.Disable();
-
-        //シーン遷移
-        await SceneManager.LoadSceneAsync(sceneName);
-        Debug.Log($"{sceneName}に行きます");
-    }
 }

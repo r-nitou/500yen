@@ -17,9 +17,13 @@ public class SceneTransitionTrigger : MonoBehaviour
     [Header("表示するTextの内容")]
     [SerializeField] private string destinationText;
 
+    [Header("出現位置の指定")]
+    [SerializeField] private string targetMarkerId;
+
     //外部から参照できるようにする
     public EntranceType Type => entranceType;
     public string TargetSceneName => targetSceneName;
     public string DestinationText => destinationText;
+    public string TargetMarkerId => targetMarkerId;
     
 }

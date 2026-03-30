@@ -64,7 +64,7 @@ public class PlayerInteract : MonoBehaviour
                     if (isYes)
                     {
                         Debug.Log($"{trigger.TargetSceneName}シーンに遷移");
-                        await SceneManager.LoadSceneAsync(trigger.TargetSceneName);
+                        await SceneLoader.instance.ExcuteSceneTransition(trigger.TargetSceneName, "", playerMove);
                     }
                     else
                     {

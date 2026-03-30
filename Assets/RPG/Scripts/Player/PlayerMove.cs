@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour
     private const float GRID_UNIT = 1.0f;               //1マスの単位
 
     public PlayerInputAction InputAction { get; set; }
+    public static PlayerMove instance { get; set; }
 
     [Header("プレイヤーの移動速度")]
     [SerializeField] private float moveSpeed = 5f;
@@ -38,6 +39,18 @@ public class PlayerMove : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+            // シーン切り替え時にこのオブジェクトを破壊しない
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         //オブジェクト破棄時にタスクを止める
         token = this.GetCancellationTokenOnDestroy();
 
@@ -47,9 +60,22 @@ public class PlayerMove : MonoBehaviour
         animator = GetComponent<Animator>();
     }
     //InputSystemを有効化
-    private void OnEnable() => InputAction.Enable();
+    private void OnEnable()
+    {
+        if (InputAction != null)
+        {
+            InputAction.Enable();
+        }
+    }
     //InputSystemを無効化
-    private void OnDisable() => InputAction.Disable();
+    private void OnDisable()
+    {
+        if (InputAction != null)
+        {
+            InputAction.Disable();
+        }
+    }
+        
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -114,7 +140,7 @@ public class PlayerMove : MonoBehaviour
         previousPosition = transform.position;
         Vector2 currentDirection = lookDirection;
 
-        //移動完了後、仲間を動かす
+        //移動開始時、仲間を動かす
         if (follower != null)
         {
             follower.FollowMove(previousPosition, currentDirection).Forget();
@@ -140,6 +166,13 @@ public class PlayerMove : MonoBehaviour
 
         //アニメーションを止める
         UpdateAnimation(false);
+
+        //エンカウントチェック
+        var encounter = GetComponent<EncounterManager>();
+        if(encounter != null)
+        {
+            encounter.CheckEncounter();
+        }
 
         //移動完了後、足元に自動遷移トリガーがあるかチェック
         CheckAutoTransition();
@@ -186,9 +219,23 @@ public class PlayerMove : MonoBehaviour
             SceneTransitionTrigger trigger = hit.GetComponent<SceneTransitionTrigger>();
             if (trigger != null && trigger.Type == SceneTransitionTrigger.EntranceType.Auto)
             {
-                SceneLoader.instance.ExcuteDirectionTransition(trigger,this).Forget();
+                SceneLoader.instance.ExcuteSceneTransition(trigger.TargetSceneName, trigger.TargetMarkerId, this).Forget();
             }
         }
+    }
+
+    //シーン遷移時に向きを指定する処理
+    public void SetDirection(Vector2 direction)
+    {
+        if (animator == null)
+        {
+            return;
+        }
+
+        animator.SetFloat("MoveX", direction.x);
+        animator.SetFloat("MoveY", direction.y);
+
+        animator.SetBool("IsMoving", false);
     }
     private void OnDrawGizmosSelected()
     {
