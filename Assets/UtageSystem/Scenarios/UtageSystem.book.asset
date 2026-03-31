@@ -106,9 +106,183 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
+    - rowIndex: 8
+      debugIndex: 8
+      strings:
+      - '*H_001_01'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 9
+      debugIndex: 9
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u304A\u5144\u3061\u3083\u3093\uFF01\u304A\u304B\u3048\u308A\uFF5E"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 10
+      debugIndex: 10
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 11
+      debugIndex: 11
+      strings:
+      - '*H_001_02'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 12
+      debugIndex: 12
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u304A\u304B\u3048\u308A\uFF01\u304A\u5144\u3061\u3083\u3093\uFF01\n\u5F85\u3063\u3066\u305F\u3088\uFF01"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 13
+      debugIndex: 13
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 14
+      debugIndex: 14
+      strings:
+      - '*H_001_03'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 15
+      debugIndex: 15
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "......\u304A\u304B\u3048\u308A\u3002"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 16
+      debugIndex: 16
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 17
+      debugIndex: 17
+      strings:
+      - '*H_101_01'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 18
+      debugIndex: 18
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3042\u308A\u304C\u3068\u3046\uFF01\n\u304A\u5144\u3061\u3083\u3093\u5927\u597D\u304D\uFF01"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 19
+      debugIndex: 19
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 20
+      debugIndex: 20
+      strings:
+      - '*H_101_02'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 21
+      debugIndex: 21
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3042\u308A\u304C\u3068\u3002"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 22
+      debugIndex: 22
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 23
+      debugIndex: 23
+      strings:
+      - '*H_101_03'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 24
+      debugIndex: 24
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3057\u3070\u304F\u305E\u30DC\u30B1\u30CA\u30B9"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 25
+      debugIndex: 25
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
     name: Assets/UtageSystem/Scenarios/UtageSystem.xls:Start
     type: 1
-    textLength: 188
+    textLength: 377
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: e940c0ccb6ea833408238d7285d38444, type: 3}
     entityIndexTbl: 
@@ -584,8 +758,182 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
+    - rowIndex: 8
+      debugIndex: 8
+      strings:
+      - '*H_001_01'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 9
+      debugIndex: 9
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u304A\u5144\u3061\u3083\u3093\uFF01\u304A\u304B\u3048\u308A\uFF5E"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 10
+      debugIndex: 10
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 11
+      debugIndex: 11
+      strings:
+      - '*H_001_02'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 12
+      debugIndex: 12
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u304A\u304B\u3048\u308A\uFF01\u304A\u5144\u3061\u3083\u3093\uFF01\n\u5F85\u3063\u3066\u305F\u3088\uFF01"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 13
+      debugIndex: 13
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 14
+      debugIndex: 14
+      strings:
+      - '*H_001_03'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 15
+      debugIndex: 15
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "......\u304A\u304B\u3048\u308A\u3002"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 16
+      debugIndex: 16
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 17
+      debugIndex: 17
+      strings:
+      - '*H_101_01'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 18
+      debugIndex: 18
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3042\u308A\u304C\u3068\u3046\uFF01\n\u304A\u5144\u3061\u3083\u3093\u5927\u597D\u304D\uFF01"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 19
+      debugIndex: 19
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 20
+      debugIndex: 20
+      strings:
+      - '*H_101_02'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 21
+      debugIndex: 21
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3042\u308A\u304C\u3068\u3002"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 22
+      debugIndex: 22
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 23
+      debugIndex: 23
+      strings:
+      - '*H_101_03'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 24
+      debugIndex: 24
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3057\u3070\u304F\u305E\u30DC\u30B1\u30CA\u30B9"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 25
+      debugIndex: 25
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
     name: Assets/UtageSystem/Scenarios/UtageSystem.xls:Start
     type: 1
-    textLength: 188
+    textLength: 377
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: e940c0ccb6ea833408238d7285d38444, type: 3}
