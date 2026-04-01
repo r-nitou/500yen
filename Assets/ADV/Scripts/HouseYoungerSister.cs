@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class HouseYoungerSister: MonoBehaviour
@@ -11,6 +10,9 @@ public class HouseYoungerSister: MonoBehaviour
     private Button[] buttonList_ = null;
 
     private bool needInvoke_ = true;
+
+    // 開始時セリフのパターン数
+    private const int ENTER_TEXT_MAX = 4;
 
 
     private void Awake()
@@ -28,7 +30,7 @@ public class HouseYoungerSister: MonoBehaviour
         {
             needInvoke_ = false;
             advController_.OnPlayFinish_.AddListener(OnEnterADVFinish);
-            advController_.PlayADV("H_001_01");
+            PlayEnterADV();
         }
     }
 
@@ -53,8 +55,7 @@ public class HouseYoungerSister: MonoBehaviour
                 return;
         }
 
-        string id = index.ToString("00");
-        advController_.PlayADV("H_101_" + id);
+        advController_.PlayADV("C1001_HOME_ENTER_H_001");
     }
 
     private void OnEnterADVFinish()
@@ -63,5 +64,17 @@ public class HouseYoungerSister: MonoBehaviour
         {
             button.gameObject.SetActive(true);
         }
+    }
+
+    private void PlayEnterADV()
+    {
+        // ランダムでテキストを選ぶ
+        string randID = Random.Range(1, ENTER_TEXT_MAX + 1).ToString("000");
+        string likeID = "H_";
+        
+        // (妹_家_開始時_ + 好感度 + id)
+        advController_.PlayADV("C1001_HOME_ENTER_" + likeID + randID);
+
+        //セリフやモーションがあればここで再生
     }
 }

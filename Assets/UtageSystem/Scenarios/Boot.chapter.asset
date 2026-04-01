@@ -44,9 +44,23 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
+    - rowIndex: 1
+      debugIndex: 1
+      strings:
+      - "\u3086\u3063\u304D"
+      - "\u3086\u3063\u304D"
+      - "\u901A\u5E38"
+      - 
+      - 
+      - 
+      - Bottom
+      - 1
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
     name: Assets/UtageSystem/Scenarios/UtageSystem.xls:Character
     type: 1
-    textLength: 166
+    textLength: 181
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: e940c0ccb6ea833408238d7285d38444, type: 3}
   - rows:
