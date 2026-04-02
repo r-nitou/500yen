@@ -6,6 +6,10 @@ public class HouseYoungerSister: MonoBehaviour
     [SerializeField, Header("ADV")]
     private AdvController advController_ = null;
 
+
+    [SerializeField, Header("パラメータのスクリプタブobj")]
+    private YoungerSisterParameter parameter_ = null;
+
     [SerializeField, Header("表示を切り替えるボタンのリスト")]
     private Button[] buttonList_ = null;
 
@@ -29,6 +33,7 @@ public class HouseYoungerSister: MonoBehaviour
         if (advController_.CanPlay() && needInvoke_)
         {
             needInvoke_ = false;
+            parameter_.PrintLog();
             advController_.OnPlayFinish_.AddListener(OnEnterADVFinish);
             PlayEnterADV();
         }
@@ -40,14 +45,17 @@ public class HouseYoungerSister: MonoBehaviour
         {
             // 機嫌
             case 1:
+                parameter_.attack += 10;
                 break;
 
             // 健康
             case 2:
+                parameter_.defense += 10;
                 break;
 
             // メンタル
             case 3:
+                parameter_.speed += 10;
                 break;
 
             default:
@@ -55,7 +63,8 @@ public class HouseYoungerSister: MonoBehaviour
                 return;
         }
 
-        advController_.PlayADV("C1001_HOME_ENTER_H_001");
+        parameter_.PrintLog();
+        advController_.PlayADV("C1001_HOME_ACT_SUCCESS_" + index.ToString("000"));
     }
 
     private void OnEnterADVFinish()

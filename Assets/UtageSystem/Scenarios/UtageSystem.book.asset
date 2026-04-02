@@ -456,9 +456,273 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
+    - rowIndex: 44
+      debugIndex: 44
+      strings:
+      - '*C1001_HOME_ACT_SUCCESS_001'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 45
+      debugIndex: 45
+      strings:
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3046\u308C\u3057\u3044\uFF01"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 46
+      debugIndex: 46
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u4F1A\u8A71\u306B\u6210\u529F\uFF01\n\u653B\u6483\u529B\u304C\u9AD8\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 47
+      debugIndex: 47
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 48
+      debugIndex: 48
+      strings:
+      - '*C1001_HOME_ACT_SUCCESS_002'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 49
+      debugIndex: 49
+      strings:
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3046\u308C\u3057\u3044\uFF01"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 50
+      debugIndex: 50
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u4F1A\u8A71\u306B\u6210\u529F\uFF01\n\u9632\u5FA1\u529B\u304C\u9AD8\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 51
+      debugIndex: 51
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 52
+      debugIndex: 52
+      strings:
+      - '*C1001_HOME_ACT_SUCCESS_003'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 53
+      debugIndex: 53
+      strings:
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3046\u308C\u3057\u3044\uFF01"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 54
+      debugIndex: 54
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u4F1A\u8A71\u306B\u6210\u529F\uFF01\n\u7D20\u65E9\u3055\u304C\u9AD8\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 55
+      debugIndex: 55
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 56
+      debugIndex: 56
+      strings:
+      - '*C1001_HOME_ACT_FAIL_001'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 57
+      debugIndex: 57
+      strings:
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3046\u30FC\u3093......"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 58
+      debugIndex: 58
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u4F1A\u8A71\u306B\u5931\u6557\uFF01\n\u653B\u6483\u529B\u304C\u4F4E\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 59
+      debugIndex: 59
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 60
+      debugIndex: 60
+      strings:
+      - '*C1001_HOME_ACT_FAIL_002'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 61
+      debugIndex: 61
+      strings:
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3046\u30FC\u3093......"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 62
+      debugIndex: 62
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u4F1A\u8A71\u306B\u5931\u6557\uFF01\n\u9632\u5FA1\u529B\u304C\u4F4E\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 63
+      debugIndex: 63
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 64
+      debugIndex: 64
+      strings:
+      - '*C1001_HOME_ACT_FAIL_003'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 65
+      debugIndex: 65
+      strings:
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3046\u30FC\u3093......"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 66
+      debugIndex: 66
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u4F1A\u8A71\u306B\u5931\u6557\uFF01\n\u7D20\u65E9\u3055\u304C\u4F4E\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 67
+      debugIndex: 67
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
     name: Assets/UtageSystem/Scenarios/UtageSystem.xls:Start
     type: 1
-    textLength: 944
+    textLength: 1373
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: e940c0ccb6ea833408238d7285d38444, type: 3}
     entityIndexTbl: 
@@ -1298,8 +1562,272 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
+    - rowIndex: 44
+      debugIndex: 44
+      strings:
+      - '*C1001_HOME_ACT_SUCCESS_001'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 45
+      debugIndex: 45
+      strings:
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3046\u308C\u3057\u3044\uFF01"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 46
+      debugIndex: 46
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u4F1A\u8A71\u306B\u6210\u529F\uFF01\n\u653B\u6483\u529B\u304C\u9AD8\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 47
+      debugIndex: 47
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 48
+      debugIndex: 48
+      strings:
+      - '*C1001_HOME_ACT_SUCCESS_002'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 49
+      debugIndex: 49
+      strings:
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3046\u308C\u3057\u3044\uFF01"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 50
+      debugIndex: 50
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u4F1A\u8A71\u306B\u6210\u529F\uFF01\n\u9632\u5FA1\u529B\u304C\u9AD8\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 51
+      debugIndex: 51
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 52
+      debugIndex: 52
+      strings:
+      - '*C1001_HOME_ACT_SUCCESS_003'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 53
+      debugIndex: 53
+      strings:
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3046\u308C\u3057\u3044\uFF01"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 54
+      debugIndex: 54
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u4F1A\u8A71\u306B\u6210\u529F\uFF01\n\u7D20\u65E9\u3055\u304C\u9AD8\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 55
+      debugIndex: 55
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 56
+      debugIndex: 56
+      strings:
+      - '*C1001_HOME_ACT_FAIL_001'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 57
+      debugIndex: 57
+      strings:
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3046\u30FC\u3093......"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 58
+      debugIndex: 58
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u4F1A\u8A71\u306B\u5931\u6557\uFF01\n\u653B\u6483\u529B\u304C\u4F4E\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 59
+      debugIndex: 59
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 60
+      debugIndex: 60
+      strings:
+      - '*C1001_HOME_ACT_FAIL_002'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 61
+      debugIndex: 61
+      strings:
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3046\u30FC\u3093......"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 62
+      debugIndex: 62
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u4F1A\u8A71\u306B\u5931\u6557\uFF01\n\u9632\u5FA1\u529B\u304C\u4F4E\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 63
+      debugIndex: 63
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 64
+      debugIndex: 64
+      strings:
+      - '*C1001_HOME_ACT_FAIL_003'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 65
+      debugIndex: 65
+      strings:
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3046\u30FC\u3093......"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 66
+      debugIndex: 66
+      strings:
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u4F1A\u8A71\u306B\u5931\u6557\uFF01\n\u7D20\u65E9\u3055\u304C\u4F4E\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 67
+      debugIndex: 67
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
     name: Assets/UtageSystem/Scenarios/UtageSystem.xls:Start
     type: 1
-    textLength: 944
+    textLength: 1373
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: e940c0ccb6ea833408238d7285d38444, type: 3}
