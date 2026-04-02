@@ -26,9 +26,9 @@ public class YoungerSisterParameter : ScriptableObject
     }
 
     public float GetAffectionRate() { return (float)(affection) / (PARAM_MAX); }
-    public float GetAttackeRate() { return (float)(attack) / (PARAM_MAX); }
-    public float GetDefenceRate() { return (float)(defense) / (PARAM_MAX); }
-    public float GetSpeedRate() { return (float)(speed) / (PARAM_MAX); }
+    public float GetAttackeRate() { return ((float)(attack) / PARAM_MAX) * GetAffectionRate(); }
+    public float GetDefenceRate() { return ((float)(defense) / PARAM_MAX) * GetAffectionRate(); }
+    public float GetSpeedRate() { return ((float)(speed) / PARAM_MAX) * GetAffectionRate(); }
 
     public void PrintLog() { Debug.Log($"--- 妹パラメーター ---\n" + $"好感度: {affection}, 攻撃力: {attack}, 防御力: {defense}, 素早さ: {speed}"); }
 }

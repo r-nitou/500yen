@@ -6,7 +6,6 @@ public class HouseYoungerSister: MonoBehaviour
     [SerializeField, Header("ADV")]
     private AdvController advController_ = null;
 
-
     [SerializeField, Header("パラメータのスクリプタブobj")]
     private YoungerSisterParameter parameter_ = null;
 
