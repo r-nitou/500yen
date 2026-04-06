@@ -14,6 +14,13 @@ public enum YoungerSisterParameterType
 
 public class HouseYoungerSister: MonoBehaviour
 {
+    enum State
+    {
+        IDLE = 0,
+        TALK,           // 会話
+        STILL,          // スチル
+    }
+
     [SerializeField, Header("ADV")]
     private AdvController advController_ = null;
 
@@ -22,6 +29,8 @@ public class HouseYoungerSister: MonoBehaviour
 
     [SerializeField, Header("表示を切り替えるボタンのリスト")]
     private Button[] buttonList_ = null;
+
+    private State state_ = State.IDLE;
 
     private int eventPlayPower_ = 30;
 
@@ -35,10 +44,8 @@ public class HouseYoungerSister: MonoBehaviour
 
     private void Awake()
     {
-        foreach (Button button in buttonList_)
-        {
-            button.gameObject.SetActive(false);
-        }
+        InitializeADV();
+        state_ = State.IDLE;
 
         // TODO: セーブデータ参照して
         isFirstEvent_ = false;
@@ -46,27 +53,57 @@ public class HouseYoungerSister: MonoBehaviour
 
     private void Update()
     {
-        // Startでは再生できなかったのでここで呼ぶ
-        if (advController_.CanPlay() && needStartEnter_)
+        switch (state_)
         {
-            needStartEnter_ = false;
+            case State.IDLE:
+                // Startでは再生できなかったのでここで呼ぶ
+                if (advController_.CanPlay() && needStartEnter_)
+                {
+                    needStartEnter_ = false;
 
-            // 初回イベント
-            if (isFirstEvent_)
-            {
-                isFirstEvent_ = false;
+                    // 初回イベント
+                    if (isFirstEvent_)
+                    {
+                        isFirstEvent_ = false;
 
-                advController_.OnPlayFinish_.AddListener(OnEnterADVFinish);
-                advController_.PlayADV("TODO: 初回限定の特殊セリフID");
-                
-                return;
-            }
+                        InitializeADV();
+                        advController_.OnPlayFinish_.AddListener(OnEnterADVFinish);
+                        advController_.PlayADV("TODO: 初回限定の特殊セリフID");
 
-            // 通常イベント
-            parameter_.PrintLog();
-            advController_.OnPlayFinish_.AddListener(OnEnterADVFinish);
-            PlayEnterADV();
+                        return;
+                    }
+
+                    // 通常イベント
+                    PlayEnterADV();
+                }
+                break;
+
+            case State.TALK:
+                break;
+
+            case State.STILL:
+                break;
+
+            default:
+                Debug.Log("HouseYoungerSister::Update -> case文がdefaultです");
+                break;
         }
+
+        
+    }
+
+    private void InitializeADV()
+    {
+        state_ = State.TALK;
+
+        // ボタンの非表示
+        foreach (Button button in buttonList_)
+        {
+            button.gameObject.SetActive(false);
+        }
+
+        // パラメータログ確認
+        parameter_.PrintLog();
     }
 
     public void OnPressButtonEvent(int index)
@@ -105,25 +142,16 @@ public class HouseYoungerSister: MonoBehaviour
         eventPlayPower_ -= 10;
 
         // ADV再生
-        foreach (Button button in buttonList_)
-        {
-            button.gameObject.SetActive(false);
-        }
-        parameter_.PrintLog();
+        InitializeADV();
         advController_.OnPlayFinish_.AddListener(OnEventFinish);
         advController_.PlayADV("C1001_HOME_ACT_SUCCESS_" + index.ToString("000"));
     }
 
-    private void OnEnterADVFinish()
+    public void PlayEnterADV()
     {
-        foreach (Button button in buttonList_)
-        {
-            button.gameObject.SetActive(true);
-        }
-    }
+        InitializeADV();
+        advController_.OnPlayFinish_.AddListener(OnEnterADVFinish);
 
-    private void PlayEnterADV()
-    {
         // ランダムでテキストを選ぶ
         string randID = UnityEngine.Random.Range(1, ENTER_TEXT_MAX + 1).ToString("000");
         string likeID = "H_";
@@ -132,6 +160,13 @@ public class HouseYoungerSister: MonoBehaviour
         advController_.PlayADV("C1001_HOME_ENTER_" + likeID + randID);
 
         //セリフやモーションがあればここで再生
+    }
+    private void OnEnterADVFinish()
+    {
+        foreach (Button button in buttonList_)
+        {
+            button.gameObject.SetActive(true);
+        }
     }
 
     private void OnEventFinish()
@@ -149,5 +184,29 @@ public class HouseYoungerSister: MonoBehaviour
         // まだ育成できる
         Debug.Log($"妹強化用パワー: {eventPlayPower_}");
         OnEnterADVFinish();
+    }
+
+    public void PlayTouchBodyADV()
+    {
+        InitializeADV();
+        advController_.OnPlayFinish_.AddListener(OnEnterADVFinish);
+
+        // タップされたらセリフやモーションがあればここで再生
+        int id = 1;
+        advController_.PlayADV("C1001_HOME_TOUCH_" + id.ToString("000"));
+    }
+
+    public void StartStill()
+    {
+        if (state_ == State.STILL)
+        {
+            Debug.Log("すでにスチル中です");
+            return;
+        }
+
+        // TODO: スチル再生の処理
+        Debug.Log("HouseYoungerSister::StartStill -> スチル開始");
+        state_ = State.STILL;
+
     }
 }

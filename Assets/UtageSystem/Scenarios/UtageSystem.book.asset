@@ -808,9 +808,38 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
+    - rowIndex: 76
+      debugIndex: 76
+      strings:
+      - '*C1001_HOME_TOUCH_001'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 77
+      debugIndex: 77
+      strings:
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "......\uFF01\u3000\u3061\u3087\u3063\u3068\uFF01\n\u3069\u3053\u89E6\u3063\u3066\u3044\u308B\u306E\uFF01\uFF1F"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 78
+      debugIndex: 78
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
     name: Assets/UtageSystem/Scenarios/UtageSystem.xls:Start
     type: 1
-    textLength: 1527
+    textLength: 1586
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: e940c0ccb6ea833408238d7285d38444, type: 3}
     entityIndexTbl: 
@@ -2002,8 +2031,37 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
+    - rowIndex: 76
+      debugIndex: 76
+      strings:
+      - '*C1001_HOME_TOUCH_001'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 77
+      debugIndex: 77
+      strings:
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "......\uFF01\u3000\u3061\u3087\u3063\u3068\uFF01\n\u3069\u3053\u89E6\u3063\u3066\u3044\u308B\u306E\uFF01\uFF1F"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 78
+      debugIndex: 78
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
     name: Assets/UtageSystem/Scenarios/UtageSystem.xls:Start
     type: 1
-    textLength: 1527
+    textLength: 1586
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: e940c0ccb6ea833408238d7285d38444, type: 3}

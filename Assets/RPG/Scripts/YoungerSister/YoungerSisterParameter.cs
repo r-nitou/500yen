@@ -19,10 +19,10 @@ public class YoungerSisterParameter : ScriptableObject
 
     public void ResetParam()
     {
-        affection = 0;
-        attack = 0;
-        defense = 0;
-        speed = 0;
+        affection = 30;
+        attack = 10;
+        defense = 10;
+        speed = 10;
     }
 
     public float GetAffectionRate() { return (float)(affection) / (PARAM_MAX); }
