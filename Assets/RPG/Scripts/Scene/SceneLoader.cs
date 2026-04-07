@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    private const float SAFE_TIME = 2.0f;
     public static SceneLoader instance { get; set; }
 
     private void Awake()
@@ -30,6 +29,9 @@ public class SceneLoader : MonoBehaviour
     {
         //プレイヤーの操作停止
         player.InputAction.Player.Disable();
+
+        //時間の変更
+        UpdatePhase(trigger);
 
         //シーン遷移
         await SceneManager.LoadSceneAsync(trigger);
@@ -112,4 +114,26 @@ public class SceneLoader : MonoBehaviour
             follower.gameObject.SetActive(false);
         }
     }
+
+    //行先に応じて時間を変える処理
+    private void UpdatePhase(string nextSceneName)
+    {
+        if (GameManager.instance == null) return;
+
+        //シーン名に基づいて時間を切り替える
+        if (nextSceneName == "CaveScene") 
+        {
+            //ダンジョンのときは昼
+            GameManager.instance.currentPhase = DayPhase.DayTime;
+        }
+        else if (nextSceneName == "VillageScene")
+        {
+            //今が昼なら夜にする
+            if(GameManager.instance.currentPhase== DayPhase.DayTime)
+            {
+                GameManager.instance.currentPhase = DayPhase.Night;
+            }
+        }
+    }
 }
+

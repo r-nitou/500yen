@@ -3,6 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//時間管理用フェーズ
+public enum DayPhase
+{
+    Morning,
+    DayTime,
+    Night
+}
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -25,6 +33,9 @@ public class GameManager : MonoBehaviour
     [Header("FadeManagerの参照")]
     public FadeManager fadeManager;
     public FadeManager Fade => fadeManager;
+
+    [Header("時間管理")]
+    public DayPhase currentPhase = DayPhase.Morning;
 
     private void Awake()
     {
