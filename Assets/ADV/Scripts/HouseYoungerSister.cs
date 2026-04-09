@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cysharp.Threading.Tasks;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,6 +30,15 @@ public class HouseYoungerSister: MonoBehaviour
 
     [SerializeField, Header("表示を切り替えるボタンのリスト")]
     private Button[] buttonList_ = null;
+
+    [Header("遷移設定")]
+    [SerializeField] 
+    private string nextSceneName_ = "VillageScene";
+    [SerializeField] 
+    private string homeMarkerId_ = "HomeMarker";
+
+    [SerializeField]
+    private Image fadeImage;
 
     private State state_ = State.IDLE;
 
@@ -208,5 +218,46 @@ public class HouseYoungerSister: MonoBehaviour
         Debug.Log("HouseYoungerSister::StartStill -> スチル開始");
         state_ = State.STILL;
 
+    }
+
+    public void OnSleepEvent()
+    {
+        // adv再生後にシーン遷移
+        InitializeADV();
+        advController_.OnPlayFinish_.AddListener(OnFinishedSleepADV);// TODO: フェード開始に変更
+        advController_.PlayADV("C1001_HOME_SLEEP_01");
+    }
+
+    private void OnFinishedSleepADV()
+    {
+        FadeTask();
+    }
+
+    // ADVSceneLoadManagerから移動済
+    private async void FadeTask()
+    {
+        Debug.Log("HouseYoungerSister::OnSleepSelected -> 睡眠イベント選択");
+
+        await GameManager.instance.Fade.FadeOut(1.0f, fadeImage);
+        await UniTask.Delay(TimeSpan.FromSeconds(1.0f));
+        
+        // シーン移動
+        ExcuteSleep().Forget();
+    }
+
+    //時間の変更、プレイヤーの配置をする処理
+    private async UniTaskVoid ExcuteSleep()
+    {
+        //時間を「朝」に変更
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.currentPhase = DayPhase.Morning;
+        }
+
+        //シーン遷移
+        if (SceneLoader.instance != null)
+        {
+            await SceneLoader.instance.ExcuteSceneTransition(nextSceneName_, homeMarkerId_, PlayerMove.instance);
+        }
     }
 }
