@@ -58,6 +58,13 @@ public class PlayerInteract : MonoBehaviour
                 //ドアのタイプがマニュアル(民家とかのドア)だったら
                 if (trigger.Type == SceneTransitionTrigger.EntranceType.Manual)
                 {
+                    //時間帯チェック
+                    if (!trigger.CanEnter())
+                    {
+                        await UImanager.instance.ShowMessage($"鍵が閉まっていてはいれない...");
+                        return;
+                    }
+
                     //選択の結果を取得する
                     bool isYes = await UImanager.instance.ShowSelectionWindow($"{trigger.DestinationText}に行きますか？");
 
@@ -65,10 +72,6 @@ public class PlayerInteract : MonoBehaviour
                     {
                         Debug.Log($"{trigger.TargetSceneName}シーンに遷移");
                         await SceneLoader.instance.ExcuteSceneTransition(trigger.TargetSceneName, "", playerMove);
-                    }
-                    else
-                    {
-                        Debug.Log("ウィンドウを閉じました");
                     }
                 }
             }

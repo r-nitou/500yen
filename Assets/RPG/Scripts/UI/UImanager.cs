@@ -11,13 +11,11 @@ public class UImanager : MonoBehaviour
     //UIManagerのシングルトン化
     public static UImanager instance { get; set; }
 
-    [Header("プレイヤーの参照")]
-    [SerializeField] private GameObject playerObject;
     [Header("各UIスクリプトの参照")]
     [SerializeField] private SelectionWindow selectionWindow;
+    [SerializeField] private CommonMessageWindow messageWindow;
 
-    //共通で使うInputActionの参照
-    private PlayerInputAction playerInput;
+    private PlayerMove currentPlayer;
 
     private void Awake()
     {
@@ -34,31 +32,80 @@ public class UImanager : MonoBehaviour
 
     private void Start()
     {
-        if (playerObject != null)
-        {
-            playerInput = playerObject.GetComponent<PlayerMove>().InputAction;
-        }
+        FindPlayer();
     }
 
     //行先ウィンドウを表示する処理
     public async UniTask<bool> ShowSelectionWindow(string message)
     {
-        //InputSystemの切り替え
-        playerInput.Player.Disable();
-        playerInput.UI.Enable();
+        //念のためPlayerを検索する
+        if (currentPlayer == null)
+        {
+            FindPlayer();
+        }
+        if(currentPlayer == null)
+        {
+            Debug.LogError("Playerが見つからないため、選択ウィンドウを表示できません");
+            return false;
+        }
 
-        bool result = await selectionWindow.OpenWindow(message,playerInput);
+        //InputSystemの切り替え
+        currentPlayer.InputAction.Player.Disable();
+        currentPlayer.InputAction.UI.Enable();
+
+        bool result = await selectionWindow.OpenWindow(message,currentPlayer.InputAction);
 
         //InputSystemの切り替え
-        playerInput.Player.Enable();
-        playerInput.UI.Disable();
+        currentPlayer.InputAction.Player.Enable();
+        currentPlayer.InputAction.UI.Disable();
 
         return result;
     }
 
-    //InputActionを無効化する処理
-    public void CloseDestinationWindow()
+    //メッセージウィンドウを表示する処理
+    public async UniTask ShowMessage(string message)
     {
-        playerInput?.Disable();
+        //念のためPlayerを検索する
+        if (currentPlayer == null)
+        {
+            FindPlayer();
+        }
+        if (currentPlayer == null)
+        {
+            Debug.LogError("Playerが見つからないため、選択ウィンドウを表示できません");
+            return;
+        }
+
+        //InputSystemの切り替え
+        currentPlayer.InputAction.Player.Disable();
+        currentPlayer.InputAction.UI.Enable();
+
+        //ウィンドウを表示してキー入力を待つ
+        await messageWindow.OpenMessage(message, currentPlayer.InputAction);
+
+        //InputSystemの切り替え
+        currentPlayer.InputAction.Player.Enable();
+        currentPlayer.InputAction.UI.Disable();
     }
+
+    //Playerを検索する処理
+    public void FindPlayer()
+    {
+        currentPlayer = Object.FindFirstObjectByType<PlayerMove>();
+
+        if (currentPlayer != null)
+        {
+            Debug.Log("Playerを見つけた");
+        }
+        else
+        {
+            Debug.LogWarning("Playerが見つからない");
+        }
+    }
+
+    ////InputActionを無効化する処理
+    //public void CloseDestinationWindow()
+    //{
+    //    currentPlayer.InputAction?.Disable();
+    //}
 }

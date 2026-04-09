@@ -217,7 +217,7 @@ public class PlayerMove : MonoBehaviour
         if (hit != null)
         {
             SceneTransitionTrigger trigger = hit.GetComponent<SceneTransitionTrigger>();
-            if (trigger != null && trigger.Type == SceneTransitionTrigger.EntranceType.Auto)
+            if (trigger != null && trigger.Type == SceneTransitionTrigger.EntranceType.Auto && trigger.CanEnter()) 
             {
                 SceneLoader.instance.ExcuteSceneTransition(trigger.TargetSceneName, trigger.TargetMarkerId, this).Forget();
             }

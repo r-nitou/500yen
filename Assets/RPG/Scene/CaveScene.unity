@@ -472,6 +472,7 @@ MonoBehaviour:
   targetSceneName: VillageScene
   destinationText: "\u6D1E\u7A9F"
   targetMarkerId: CaveEntrance
+  allowblePhase: 01000000
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
