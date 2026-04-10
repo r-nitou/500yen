@@ -828,7 +828,7 @@ MonoBehaviour:
   - {fileID: 1117264414}
   - {fileID: 360669878}
   nextSceneName_: VillageScene
-  homeMarkerId_: HomeMarker
+  homeMarkerId_: HomeEntrance
   fadeImage: {fileID: 295324842}
 --- !u!212 &319320601
 SpriteRenderer:

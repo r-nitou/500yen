@@ -35,7 +35,7 @@ public class HouseYoungerSister: MonoBehaviour
     [SerializeField] 
     private string nextSceneName_ = "VillageScene";
     [SerializeField] 
-    private string homeMarkerId_ = "HomeMarker";
+    private string homeMarkerId_ = "HomeEntrance";
 
     [SerializeField]
     private Image fadeImage;
