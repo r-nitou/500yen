@@ -14,8 +14,10 @@ public class UImanager : MonoBehaviour
     [Header("各UIスクリプトの参照")]
     [SerializeField] private SelectionWindow selectionWindow;
     [SerializeField] private CommonMessageWindow messageWindow;
+    [SerializeField] private MenuManager menuManager;
 
     private PlayerMove currentPlayer;
+    private bool isMenuOpen = false;
 
     private void Awake()
     {
@@ -35,6 +37,17 @@ public class UImanager : MonoBehaviour
         FindPlayer();
     }
 
+    private void Update()
+    {
+        if (currentPlayer == null) return;
+
+        //メニューの開閉の監視
+        if (currentPlayer.InputAction.Player.Menu.triggered && !isMenuOpen)
+        {
+            ToggleMenu(true);
+        }
+    }
+
     //行先ウィンドウを表示する処理
     public async UniTask<bool> ShowSelectionWindow(string message)
     {
@@ -50,14 +63,11 @@ public class UImanager : MonoBehaviour
         }
 
         //InputSystemの切り替え
-        currentPlayer.InputAction.Player.Disable();
-        currentPlayer.InputAction.UI.Enable();
+        SwitchToUIInput();
 
         bool result = await selectionWindow.OpenWindow(message,currentPlayer.InputAction);
 
-        //InputSystemの切り替え
-        currentPlayer.InputAction.Player.Enable();
-        currentPlayer.InputAction.UI.Disable();
+        SwitchToPlayerInput();
 
         return result;
     }
@@ -77,15 +87,48 @@ public class UImanager : MonoBehaviour
         }
 
         //InputSystemの切り替え
-        currentPlayer.InputAction.Player.Disable();
-        currentPlayer.InputAction.UI.Enable();
+        SwitchToUIInput();
 
         //ウィンドウを表示してキー入力を待つ
         await messageWindow.OpenMessage(message, currentPlayer.InputAction);
 
-        //InputSystemの切り替え
-        currentPlayer.InputAction.Player.Enable();
-        currentPlayer.InputAction.UI.Disable();
+        SwitchToPlayerInput();
+    }
+
+    //メニューUIを表示する処理
+    private void ToggleMenu(bool open)
+    {
+        isMenuOpen = open;
+
+        //入力切替
+        if (open)
+        {
+            SwitchToUIInput();
+
+            currentPlayer.InputAction.UI.Navigate.performed += menuManager.OnNavigate;
+            currentPlayer.InputAction.UI.Submit.performed += menuManager.OnSubmit;
+            currentPlayer.InputAction.UI.Cancel.performed += menuManager.OnCancel;
+
+            menuManager.OpenMenu();
+        }
+        else
+        {
+            menuManager.CloseMenu();
+
+            currentPlayer.InputAction.UI.Navigate.performed -= menuManager.OnNavigate;
+            currentPlayer.InputAction.UI.Submit.performed -= menuManager.OnSubmit;
+            currentPlayer.InputAction.UI.Cancel.performed -= menuManager.OnCancel;
+
+            SwitchToPlayerInput();
+        }
+    }
+
+    public void CloseMenu()
+    {
+        if (isMenuOpen) 
+        {
+            ToggleMenu(false);
+        }
     }
 
     //Playerを検索する処理
@@ -103,9 +146,19 @@ public class UImanager : MonoBehaviour
         }
     }
 
-    ////InputActionを無効化する処理
-    //public void CloseDestinationWindow()
-    //{
-    //    currentPlayer.InputAction?.Disable();
-    //}
+    //InputSystemをUI用に切り替える処理
+    public void SwitchToUIInput()
+    {
+        if (currentPlayer == null) return;
+        currentPlayer.InputAction.Player.Disable();
+        currentPlayer.InputAction.UI.Enable();
+    }
+
+    //InputSystemをPlayer用に切り替える処理
+    public void SwitchToPlayerInput()
+    {
+        if (currentPlayer == null) return;
+        currentPlayer.InputAction.Player.Enable();
+        currentPlayer.InputAction.UI.Disable();
+    }
 }

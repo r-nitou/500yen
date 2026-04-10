@@ -27,6 +27,8 @@ public class CommandManager : MonoBehaviour
         isActive = active;
         commandObj.SetActive(active);
 
+        currentIndex = 0;
+
         if (active)
         {
             //InputActionの有効化とイベント紐づけ
@@ -42,7 +44,6 @@ public class CommandManager : MonoBehaviour
             inputAction.Battle.Disable();
             inputAction.Battle.Navigate.performed -= OnNavigate;
             inputAction.Battle.Decision.performed -= OnDecision;
-
         }
     }
 

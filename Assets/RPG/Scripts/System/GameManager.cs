@@ -37,12 +37,20 @@ public class GameManager : MonoBehaviour
     [Header("時間管理")]
     public DayPhase currentPhase = DayPhase.Morning;
 
+    [Header("インベントリ管理")]
+    public InventoryManager inventoryManager;
+
+    [Header("所持金ゴールド")]
+    public int gold;
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+
+            inventoryManager = GetComponent<InventoryManager>();
+
             currentHp = playerData.maxHP;
         }
         else

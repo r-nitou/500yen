@@ -13,9 +13,6 @@ public class EnemySymbol : MonoBehaviour
     [SerializeField] private string enemyGroupId = "";
     [SerializeField] private string battleSceneName = "BattleScene";
 
-    [Header("撃破設定")]
-    [SerializeField] private bool destroyOnWin = true;
-
     private bool isEncount = false;
     private Vector3 returnPosition;
 

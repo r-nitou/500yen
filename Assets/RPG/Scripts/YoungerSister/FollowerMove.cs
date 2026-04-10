@@ -13,7 +13,6 @@ public class FollowerMove : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
 
     private Vector2 lookDirection = Vector2.zero;
-    private bool isMoving;
     private CancellationToken token;
 
     private Animator animator;
@@ -44,8 +43,6 @@ public class FollowerMove : MonoBehaviour
         //アニメーションの更新
         UpdateAnimation(lookDirection, true);
 
-        isMoving = true;
-
         while (Vector3.Distance(transform.position, targetPosition) > MOVE_THRESHOLD)
         {
             transform.position = Vector3.MoveTowards(
@@ -55,8 +52,6 @@ public class FollowerMove : MonoBehaviour
             await UniTask.Yield(PlayerLoopTiming.Update, token);
         }
         transform.position = targetPosition;
-
-        isMoving = false;
 
         //アニメーションをIdle状態に戻す
         UpdateAnimation(lookDirection, false);
