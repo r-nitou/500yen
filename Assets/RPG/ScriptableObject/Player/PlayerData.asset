@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   playerName: "\u4E3B\u4EBA\u516C"
-  level: 2
-  maxHP: 110
-  attack: 22
-  defense: 6
-  speed: 6
-  currentExp: 50
-  nextLevelExp: 240
+  level: 1
+  maxHP: 100
+  attack: 15
+  defense: 5
+  speed: 5
+  currentExp: 0
+  nextLevelExp: 100
   hpGain: 10
   attackGain: 2
   defenseGain: 1

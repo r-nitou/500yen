@@ -115,10 +115,8 @@ public class BattleManager : MonoBehaviour
 
         //ログ表示
         await LogManager.instance.DisplayLogText("モンスターがあらわれた！");
-
         //カットイン
         await HeroineCutIn();
-
         //プレイヤーコマンド選択
         await PlayerCommandSelect();
     }

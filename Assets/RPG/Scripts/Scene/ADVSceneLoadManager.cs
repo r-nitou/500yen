@@ -5,7 +5,7 @@ public class ADVSceneLoadManager : MonoBehaviour
 {
     [Header("遷移設定")]
     [SerializeField] private string nextSceneName = "VillageScene";
-    [SerializeField] private string homeMarkerId = "HomeMarker";
+    [SerializeField] private string homeMarkerId = "HomeMarker"; 
 
     //寝るボタンから呼び出される関数
     public void OnSleepSelected()
