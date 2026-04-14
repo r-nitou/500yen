@@ -58,9 +58,23 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
+    - rowIndex: 2
+      debugIndex: 2
+      strings:
+      - "\u5E97\u4E3B"
+      - "\u5E97\u4E3B"
+      - "\u901A\u5E38"
+      - 
+      - 
+      - 
+      - Bottom
+      - 1
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
     name: Assets/UtageSystem/Scenarios/UtageSystem.xls:Character
     type: 1
-    textLength: 181
+    textLength: 194
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: e940c0ccb6ea833408238d7285d38444, type: 3}
   - rows:

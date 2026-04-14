@@ -3,8 +3,22 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    public static InventoryManager instance { get; set; }
+
     [Header("所持品リスト")]
     [SerializeField] private List<ItemSlot> playerInventory = new List<ItemSlot>();
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     //外部参照用プロパティ
     public List<ItemSlot> PlayerInventory => playerInventory;

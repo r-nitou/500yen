@@ -2190,6 +2190,7 @@ Transform:
   m_Children:
   - {fileID: 1413524760}
   - {fileID: 364287751}
+  - {fileID: 1812003378}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &229844031
@@ -4686,7 +4687,7 @@ MonoBehaviour:
   fadeManager: {fileID: 846533686}
   currentPhase: 0
   inventoryManager: {fileID: 846533687}
-  gold: 0
+  gold: 10000
 --- !u!4 &846533685
 Transform:
   m_ObjectHideFlags: 0
@@ -37392,6 +37393,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 21, y: 18, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 11
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: 22, y: 18, z: 0}
     second:
       serializedVersion: 2
@@ -37716,15 +37727,15 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 08678fb6057507e439f4e4bb4a726c34, type: 2}
   - m_RefCount: 8
     m_Data: {fileID: 11400000, guid: 4bf213ecc887b7b4bbbea39a681cd0fe, type: 2}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 836f8785372decd43b614f93f0eec5ad, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 11
     m_Data: {fileID: 8783624631508381952, guid: 228e028f20d742c40bf82a0eef5216ce, type: 3}
   - m_RefCount: 8
     m_Data: {fileID: 2678226996681592699, guid: 228e028f20d742c40bf82a0eef5216ce, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 2979615780082551507, guid: 228e028f20d742c40bf82a0eef5216ce, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -7509724868852147091, guid: 228e028f20d742c40bf82a0eef5216ce, type: 3}
   - m_RefCount: 21
@@ -37744,7 +37755,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 7420539797634313796, guid: 228e028f20d742c40bf82a0eef5216ce, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 86
+  - m_RefCount: 87
     m_Data:
       e00: 1
       e01: 0
@@ -37781,7 +37792,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 86
+  - m_RefCount: 87
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -38081,6 +38092,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745073634}
   m_CullTransparentMesh: 1
+--- !u!1 &1812003377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1812003378}
+  - component: {fileID: 1812003379}
+  m_Layer: 0
+  m_Name: ToolShopMarker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1812003378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812003377}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -21.5, y: -4.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 224101940}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1812003379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812003377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26009b99ef57ee847a82ae203277e9b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneMarker
+  markerId: ToolShopEntrance
+  lookDirection: {x: 0, y: -1}
 --- !u!1 &1817501778
 GameObject:
   m_ObjectHideFlags: 0

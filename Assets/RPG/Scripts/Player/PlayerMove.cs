@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -175,7 +176,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         //移動完了後、足元に自動遷移トリガーがあるかチェック
-        CheckAutoTransition();
+        CheckAutoTransition().Forget();
     }
 
     //プレイヤーの向きを更新する処理
@@ -209,7 +210,7 @@ public class PlayerMove : MonoBehaviour
     }
 
     //足元に自動遷移トリガーがあるかチェックする処理
-    private void CheckAutoTransition()
+    private async UniTaskVoid CheckAutoTransition()
     {
         //足元にTransitiontレイヤーがあるかチェック
         Collider2D hit = Physics2D.OverlapCircle(transform.position, COLLISION_RADIUS, LayerMask.GetMask("Transition"));
@@ -217,9 +218,25 @@ public class PlayerMove : MonoBehaviour
         if (hit != null)
         {
             SceneTransitionTrigger trigger = hit.GetComponent<SceneTransitionTrigger>();
-            if (trigger != null && trigger.Type == SceneTransitionTrigger.EntranceType.Auto && trigger.CanEnter()) 
+            if (trigger != null && trigger.Type == SceneTransitionTrigger.EntranceType.Auto ) 
             {
-                SceneLoader.instance.ExcuteSceneTransition(trigger.TargetSceneName, trigger.TargetMarkerId, this).Forget();
+                if (trigger.CanEnter())
+                {
+                    SceneLoader.instance.ExcuteSceneTransition
+                        (trigger.TargetSceneName, trigger.TargetMarkerId, this).Forget();
+                }
+                else
+                {
+                    //移動フラグを立てて入力と移動を停止する
+                    isMoveing = true;
+                    UpdateAnimation(false);
+                    if (trigger.TargetSceneName == "CaveScene") 
+                    {
+                        await UImanager.instance.ShowMessage("暗くて先が見えない...");
+                    }
+                    //メッセージを閉じたら移動可能にする
+                    isMoveing = false;
+                }
             }
         }
     }
