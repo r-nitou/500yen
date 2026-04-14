@@ -109,7 +109,7 @@ MonoBehaviour:
     - rowIndex: 8
       debugIndex: 8
       strings:
-      - '*C1001_HOME_ENTER_L_001'
+      - '*C1001_HOME_FRIST'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -124,26 +124,70 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u304A\u304B\u3048\u308A\u3002\u5225\u306B\u5FC3\u914D\u3068\u304B\u3057\u3066\u306A\u3044\u304B\u3089\u3002\n\u5BB6\u306E\u9375\u304C\u958B\u3044\u3066\u308B\u304B\u78BA\u8A8D\u3057\u305F\u3060\u3051\u3002"
+      - "\u30B2\u30FC\u30E0\u304C\u59CB\u307E\u3063\u3066\n1\u756A\u6700\u521D\u306E\u81EA\u5B85\u3067\u306E\u59B9\u306E\u30E1\u30C3\u30BB\u30FC\u30B8\u3067\u3059\u3002"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
     - rowIndex: 10
       debugIndex: 10
       strings:
-      - EndScenario
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u4ECA\u65E5\u306F\u3044\u308D\u3044\u308D\u3042\u3063\u3066\u75B2\u308C\u305F\u304B\u3089\u3001\n\u3082\u3046\u5BDD\u305F\u3044\u306A\uFF5E\u3002"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
     - rowIndex: 11
       debugIndex: 11
       strings:
-      - '*C1001_HOME_ENTER_L_002'
+      - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
     - rowIndex: 12
       debugIndex: 12
+      strings:
+      - '*C1001_HOME_ENTER_L_001'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 13
+      debugIndex: 13
+      strings:
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u304A\u304B\u3048\u308A\u3002\u5225\u306B\u5FC3\u914D\u3068\u304B\u3057\u3066\u306A\u3044\u304B\u3089\u3002\n\u5BB6\u306E\u9375\u304C\u958B\u3044\u3066\u308B\u304B\u78BA\u8A8D\u3057\u305F\u3060\u3051\u3002"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 14
+      debugIndex: 14
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 15
+      debugIndex: 15
+      strings:
+      - '*C1001_HOME_ENTER_L_002'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 16
+      debugIndex: 16
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -157,22 +201,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 13
-      debugIndex: 13
+    - rowIndex: 17
+      debugIndex: 17
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 14
-      debugIndex: 14
+    - rowIndex: 18
+      debugIndex: 18
       strings:
       - '*C1001_HOME_ENTER_L_003'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 15
-      debugIndex: 15
+    - rowIndex: 19
+      debugIndex: 19
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -186,22 +230,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 16
-      debugIndex: 16
+    - rowIndex: 20
+      debugIndex: 20
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 17
-      debugIndex: 17
+    - rowIndex: 21
+      debugIndex: 21
       strings:
       - '*C1001_HOME_ENTER_L_004'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 18
-      debugIndex: 18
+    - rowIndex: 22
+      debugIndex: 22
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -215,22 +259,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 19
-      debugIndex: 19
+    - rowIndex: 23
+      debugIndex: 23
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 20
-      debugIndex: 20
+    - rowIndex: 24
+      debugIndex: 24
       strings:
       - '*C1001_HOME_ENTER_M_001'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 21
-      debugIndex: 21
+    - rowIndex: 25
+      debugIndex: 25
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -244,22 +288,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 22
-      debugIndex: 22
+    - rowIndex: 26
+      debugIndex: 26
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 23
-      debugIndex: 23
+    - rowIndex: 27
+      debugIndex: 27
       strings:
       - '*C1001_HOME_ENTER_M_002'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 24
-      debugIndex: 24
+    - rowIndex: 28
+      debugIndex: 28
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -273,22 +317,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 25
-      debugIndex: 25
+    - rowIndex: 29
+      debugIndex: 29
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 26
-      debugIndex: 26
+    - rowIndex: 30
+      debugIndex: 30
       strings:
       - '*C1001_HOME_ENTER_M_003'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 27
-      debugIndex: 27
+    - rowIndex: 31
+      debugIndex: 31
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -302,22 +346,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 28
-      debugIndex: 28
+    - rowIndex: 32
+      debugIndex: 32
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 29
-      debugIndex: 29
+    - rowIndex: 33
+      debugIndex: 33
       strings:
       - '*C1001_HOME_ENTER_M_004'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 30
-      debugIndex: 30
+    - rowIndex: 34
+      debugIndex: 34
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -331,22 +375,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 31
-      debugIndex: 31
+    - rowIndex: 35
+      debugIndex: 35
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 32
-      debugIndex: 32
+    - rowIndex: 36
+      debugIndex: 36
       strings:
       - '*C1001_HOME_ENTER_H_001'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 33
-      debugIndex: 33
+    - rowIndex: 37
+      debugIndex: 37
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -360,22 +404,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 34
-      debugIndex: 34
+    - rowIndex: 38
+      debugIndex: 38
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 35
-      debugIndex: 35
+    - rowIndex: 39
+      debugIndex: 39
       strings:
       - '*C1001_HOME_ENTER_H_002'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 36
-      debugIndex: 36
+    - rowIndex: 40
+      debugIndex: 40
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -390,22 +434,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 37
-      debugIndex: 37
+    - rowIndex: 41
+      debugIndex: 41
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 38
-      debugIndex: 38
+    - rowIndex: 42
+      debugIndex: 42
       strings:
       - '*C1001_HOME_ENTER_H_003'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 39
-      debugIndex: 39
+    - rowIndex: 43
+      debugIndex: 43
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -419,22 +463,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 40
-      debugIndex: 40
+    - rowIndex: 44
+      debugIndex: 44
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 41
-      debugIndex: 41
+    - rowIndex: 45
+      debugIndex: 45
       strings:
       - '*C1001_HOME_ENTER_H_004'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 42
-      debugIndex: 42
+    - rowIndex: 46
+      debugIndex: 46
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -449,50 +493,6 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 43
-      debugIndex: 43
-      strings:
-      - EndScenario
-      isEmpty: 0
-      isCommentOut: 0
-      debugInfo: 
-    - rowIndex: 44
-      debugIndex: 44
-      strings:
-      - '*C1001_HOME_ACT_SUCCESS_001'
-      isEmpty: 0
-      isCommentOut: 0
-      debugInfo: 
-    - rowIndex: 45
-      debugIndex: 45
-      strings:
-      - 
-      - "\u3086\u3063\u304D"
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - "\u3046\u308C\u3057\u3044\uFF01"
-      isEmpty: 0
-      isCommentOut: 0
-      debugInfo: 
-    - rowIndex: 46
-      debugIndex: 46
-      strings:
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - "\u4F1A\u8A71\u306B\u6210\u529F\uFF01\n\u653B\u6483\u529B\u304C\u9AD8\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
-      isEmpty: 0
-      isCommentOut: 0
-      debugInfo: 
     - rowIndex: 47
       debugIndex: 47
       strings:
@@ -503,7 +503,7 @@ MonoBehaviour:
     - rowIndex: 48
       debugIndex: 48
       strings:
-      - '*C1001_HOME_ACT_SUCCESS_002'
+      - '*C1001_HOME_ACT_SUCCESS_001'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -533,7 +533,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u4F1A\u8A71\u306B\u6210\u529F\uFF01\n\u9632\u5FA1\u529B\u304C\u9AD8\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      - "\u4F1A\u8A71\u306B\u6210\u529F\uFF01\n\u653B\u6483\u529B\u304C\u9AD8\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -547,7 +547,7 @@ MonoBehaviour:
     - rowIndex: 52
       debugIndex: 52
       strings:
-      - '*C1001_HOME_ACT_SUCCESS_003'
+      - '*C1001_HOME_ACT_SUCCESS_002'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -577,7 +577,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u4F1A\u8A71\u306B\u6210\u529F\uFF01\n\u7D20\u65E9\u3055\u304C\u9AD8\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      - "\u4F1A\u8A71\u306B\u6210\u529F\uFF01\n\u9632\u5FA1\u529B\u304C\u9AD8\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -591,7 +591,7 @@ MonoBehaviour:
     - rowIndex: 56
       debugIndex: 56
       strings:
-      - '*C1001_HOME_ACT_SUCCESS_004'
+      - '*C1001_HOME_ACT_SUCCESS_003'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -606,7 +606,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u30D7\u30EC\u30BC\u30F3\u30C8\u3042\u308A\u304C\u3068\uFF01"
+      - "\u3046\u308C\u3057\u3044\uFF01"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -621,7 +621,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u30DE\u30C3\u30AF\u3067\u8CB7\u3063\u3066\u304D\u305F\u3046\u3069\u3093\u3092\u3042\u3052\u305F\u3002\n\u597D\u611F\u5EA6\u304C\u4E0A\u304C\u3063\u305F\u3002"
+      - "\u4F1A\u8A71\u306B\u6210\u529F\uFF01\n\u7D20\u65E9\u3055\u304C\u9AD8\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -635,7 +635,7 @@ MonoBehaviour:
     - rowIndex: 60
       debugIndex: 60
       strings:
-      - '*C1001_HOME_ACT_SUCCESS_005'
+      - '*C1001_HOME_ACT_SUCCESS_004'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -650,7 +650,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u3048\u3078\u3078\u3002"
+      - "\u30D7\u30EC\u30BC\u30F3\u30C8\u3042\u308A\u304C\u3068\uFF01"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -665,7 +665,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u7518\u3084\u304B\u3057\u305F\u3002\n\u3046\u308C\u3057\u305D\u3046\u3060\u304C\u3001\u6D6E\u304B\u308C\u3059\u304E\u306A\u6C17\u304C\u3059\u308B......"
+      - "\u30DE\u30C3\u30AF\u3067\u8CB7\u3063\u3066\u304D\u305F\u3046\u3069\u3093\u3092\u3042\u3052\u305F\u3002\n\u597D\u611F\u5EA6\u304C\u4E0A\u304C\u3063\u305F\u3002"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -679,7 +679,7 @@ MonoBehaviour:
     - rowIndex: 64
       debugIndex: 64
       strings:
-      - '*C1001_HOME_ACT_FAIL_001'
+      - '*C1001_HOME_ACT_SUCCESS_005'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -694,7 +694,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u3046\u30FC\u3093......"
+      - "\u3048\u3078\u3078\u3002"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -709,7 +709,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u4F1A\u8A71\u306B\u5931\u6557\uFF01\n\u653B\u6483\u529B\u304C\u4F4E\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      - "\u7518\u3084\u304B\u3057\u305F\u3002\n\u3046\u308C\u3057\u305D\u3046\u3060\u304C\u3001\u6D6E\u304B\u308C\u3059\u304E\u306A\u6C17\u304C\u3059\u308B......"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -723,7 +723,7 @@ MonoBehaviour:
     - rowIndex: 68
       debugIndex: 68
       strings:
-      - '*C1001_HOME_ACT_FAIL_002'
+      - '*C1001_HOME_ACT_FAIL_001'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -753,7 +753,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u4F1A\u8A71\u306B\u5931\u6557\uFF01\n\u9632\u5FA1\u529B\u304C\u4F4E\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      - "\u4F1A\u8A71\u306B\u5931\u6557\uFF01\n\u653B\u6483\u529B\u304C\u4F4E\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -767,7 +767,7 @@ MonoBehaviour:
     - rowIndex: 72
       debugIndex: 72
       strings:
-      - '*C1001_HOME_ACT_FAIL_003'
+      - '*C1001_HOME_ACT_FAIL_002'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -797,7 +797,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u4F1A\u8A71\u306B\u5931\u6557\uFF01\n\u7D20\u65E9\u3055\u304C\u4F4E\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      - "\u4F1A\u8A71\u306B\u5931\u6557\uFF01\n\u9632\u5FA1\u529B\u304C\u4F4E\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -811,7 +811,7 @@ MonoBehaviour:
     - rowIndex: 76
       debugIndex: 76
       strings:
-      - '*C1001_HOME_TOUCH_001'
+      - '*C1001_HOME_ACT_FAIL_003'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -826,36 +826,36 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "......\uFF01\u3000\u3061\u3087\u3063\u3068\uFF01\n\u3069\u3053\u89E6\u3063\u3066\u3044\u308B\u306E\uFF01\uFF1F"
+      - "\u3046\u30FC\u3093......"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
     - rowIndex: 78
       debugIndex: 78
       strings:
-      - EndScenario
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u4F1A\u8A71\u306B\u5931\u6557\uFF01\n\u7D20\u65E9\u3055\u304C\u4F4E\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
     - rowIndex: 79
       debugIndex: 79
       strings:
-      - '*C1001_HOME_SLEEP_01'
+      - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
     - rowIndex: 80
       debugIndex: 80
       strings:
-      - 
-      - "\u3086\u3063\u304D"
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - "\u3082\u3046\u3053\u3093\u306A\u6642\u9593\u304B\u3041\u3002\n\u305D\u308D\u305D\u308D\u5BDD\u3088\u3063\u304B\u3002"
+      - '*C1001_HOME_TOUCH_001'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -870,7 +870,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u3075\u3041\u3041......\n\u304A\u3084\u3059\u307F......\u3002"
+      - "......\uFF01\u3000\u3061\u3087\u3063\u3068\uFF01\n\u3069\u3053\u89E6\u3063\u3066\u3044\u308B\u306E\uFF01\uFF1F"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -881,9 +881,53 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
+    - rowIndex: 83
+      debugIndex: 83
+      strings:
+      - '*C1001_HOME_SLEEP_01'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 84
+      debugIndex: 84
+      strings:
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3082\u3046\u3053\u3093\u306A\u6642\u9593\u304B\u3041\u3002\n\u305D\u308D\u305D\u308D\u5BDD\u3088\u3063\u304B\u3002"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 85
+      debugIndex: 85
+      strings:
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3075\u3041\u3041......\n\u304A\u3084\u3059\u307F......\u3002"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 86
+      debugIndex: 86
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
     name: Assets/UtageSystem/Scenarios/UtageSystem.xls:Start
     type: 1
-    textLength: 1664
+    textLength: 1751
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: e940c0ccb6ea833408238d7285d38444, type: 3}
     entityIndexTbl: 
@@ -1376,7 +1420,7 @@ MonoBehaviour:
     - rowIndex: 8
       debugIndex: 8
       strings:
-      - '*C1001_HOME_ENTER_L_001'
+      - '*C1001_HOME_FRIST'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -1391,26 +1435,70 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u304A\u304B\u3048\u308A\u3002\u5225\u306B\u5FC3\u914D\u3068\u304B\u3057\u3066\u306A\u3044\u304B\u3089\u3002\n\u5BB6\u306E\u9375\u304C\u958B\u3044\u3066\u308B\u304B\u78BA\u8A8D\u3057\u305F\u3060\u3051\u3002"
+      - "\u30B2\u30FC\u30E0\u304C\u59CB\u307E\u3063\u3066\n1\u756A\u6700\u521D\u306E\u81EA\u5B85\u3067\u306E\u59B9\u306E\u30E1\u30C3\u30BB\u30FC\u30B8\u3067\u3059\u3002"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
     - rowIndex: 10
       debugIndex: 10
       strings:
-      - EndScenario
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u4ECA\u65E5\u306F\u3044\u308D\u3044\u308D\u3042\u3063\u3066\u75B2\u308C\u305F\u304B\u3089\u3001\n\u3082\u3046\u5BDD\u305F\u3044\u306A\uFF5E\u3002"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
     - rowIndex: 11
       debugIndex: 11
       strings:
-      - '*C1001_HOME_ENTER_L_002'
+      - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
     - rowIndex: 12
       debugIndex: 12
+      strings:
+      - '*C1001_HOME_ENTER_L_001'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 13
+      debugIndex: 13
+      strings:
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u304A\u304B\u3048\u308A\u3002\u5225\u306B\u5FC3\u914D\u3068\u304B\u3057\u3066\u306A\u3044\u304B\u3089\u3002\n\u5BB6\u306E\u9375\u304C\u958B\u3044\u3066\u308B\u304B\u78BA\u8A8D\u3057\u305F\u3060\u3051\u3002"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 14
+      debugIndex: 14
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 15
+      debugIndex: 15
+      strings:
+      - '*C1001_HOME_ENTER_L_002'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 16
+      debugIndex: 16
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -1424,22 +1512,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 13
-      debugIndex: 13
+    - rowIndex: 17
+      debugIndex: 17
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 14
-      debugIndex: 14
+    - rowIndex: 18
+      debugIndex: 18
       strings:
       - '*C1001_HOME_ENTER_L_003'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 15
-      debugIndex: 15
+    - rowIndex: 19
+      debugIndex: 19
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -1453,22 +1541,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 16
-      debugIndex: 16
+    - rowIndex: 20
+      debugIndex: 20
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 17
-      debugIndex: 17
+    - rowIndex: 21
+      debugIndex: 21
       strings:
       - '*C1001_HOME_ENTER_L_004'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 18
-      debugIndex: 18
+    - rowIndex: 22
+      debugIndex: 22
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -1482,22 +1570,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 19
-      debugIndex: 19
+    - rowIndex: 23
+      debugIndex: 23
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 20
-      debugIndex: 20
+    - rowIndex: 24
+      debugIndex: 24
       strings:
       - '*C1001_HOME_ENTER_M_001'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 21
-      debugIndex: 21
+    - rowIndex: 25
+      debugIndex: 25
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -1511,22 +1599,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 22
-      debugIndex: 22
+    - rowIndex: 26
+      debugIndex: 26
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 23
-      debugIndex: 23
+    - rowIndex: 27
+      debugIndex: 27
       strings:
       - '*C1001_HOME_ENTER_M_002'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 24
-      debugIndex: 24
+    - rowIndex: 28
+      debugIndex: 28
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -1540,22 +1628,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 25
-      debugIndex: 25
+    - rowIndex: 29
+      debugIndex: 29
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 26
-      debugIndex: 26
+    - rowIndex: 30
+      debugIndex: 30
       strings:
       - '*C1001_HOME_ENTER_M_003'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 27
-      debugIndex: 27
+    - rowIndex: 31
+      debugIndex: 31
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -1569,22 +1657,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 28
-      debugIndex: 28
+    - rowIndex: 32
+      debugIndex: 32
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 29
-      debugIndex: 29
+    - rowIndex: 33
+      debugIndex: 33
       strings:
       - '*C1001_HOME_ENTER_M_004'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 30
-      debugIndex: 30
+    - rowIndex: 34
+      debugIndex: 34
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -1598,22 +1686,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 31
-      debugIndex: 31
+    - rowIndex: 35
+      debugIndex: 35
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 32
-      debugIndex: 32
+    - rowIndex: 36
+      debugIndex: 36
       strings:
       - '*C1001_HOME_ENTER_H_001'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 33
-      debugIndex: 33
+    - rowIndex: 37
+      debugIndex: 37
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -1627,22 +1715,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 34
-      debugIndex: 34
+    - rowIndex: 38
+      debugIndex: 38
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 35
-      debugIndex: 35
+    - rowIndex: 39
+      debugIndex: 39
       strings:
       - '*C1001_HOME_ENTER_H_002'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 36
-      debugIndex: 36
+    - rowIndex: 40
+      debugIndex: 40
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -1657,22 +1745,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 37
-      debugIndex: 37
+    - rowIndex: 41
+      debugIndex: 41
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 38
-      debugIndex: 38
+    - rowIndex: 42
+      debugIndex: 42
       strings:
       - '*C1001_HOME_ENTER_H_003'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 39
-      debugIndex: 39
+    - rowIndex: 43
+      debugIndex: 43
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -1686,22 +1774,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 40
-      debugIndex: 40
+    - rowIndex: 44
+      debugIndex: 44
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 41
-      debugIndex: 41
+    - rowIndex: 45
+      debugIndex: 45
       strings:
       - '*C1001_HOME_ENTER_H_004'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 42
-      debugIndex: 42
+    - rowIndex: 46
+      debugIndex: 46
       strings:
       - 
       - "\u3086\u3063\u304D"
@@ -1716,50 +1804,6 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 43
-      debugIndex: 43
-      strings:
-      - EndScenario
-      isEmpty: 0
-      isCommentOut: 0
-      debugInfo: 
-    - rowIndex: 44
-      debugIndex: 44
-      strings:
-      - '*C1001_HOME_ACT_SUCCESS_001'
-      isEmpty: 0
-      isCommentOut: 0
-      debugInfo: 
-    - rowIndex: 45
-      debugIndex: 45
-      strings:
-      - 
-      - "\u3086\u3063\u304D"
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - "\u3046\u308C\u3057\u3044\uFF01"
-      isEmpty: 0
-      isCommentOut: 0
-      debugInfo: 
-    - rowIndex: 46
-      debugIndex: 46
-      strings:
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - "\u4F1A\u8A71\u306B\u6210\u529F\uFF01\n\u653B\u6483\u529B\u304C\u9AD8\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
-      isEmpty: 0
-      isCommentOut: 0
-      debugInfo: 
     - rowIndex: 47
       debugIndex: 47
       strings:
@@ -1770,7 +1814,7 @@ MonoBehaviour:
     - rowIndex: 48
       debugIndex: 48
       strings:
-      - '*C1001_HOME_ACT_SUCCESS_002'
+      - '*C1001_HOME_ACT_SUCCESS_001'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -1800,7 +1844,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u4F1A\u8A71\u306B\u6210\u529F\uFF01\n\u9632\u5FA1\u529B\u304C\u9AD8\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      - "\u4F1A\u8A71\u306B\u6210\u529F\uFF01\n\u653B\u6483\u529B\u304C\u9AD8\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -1814,7 +1858,7 @@ MonoBehaviour:
     - rowIndex: 52
       debugIndex: 52
       strings:
-      - '*C1001_HOME_ACT_SUCCESS_003'
+      - '*C1001_HOME_ACT_SUCCESS_002'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -1844,7 +1888,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u4F1A\u8A71\u306B\u6210\u529F\uFF01\n\u7D20\u65E9\u3055\u304C\u9AD8\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      - "\u4F1A\u8A71\u306B\u6210\u529F\uFF01\n\u9632\u5FA1\u529B\u304C\u9AD8\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -1858,7 +1902,7 @@ MonoBehaviour:
     - rowIndex: 56
       debugIndex: 56
       strings:
-      - '*C1001_HOME_ACT_SUCCESS_004'
+      - '*C1001_HOME_ACT_SUCCESS_003'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -1873,7 +1917,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u30D7\u30EC\u30BC\u30F3\u30C8\u3042\u308A\u304C\u3068\uFF01"
+      - "\u3046\u308C\u3057\u3044\uFF01"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -1888,7 +1932,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u30DE\u30C3\u30AF\u3067\u8CB7\u3063\u3066\u304D\u305F\u3046\u3069\u3093\u3092\u3042\u3052\u305F\u3002\n\u597D\u611F\u5EA6\u304C\u4E0A\u304C\u3063\u305F\u3002"
+      - "\u4F1A\u8A71\u306B\u6210\u529F\uFF01\n\u7D20\u65E9\u3055\u304C\u9AD8\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -1902,7 +1946,7 @@ MonoBehaviour:
     - rowIndex: 60
       debugIndex: 60
       strings:
-      - '*C1001_HOME_ACT_SUCCESS_005'
+      - '*C1001_HOME_ACT_SUCCESS_004'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -1917,7 +1961,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u3048\u3078\u3078\u3002"
+      - "\u30D7\u30EC\u30BC\u30F3\u30C8\u3042\u308A\u304C\u3068\uFF01"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -1932,7 +1976,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u7518\u3084\u304B\u3057\u305F\u3002\n\u3046\u308C\u3057\u305D\u3046\u3060\u304C\u3001\u6D6E\u304B\u308C\u3059\u304E\u306A\u6C17\u304C\u3059\u308B......"
+      - "\u30DE\u30C3\u30AF\u3067\u8CB7\u3063\u3066\u304D\u305F\u3046\u3069\u3093\u3092\u3042\u3052\u305F\u3002\n\u597D\u611F\u5EA6\u304C\u4E0A\u304C\u3063\u305F\u3002"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -1946,7 +1990,7 @@ MonoBehaviour:
     - rowIndex: 64
       debugIndex: 64
       strings:
-      - '*C1001_HOME_ACT_FAIL_001'
+      - '*C1001_HOME_ACT_SUCCESS_005'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -1961,7 +2005,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u3046\u30FC\u3093......"
+      - "\u3048\u3078\u3078\u3002"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -1976,7 +2020,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u4F1A\u8A71\u306B\u5931\u6557\uFF01\n\u653B\u6483\u529B\u304C\u4F4E\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      - "\u7518\u3084\u304B\u3057\u305F\u3002\n\u3046\u308C\u3057\u305D\u3046\u3060\u304C\u3001\u6D6E\u304B\u308C\u3059\u304E\u306A\u6C17\u304C\u3059\u308B......"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -1990,7 +2034,7 @@ MonoBehaviour:
     - rowIndex: 68
       debugIndex: 68
       strings:
-      - '*C1001_HOME_ACT_FAIL_002'
+      - '*C1001_HOME_ACT_FAIL_001'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -2020,7 +2064,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u4F1A\u8A71\u306B\u5931\u6557\uFF01\n\u9632\u5FA1\u529B\u304C\u4F4E\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      - "\u4F1A\u8A71\u306B\u5931\u6557\uFF01\n\u653B\u6483\u529B\u304C\u4F4E\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -2034,7 +2078,7 @@ MonoBehaviour:
     - rowIndex: 72
       debugIndex: 72
       strings:
-      - '*C1001_HOME_ACT_FAIL_003'
+      - '*C1001_HOME_ACT_FAIL_002'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -2064,7 +2108,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u4F1A\u8A71\u306B\u5931\u6557\uFF01\n\u7D20\u65E9\u3055\u304C\u4F4E\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
+      - "\u4F1A\u8A71\u306B\u5931\u6557\uFF01\n\u9632\u5FA1\u529B\u304C\u4F4E\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -2078,7 +2122,7 @@ MonoBehaviour:
     - rowIndex: 76
       debugIndex: 76
       strings:
-      - '*C1001_HOME_TOUCH_001'
+      - '*C1001_HOME_ACT_FAIL_003'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -2093,36 +2137,36 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "......\uFF01\u3000\u3061\u3087\u3063\u3068\uFF01\n\u3069\u3053\u89E6\u3063\u3066\u3044\u308B\u306E\uFF01\uFF1F"
+      - "\u3046\u30FC\u3093......"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
     - rowIndex: 78
       debugIndex: 78
       strings:
-      - EndScenario
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u4F1A\u8A71\u306B\u5931\u6557\uFF01\n\u7D20\u65E9\u3055\u304C\u4F4E\u304F\u306A\u308B\u6C17\u304C\u3059\u308B......"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
     - rowIndex: 79
       debugIndex: 79
       strings:
-      - '*C1001_HOME_SLEEP_01'
+      - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
     - rowIndex: 80
       debugIndex: 80
       strings:
-      - 
-      - "\u3086\u3063\u304D"
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - "\u3082\u3046\u3053\u3093\u306A\u6642\u9593\u304B\u3041\u3002\n\u305D\u308D\u305D\u308D\u5BDD\u3088\u3063\u304B\u3002"
+      - '*C1001_HOME_TOUCH_001'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -2137,7 +2181,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u3075\u3041\u3041......\n\u304A\u3084\u3059\u307F......\u3002"
+      - "......\uFF01\u3000\u3061\u3087\u3063\u3068\uFF01\n\u3069\u3053\u89E6\u3063\u3066\u3044\u308B\u306E\uFF01\uFF1F"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -2148,8 +2192,52 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
+    - rowIndex: 83
+      debugIndex: 83
+      strings:
+      - '*C1001_HOME_SLEEP_01'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 84
+      debugIndex: 84
+      strings:
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3082\u3046\u3053\u3093\u306A\u6642\u9593\u304B\u3041\u3002\n\u305D\u308D\u305D\u308D\u5BDD\u3088\u3063\u304B\u3002"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 85
+      debugIndex: 85
+      strings:
+      - 
+      - "\u3086\u3063\u304D"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3075\u3041\u3041......\n\u304A\u3084\u3059\u307F......\u3002"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 86
+      debugIndex: 86
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
     name: Assets/UtageSystem/Scenarios/UtageSystem.xls:Start
     type: 1
-    textLength: 1664
+    textLength: 1751
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: e940c0ccb6ea833408238d7285d38444, type: 3}

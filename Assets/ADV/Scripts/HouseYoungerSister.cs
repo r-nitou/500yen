@@ -45,8 +45,9 @@ public class HouseYoungerSister: MonoBehaviour
     private int eventPlayPower_ = 30;
 
     private bool needStartEnter_ = true;
-
-    private bool isFirstEvent_ = false;
+    
+    // 永続化用のキー（定数）
+    private const string FIRST_EVENT_KEY = "HouseEnterIsFirst";
 
     // 開始時セリフのパターン数
     private const int ENTER_TEXT_MAX = 4;
@@ -56,9 +57,6 @@ public class HouseYoungerSister: MonoBehaviour
     {
         InitializeADV();
         state_ = State.IDLE;
-
-        // TODO: セーブデータ参照して
-        isFirstEvent_ = false;
     }
 
     private void Update()
@@ -71,14 +69,16 @@ public class HouseYoungerSister: MonoBehaviour
                 {
                     needStartEnter_ = false;
 
-                    // 初回イベント
-                    if (isFirstEvent_)
+                    // 初回か判定 //TODO: JSONに変わるっぽい
+                    if (PlayerPrefs.GetInt(FIRST_EVENT_KEY, 1) != 0)
                     {
-                        isFirstEvent_ = false;
+                        PlayerPrefs.SetInt(FIRST_EVENT_KEY, 0);// false >> 再生済み
+                        PlayerPrefs.Save();
 
+                        // 初回用のイベント
                         InitializeADV();
                         advController_.OnPlayFinish_.AddListener(OnEnterADVFinish);
-                        advController_.PlayADV("TODO: 初回限定の特殊セリフID");
+                        advController_.PlayADV("C1001_HOME_FRIST");
 
                         return;
                     }
@@ -171,6 +171,7 @@ public class HouseYoungerSister: MonoBehaviour
 
         //セリフやモーションがあればここで再生
     }
+
     private void OnEnterADVFinish()
     {
         foreach (Button button in buttonList_)
@@ -185,8 +186,8 @@ public class HouseYoungerSister: MonoBehaviour
         {
             // イベント終了
             Debug.Log("HouseYoungerSister::今回の育成は終わりです。");
-
             // セリフやモーションがあればここで再生
+            OnSleepEvent();
 
             return;
         }
@@ -224,7 +225,7 @@ public class HouseYoungerSister: MonoBehaviour
     {
         // adv再生後にシーン遷移
         InitializeADV();
-        advController_.OnPlayFinish_.AddListener(OnFinishedSleepADV);// TODO: フェード開始に変更
+        advController_.OnPlayFinish_.AddListener(OnFinishedSleepADV);
         advController_.PlayADV("C1001_HOME_SLEEP_01");
     }
 
