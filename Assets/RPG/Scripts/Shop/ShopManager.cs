@@ -21,6 +21,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private TMP_Text goldText;
     [SerializeField] private TMP_Text ownedCountText;
     [SerializeField] private TMP_Text descriptionText;
+    [SerializeField] private TMP_Text buyOrSellText;
     [SerializeField] private TMP_Text amountText;
     [SerializeField] private TMP_Text totalPriceText;
     [SerializeField] private TMP_Text yesButton;
@@ -184,8 +185,10 @@ public class ShopManager : MonoBehaviour
         int unitPrice = isSellMode ? selectedItemData.sellPrice : selectedItemData.buyPrice;
         int totalPrice = unitPrice * currentAmount;
         //モードに応じて表示を切り替える
+        string buyOrSell = isSellMode ? "売却数" : "購入数";
         string priceLabel = isSellMode ? "売却額" : "購入額";
         string buttonText = isSellMode ? "売却する" : "購入する";
+        buyOrSellText.text = $"{buyOrSell}";
         totalPriceText.text = $"{priceLabel} : {totalPrice} G";
         yesButton.text = $"{buttonText}";
     }

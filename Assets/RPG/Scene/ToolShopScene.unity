@@ -3599,6 +3599,7 @@ MonoBehaviour:
   goldText: {fileID: 672883519}
   ownedCountText: {fileID: 1963692988}
   descriptionText: {fileID: 1222825957}
+  buyOrSellText: {fileID: 1987597096}
   amountText: {fileID: 1933743208}
   totalPriceText: {fileID: 842256404}
   yesButton: {fileID: 66674813}
@@ -5057,7 +5058,7 @@ GameObject:
   - component: {fileID: 1987597097}
   - component: {fileID: 1987597096}
   m_Layer: 5
-  m_Name: Text
+  m_Name: BuyOrSellText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
