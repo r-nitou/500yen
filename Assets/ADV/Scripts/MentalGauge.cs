@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class MentalGauge : MonoBehaviour
 {
     [SerializeField, Header("--- 以下、子オブジェ ---")]
-    private Slider gauge_ = null;
+    // 変更点: Slider から Image へ変更
+    private Image gauge_ = null;
     [SerializeField]
     private TextMeshProUGUI text_ = null;
 
@@ -17,8 +18,8 @@ public class MentalGauge : MonoBehaviour
 
     // ゲージの値とテキストを同時に更新するためのプロパティ
 
-    public float Value { get => valueTarget_;   set => SetValue(value); }
-    public string Text { get => text_.text;   set => text_.text = value; }
+    public float Value { get => valueTarget_; set => SetValue(value); }
+    public string Text { get => text_.text; set => text_.text = value; }
 
 
     private void Update()
@@ -28,10 +29,18 @@ public class MentalGauge : MonoBehaviour
 
     private void SetValue(float value)
     {
-        // ゲージの目標値を保存
-        valueBegin_ = gauge_.value;
+        // 変更点: gauge_.value から gauge_.fillAmount へ変更
+        valueBegin_ = gauge_.fillAmount;
         valueTarget_ = value;
         valueMoveTimer_ = 0.0f;
+    }
+
+    public void SetValueForce(float value)
+    {
+        gauge_.fillAmount = value;
+        valueBegin_ = value;
+        valueTarget_ = value;
+        valueMoveTimer_ = -1.0f;
     }
 
     private void UpdateValue()
@@ -42,12 +51,14 @@ public class MentalGauge : MonoBehaviour
             valueMoveTimer_ += Time.deltaTime;
             if (valueMoveTimer_ >= VALUE_DURATION)
             {
-                gauge_.value = Mathf.Lerp(gauge_.value, valueTarget_, 1.0f);
+                // 変更点: gauge_.value から gauge_.fillAmount へ変更
+                gauge_.fillAmount = Mathf.Lerp(gauge_.fillAmount, valueTarget_, 1.0f);
                 valueMoveTimer_ = -1.0f;
                 return;
             }
 
-            gauge_.value = Mathf.Lerp(valueBegin_, valueTarget_, valueMoveTimer_ / VALUE_DURATION);
+            // 変更点: gauge_.value から gauge_.fillAmount へ変更
+            gauge_.fillAmount = Mathf.Lerp(valueBegin_, valueTarget_, valueMoveTimer_ / VALUE_DURATION);
         }
     }
 }

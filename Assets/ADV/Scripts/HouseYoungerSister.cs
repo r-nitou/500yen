@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum YoungerSisterParameterType
+public enum YoungerSisterButtonType
 {
     NONE = 0,
     PRACTICE,       // 応援練習
@@ -27,6 +27,9 @@ public class HouseYoungerSister: MonoBehaviour
 
     [SerializeField, Header("パラメータのスクリプタブobj")]
     private YoungerSisterParameter parameter_ = null;
+
+    [SerializeField, Header("パラメータ表示のリスト")]
+    private YoungerSisterGaugeList gaugeList_ = null;
 
     [SerializeField, Header("表示を切り替えるボタンのリスト")]
     private Button[] buttonList_ = null;
@@ -56,6 +59,7 @@ public class HouseYoungerSister: MonoBehaviour
     private void Awake()
     {
         InitializeADV();
+        gaugeList_.SetParameterForce(parameter_);
         state_ = State.IDLE;
     }
 
@@ -118,26 +122,26 @@ public class HouseYoungerSister: MonoBehaviour
 
     public void OnPressButtonEvent(int index)
     {
-        YoungerSisterParameterType eventType = (YoungerSisterParameterType)index;
+        YoungerSisterButtonType eventType = (YoungerSisterButtonType)index;
         switch (eventType)
         {
-            case YoungerSisterParameterType.PRACTICE:
+            case YoungerSisterButtonType.PRACTICE:
                 parameter_.attack += 10;
                 break;
 
-            case YoungerSisterParameterType.MAKE_BENTO:
+            case YoungerSisterButtonType.MAKE_BENTO:
                 parameter_.defense += 10;
                 break;
 
-            case YoungerSisterParameterType.MAINTENANCE:
+            case YoungerSisterButtonType.MAINTENANCE:
                 parameter_.speed += 10;
                 break;
 
-            case YoungerSisterParameterType.PRESENT:
+            case YoungerSisterButtonType.PRESENT:
                 parameter_.affection += 10;// TODO: プレゼントの内容によって変わるように
                 break;
 
-            case YoungerSisterParameterType.PAMPER:
+            case YoungerSisterButtonType.PAMPER:
                 parameter_.affection += 10;
                 parameter_.attack -= 5;
                 parameter_.defense -= 5;
@@ -182,9 +186,12 @@ public class HouseYoungerSister: MonoBehaviour
 
     private void OnEventFinish()
     {
+        // パラメータの反映
+        gaugeList_.SetParameter(parameter_);
+
+        // イベント終了
         if (eventPlayPower_ <= 0)
         {
-            // イベント終了
             Debug.Log("HouseYoungerSister::今回の育成は終わりです。");
             // セリフやモーションがあればここで再生
             OnSleepEvent();
