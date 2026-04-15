@@ -118,7 +118,7 @@ public class SceneLoader : MonoBehaviour
     //行先に応じて時間を変える処理
     private void UpdatePhase(string nextSceneName)
     {
-        if (GameManager.instance == null) return;
+        if (GameManager.instance == null && nextSceneName == null) return;
 
         //シーン名に基づいて時間を切り替える
         if (nextSceneName == "CaveScene") 
@@ -132,6 +132,10 @@ public class SceneLoader : MonoBehaviour
             if(GameManager.instance.currentPhase== DayPhase.DayTime)
             {
                 GameManager.instance.currentPhase = DayPhase.Night;
+            }
+            else
+            {
+                return;
             }
         }
     }
