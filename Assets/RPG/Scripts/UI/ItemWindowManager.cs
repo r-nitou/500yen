@@ -12,14 +12,30 @@ public class ItemWindowManager : MonoBehaviour
     [SerializeField] private TMP_Text descriptionText;
     [SerializeField] private GameObject itemSlotPrefab;
 
+    [Header("サブウィンドウ参照")]
+    [SerializeField] private ItemConfirmUI confirmUI;
+    [SerializeField] private ItemResultUI resultUI;
+
     private List<ItemSlotUI> uiSlots = new List<ItemSlotUI>();
     private int currentIndex = 0;
+
+    //サブウィンドウが開いているかどうか
+    private bool IsAnySubWindow => (confirmUI != null && confirmUI.gameObject.activeSelf ||
+                                  resultUI != null && resultUI.gameObject.activeSelf);
 
     //アイテムメニューの移動入力
     public void OnNavigate(InputAction.CallbackContext context)
     {
-        if (!context.performed || uiSlots.Count <= 1) return;
+        if (!context.performed) return;
 
+        if (IsAnySubWindow)
+        {
+            if (confirmUI.gameObject.activeSelf) confirmUI.OnNavigate(context);
+            return;
+        }
+
+        //アイテムリストの移動処理
+        if (uiSlots.Count <= 1) return;
         Vector2 input = context.ReadValue<Vector2>();
         if (Mathf.Abs(input.y) > 0.5f)
         {
@@ -32,9 +48,17 @@ public class ItemWindowManager : MonoBehaviour
     //アイテムメニューの決定処理
     public void OnSubmit(InputAction.CallbackContext context)
     {
-        if (!context.performed || uiSlots.Count == 0) return;
+        if (!context.performed) return;
 
-        Debug.Log($"{uiSlots[currentIndex].nameText}を使用します");
+        if (IsAnySubWindow)
+        {
+            if (confirmUI.gameObject.activeSelf) confirmUI.OnSubmit(context);
+            else if (resultUI.gameObject.activeSelf) resultUI.OnSubmit(context);
+            return;
+        }
+
+        if (uiSlots.Count == 0) return;
+        ExcuteItemSelect();
     }
 
     //アイテムメニューを開く処理
@@ -69,6 +93,12 @@ public class ItemWindowManager : MonoBehaviour
             return;
         }
 
+        //インデックスが範囲外にならないように調整
+        if (currentIndex >= inventory.Count)
+        {
+            currentIndex = Mathf.Max(0, inventory.Count - 1);
+        }
+
         //アイテムリストからUIスロットを生成
         foreach (var slot in inventory)
         {
@@ -80,6 +110,46 @@ public class ItemWindowManager : MonoBehaviour
 
         //表示を更新
         UpdateSelection();
+    }
+
+    //アイテム選択時の処理
+    private void ExcuteItemSelect()
+    {
+        var inventory = InventoryManager.instance.PlayerInventory;
+        if (currentIndex >= inventory.Count) return;
+
+        var selectSlot = inventory[currentIndex];
+        //消耗品以外は何もしない
+        if (selectSlot.item.itemtype != ItemType.Consimable) return;
+
+        //確認ウィンドウを開く
+        confirmUI.Open(selectSlot, (isYes) =>
+        {
+            if (isYes)
+            {
+                //アイテム使用
+                RequestUseItem(selectSlot);
+            }
+        });
+    }
+
+    //アイテムの使用をリクエストする処理
+    private void RequestUseItem(ItemSlot slot)
+    {
+        bool succes = InventoryManager.instance.UseItem(slot.item);
+        if (succes)
+        {
+            string resultMessage = $"{slot.item.healAmount}回復した!";
+            resultUI.ShowResult(resultMessage, () =>
+            {
+                RefreshItemList();
+            });
+        }
+        else
+        {
+            string failMessage = "今は使えない...";
+            resultUI.ShowResult(failMessage, null);
+        }
     }
 
     private void UpdateSelection()

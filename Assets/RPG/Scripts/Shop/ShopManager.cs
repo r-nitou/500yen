@@ -8,7 +8,7 @@ public class ShopManager : MonoBehaviour
     private const int MAX_BUY_ITEMS = 99;
 
     [Header("スクリプトの参照")]
-    [SerializeField] private ADVPlayer advPlayer;
+    //[SerializeField] private ADVPlayer advPlayer;
     [Header("販売アイテムリスト")]
     [SerializeField] private ShopInventory shopInventory;
     [Header("UI設定")]
@@ -43,6 +43,13 @@ public class ShopManager : MonoBehaviour
         UpdateGoldUI();
     }
 
+    //「店を出る」ボタンクリック時の処理
+    public void CloseShopCommand()
+    {
+        //ボタン非表示
+        shopCommandRoot.SetActive(false);
+    }
+
     //「購入」ボタンクリック時の処理
     public void OnClickBuy()
     {
@@ -59,15 +66,6 @@ public class ShopManager : MonoBehaviour
         shopCommandRoot.SetActive(false);
         buyItemCommandRoot.SetActive(true);
         RefreshSellList();
-    }
-    //「店を出る」ボタンクリック時の処理
-    public void OnClickExit()
-    {
-        //ボタン非表示
-        shopCommandRoot.SetActive(false);
-
-        advPlayer.advEngine.JumpScenario("C2002_SHOP_EXIT_001");
-        Debug.Log("道具屋を出ます");
     }
 
     //「購入」メニューを閉じる処理
