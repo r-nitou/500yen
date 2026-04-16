@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    public const int NOMAL_USE_ITEM_AMOUNT = 1;
     public static InventoryManager instance { get; set; }
 
     [Header("所持品リスト")]
@@ -64,5 +65,36 @@ public class InventoryManager : MonoBehaviour
     {
         ItemSlot slot = playerInventory.Find(s => s.item == item);
         return slot != null ? slot.count : 0;
+    }
+
+    //アイテムを使用する処理
+    public bool UseItem(ItemData item)
+    {
+        //消耗品のみ使用可能
+        if (item.itemtype != ItemType.Consimable) return false;
+
+        //効果の適用
+        bool wasEffectApplied = ApplyEffect(item);
+        //効果が適用されたら個数を１つ減らす
+        if (wasEffectApplied)
+        {
+            RemoveItem(item, NOMAL_USE_ITEM_AMOUNT);
+            return true;
+        }
+
+        return false;
+    }
+
+    //アイテムのデータをもとにステータスを操作する処理
+    private bool ApplyEffect(ItemData item)
+    {
+        //アイテムの効果タイプに応じて処理を変える
+        switch (item.effectType)
+        {
+            case ItemEffectType.HPRecover:
+                return StatusManager.instance.RecoverHP(item.healAmount);
+            default:
+                return false;
+        }
     }
 }

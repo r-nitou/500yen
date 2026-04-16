@@ -50,10 +50,7 @@ public class CommandManager : MonoBehaviour
     //コマンド選択処理
     private void OnNavigate(InputAction.CallbackContext context)
     {
-        if (!isActive)
-        {
-            return;
-        }
+        if (!isActive) return;
 
         float moveY = context.ReadValue<Vector2>().y;
 
@@ -72,10 +69,7 @@ public class CommandManager : MonoBehaviour
     //コマンド決定処理
     private void OnDecision(InputAction.CallbackContext context)
     {
-        if (!isActive)
-        {
-            return;
-        }
+        if (!isActive) return;
 
         string selectedCommand = commandtexts[currentIndex].text;
 
