@@ -52,6 +52,7 @@ public class PlayerInteract : MonoBehaviour
         {
             //当たったオブジェクトにドアの設定がついているか
             SceneTransitionTrigger trigger = hit.collider.GetComponent<SceneTransitionTrigger>();
+
             if (trigger != null)
             {
                 //ドアのタイプがマニュアル(民家とかのドア)だったら
@@ -63,6 +64,7 @@ public class PlayerInteract : MonoBehaviour
                         await UImanager.instance.ShowMessage($"鍵が閉まっていてはいれない...");
                         return;
                     }
+
                     //選択の結果を取得する
                     bool isYes = await UImanager.instance.ShowSelectionWindow($"{trigger.DestinationText}に行きますか？");
 
@@ -72,13 +74,6 @@ public class PlayerInteract : MonoBehaviour
                         await SceneLoader.instance.ExcuteSceneTransition(trigger.TargetSceneName, "", playerMove);
                     }
                 }
-                return;
-            }
-
-            //掲示板のとき
-            if (hit.collider.GetComponent<BulletinBoardObject>() != null)
-            {
-                UImanager.instance.ShowBuletinBoard().Forget();
             }
         }
     }

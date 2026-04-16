@@ -15,4 +15,3 @@ MonoBehaviour:
   shopName: 
   itemList:
   - {fileID: 11400000, guid: 9dd35289bbd550745ae187675d90cfd7, type: 2}
-  - {fileID: 11400000, guid: d61e174bcdc969240a1e8dde5ca4eea5, type: 2}

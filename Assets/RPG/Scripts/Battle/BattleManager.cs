@@ -26,7 +26,6 @@ public class BattleManager : MonoBehaviour
     private const float SLIDEIN_DURATION = 0.4f;        //スライドインする時間
     private const float FADEOUT_DURATION = 2f;          //フェードアウトする時間    
     private const float SAFE_TIME = 2.0f;               //シンボルエンカウントの無敵時間
-    public const int NOMAL_USE_ITEM_AMOUNT = 1;         //通常使用するアイテムの量
 
     public static BattleManager instance { get; set; }
 
@@ -41,7 +40,6 @@ public class BattleManager : MonoBehaviour
     [Header("スクリプト参照")]
     [SerializeField] private CommandManager commandManager;
     [SerializeField] private HeroineCutInManager heroineCutInManager;
-    [SerializeField] private BattleItemWindowManager itemWindowManager;
 
     [Header("演出用設定")]
     [SerializeField] private RectTransform battleContent;
@@ -146,6 +144,7 @@ public class BattleManager : MonoBehaviour
         //フェーズ変更
         currentPhase = BattlePhase.PlayerSelect;
         await LogManager.instance.DisplayLogText("あなたのターン");
+        Debug.Log("プレイヤーコマンド選択");
 
         //入力開始
         commandManager.SetPlayerInputActive(true);
@@ -176,22 +175,6 @@ public class BattleManager : MonoBehaviour
                 //キャンセル時はコマンド選択に戻る
                 await PlayerCommandSelect();
             }
-        }
-        else if (action == "アイテム")
-        {
-            //アイテムウィンドウを開く
-            itemWindowManager.Open(
-                (selectedItem) =>
-                {
-                    //アイテム決定時のコールバック
-                    ExcuteItemAction(selectedItem).Forget();
-                },
-                async () =>
-                {
-                    //キャンセル時のコールバック
-                    await PlayerCommandSelect();
-                }
-            );
         }
         else if (action == "にげる")
         {
@@ -282,30 +265,6 @@ public class BattleManager : MonoBehaviour
         await CheckBattleEnd();
     }
 
-    //プレイヤーのアイテム使用処理
-    private async UniTask ExcuteItemAction(ItemData item)
-    {
-        await LogManager.instance.DisplayLogText($"{playerUnitStatus.unitName}は{item.itemName}を使った!");
-        //回復処理
-        bool success = StatusManager.instance.RecoverHP(item.healAmount);
-        if (success)
-        {
-            playerUnitStatus.currentHP = GameManager.instance.currentHp;
-            playerUnitStatus.UpdateHPUI();
-
-            //在庫を減らす
-            InventoryManager.instance.RemoveItem(item, NOMAL_USE_ITEM_AMOUNT);
-            await LogManager.instance.DisplayLogText($"{item.healAmount}回復した!");
-        }
-        else
-        {
-            await LogManager.instance.DisplayLogText($"なにも起きなかった...");
-        }
-
-            //敵のターンへ
-            await EnemyAction();
-    }
-
     //プレイヤーの逃走実行処理
     public async UniTask ExecutePlayerRun()
     {
@@ -373,11 +332,7 @@ public class BattleManager : MonoBehaviour
         {
             //UI反映
             target.UpdateHPUI();
-            //GameManagerと同期
-            if (GameManager.instance != null)
-            {
-                GameManager.instance.currentHp = target.currentHP;
-            }
+
             //画面を揺らす
             await battleContent.DOShakePosition(0.4f, 40f, 50, 90f);
         }
@@ -411,12 +366,6 @@ public class BattleManager : MonoBehaviour
     //敵の撃破処理
     private async UniTask EnemyDeath(UnitStatus target,EnemyData enemyData)
     {
-        //QuestManagerに通知
-        if (QuestManager.instance != null)
-        {
-            QuestManager.instance.OnEnemyKilled(enemyData);
-        }
-
         //倒した敵リストに追加
         defatedEnemyDataList.Add(enemyData);
 

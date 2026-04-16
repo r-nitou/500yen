@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-    public const int MAX_QUEST_COUNT = 4;
+    private const int MAX_QUEST_COUNT = 4;
 
     public static QuestManager instance;
 
@@ -14,7 +14,6 @@ public class QuestManager : MonoBehaviour
     [Header("現在受注中の依頼")]
     [SerializeField] private List<QuestStatus> activeQuest = new List<QuestStatus>();
 
-    public List<QuestData> AllQuests => allQuestData;
     public List<QuestStatus> ActiveQuests => activeQuest;
 
     private void Awake()
@@ -54,17 +53,6 @@ public class QuestManager : MonoBehaviour
         return true;
     }
 
-    //依頼解除システム
-    public void CancellQuest(QuestData data)
-    {
-        //現在受けている依頼か検索
-        QuestStatus target = activeQuest.Find(q => q.data.questID == data.questID);
-        if (target != null)
-        {
-            activeQuest.Remove(target);
-        }
-    }
-
     //討伐カウントの更新処理
     public void OnEnemyKilled(EnemyData enemy)
     {
@@ -83,24 +71,7 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    //依頼の報告処理
-    public int CompleteSelectedQuests(List<string> selectedQuestId)
-    {
-        int totalReward = 0;
-
-        foreach(string id in selectedQuestId)
-        {
-            QuestStatus quest = activeQuest.Find(q => q.data.questID == id);
-            if (quest != null)
-            {
-                totalReward += quest.data.rewardGold;
-                //受注済みリストから解除
-                activeQuest.Remove(quest);
-            }
-        }
-        return totalReward;
-    }
-
+    //報酬の報告処理
     public void ReportQuest(QuestStatus quest)
     {
         if (quest.IsCleared && !quest.isReported)

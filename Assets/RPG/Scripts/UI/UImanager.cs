@@ -15,7 +15,6 @@ public class UImanager : MonoBehaviour
     [SerializeField] private SelectionWindow selectionWindow;
     [SerializeField] private CommonMessageWindow messageWindow;
     [SerializeField] private MenuManager menuManager;
-    [SerializeField] private BulletinBoardUI boardUi;
 
     private PlayerMove currentPlayer;
     private bool isMenuOpen = false;
@@ -122,17 +121,6 @@ public class UImanager : MonoBehaviour
 
             SwitchToPlayerInput();
         }
-    }
-
-    //掲示板を開く処理
-    public async UniTask ShowBuletinBoard()
-    {
-        SwitchToUIInput();
-        boardUi.gameObject.SetActive(true);
-        boardUi.InitializeBoard();
-
-        await UniTask.WaitWhile(() => boardUi.gameObject.activeSelf);
-        SwitchToPlayerInput();
     }
 
     public void CloseMenu()

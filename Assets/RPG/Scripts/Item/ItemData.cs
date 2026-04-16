@@ -9,12 +9,6 @@ public enum  ItemType
     Impotant
 }
 
-public enum ItemEffectType
-{
-    None,
-    HPRecover
-}
-
 //アイテムスロットのデータクラス
 [System.Serializable]
 public class ItemSlot
@@ -49,7 +43,6 @@ public class ItemData : ScriptableObject
     public int defenseBoost;
     public int speedBoost;
 
-    [Header("効果設定")]
-    public ItemEffectType effectType;
+    [Header("効果量")]
     public int healAmount;
 }
