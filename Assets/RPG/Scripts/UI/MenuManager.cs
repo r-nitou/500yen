@@ -126,7 +126,7 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
-            UImanager.instance.CloseMenu();
+            GlobalUIManager.instance.ToggleMenu(false);
         }
     }
 
