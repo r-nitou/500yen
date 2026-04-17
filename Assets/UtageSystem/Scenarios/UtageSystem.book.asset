@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9856eecfcd6b8df42ac2ebd73cc36dff, type: 3}
   m_Name: UtageSystem.book
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Utage::Utage.AdvImportBook
   importVersion: 0
   importGridList:
   - rows:
@@ -991,26 +991,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-<<<<<<< HEAD
     - rowIndex: 93
       debugIndex: 96
-=======
-    - rowIndex: 89
-      debugIndex: 92
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 90
-      debugIndex: 94
+    - rowIndex: 94
+      debugIndex: 98
       strings:
       - '*C3001_CHIEF_ENTER_001'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 91
-      debugIndex: 95
+    - rowIndex: 95
+      debugIndex: 99
       strings:
       - 
       - "\u6751\u9577"
@@ -1024,8 +1020,8 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 92
-      debugIndex: 96
+    - rowIndex: 96
+      debugIndex: 100
       strings:
       - 
       - "\u6751\u9577"
@@ -1039,22 +1035,22 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 93
-      debugIndex: 97
+    - rowIndex: 97
+      debugIndex: 101
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 94
-      debugIndex: 99
+    - rowIndex: 98
+      debugIndex: 103
       strings:
       - '*C3001_CHIEF_EXIT_001'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 95
-      debugIndex: 100
+    - rowIndex: 99
+      debugIndex: 104
       strings:
       - 
       - "\u6751\u9577"
@@ -1068,50 +1064,21 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 96
-      debugIndex: 101
-      strings:
-      - EndScenario
-      isEmpty: 0
-      isCommentOut: 0
-      debugInfo: 
-    - rowIndex: 97
-      debugIndex: 103
-      strings:
-      - '*C3001_CHIEF_REPORTSUCCESS_001'
-      isEmpty: 0
-      isCommentOut: 0
-      debugInfo: 
-    - rowIndex: 98
-      debugIndex: 104
-      strings:
-      - 
-      - "\u6751\u9577"
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - "\u5831\u916C\u3058\u3083\u53D7\u3051\u53D6\u3063\u3066\u304F\u308C"
-      isEmpty: 0
-      isCommentOut: 0
-      debugInfo: 
-    - rowIndex: 99
+    - rowIndex: 100
       debugIndex: 105
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 100
+    - rowIndex: 101
       debugIndex: 107
       strings:
       - '*C3001_CHIEF_NOREPORT_001'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 101
+    - rowIndex: 102
       debugIndex: 108
       strings:
       - 
@@ -1126,9 +1093,67 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 102
+    - rowIndex: 103
       debugIndex: 109
->>>>>>> RPG_Quest
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 104
+      debugIndex: 111
+      strings:
+      - '*C3001_CHIEF_REPORTSUCCESS_001'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 105
+      debugIndex: 112
+      strings:
+      - 
+      - "\u6751\u9577"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3088\u304F\u3084\u3063\u3066\u304F\u308C\u305F\u306E"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 106
+      debugIndex: 113
+      strings:
+      - 
+      - "\u6751\u9577"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3053\u308C\u306F\u5831\u916C\u3058\u3083"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 107
+      debugIndex: 114
+      strings:
+      - 
+      - "\u6751\u9577"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u53D7\u3051\u53D6\u3063\u3066\u304F\u308C"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 108
+      debugIndex: 115
       strings:
       - EndScenario
       isEmpty: 0
@@ -1136,11 +1161,7 @@ MonoBehaviour:
       debugInfo: 
     name: Assets/UtageSystem/Scenarios/UtageSystem.xls:Start
     type: 1
-<<<<<<< HEAD
-    textLength: 1828
-=======
-    textLength: 1963
->>>>>>> RPG_Quest
+    textLength: 2044
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: e940c0ccb6ea833408238d7285d38444, type: 3}
     entityIndexTbl: 
@@ -2561,32 +2582,28 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-<<<<<<< HEAD
     - rowIndex: 96
       debugIndex: 96
-=======
-    - rowIndex: 92
-      debugIndex: 92
       strings:
       - EndScenario
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 93
-      debugIndex: 93
+    - rowIndex: 97
+      debugIndex: 97
       strings: []
       isEmpty: 1
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 94
-      debugIndex: 94
+    - rowIndex: 98
+      debugIndex: 98
       strings:
       - '*C3001_CHIEF_ENTER_001'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
-    - rowIndex: 95
-      debugIndex: 95
+    - rowIndex: 99
+      debugIndex: 99
       strings:
       - 
       - "\u6751\u9577"
@@ -2597,41 +2614,6 @@ MonoBehaviour:
       - 
       - 
       - "\u304A\u306F\u3088\u3046"
-      isEmpty: 0
-      isCommentOut: 0
-      debugInfo: 
-    - rowIndex: 96
-      debugIndex: 96
-      strings:
-      - 
-      - "\u6751\u9577"
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - "\u4ECA\u65E5\u306F\u3069\u3046\u3057\u305F\u306E\u304B\u306A"
-      isEmpty: 0
-      isCommentOut: 0
-      debugInfo: 
-    - rowIndex: 97
-      debugIndex: 97
-      strings:
-      - EndScenario
-      isEmpty: 0
-      isCommentOut: 0
-      debugInfo: 
-    - rowIndex: 98
-      debugIndex: 98
-      strings: []
-      isEmpty: 1
-      isCommentOut: 0
-      debugInfo: 
-    - rowIndex: 99
-      debugIndex: 99
-      strings:
-      - '*C3001_CHIEF_EXIT_001'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -2646,7 +2628,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u307E\u305F\u6765\u308B\u306E\u3058\u3083\u305E"
+      - "\u4ECA\u65E5\u306F\u3069\u3046\u3057\u305F\u306E\u304B\u306A"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -2666,7 +2648,7 @@ MonoBehaviour:
     - rowIndex: 103
       debugIndex: 103
       strings:
-      - '*C3001_CHIEF_REPORTSUCCESS_001'
+      - '*C3001_CHIEF_EXIT_001'
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -2681,7 +2663,7 @@ MonoBehaviour:
       - 
       - 
       - 
-      - "\u5831\u916C\u3058\u3083\u53D7\u3051\u53D6\u3063\u3066\u304F\u308C"
+      - "\u307E\u305F\u6765\u308B\u306E\u3058\u3083\u305E"
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
@@ -2722,7 +2704,71 @@ MonoBehaviour:
       debugInfo: 
     - rowIndex: 109
       debugIndex: 109
->>>>>>> RPG_Quest
+      strings:
+      - EndScenario
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 110
+      debugIndex: 110
+      strings: []
+      isEmpty: 1
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 111
+      debugIndex: 111
+      strings:
+      - '*C3001_CHIEF_REPORTSUCCESS_001'
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 112
+      debugIndex: 112
+      strings:
+      - 
+      - "\u6751\u9577"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3088\u304F\u3084\u3063\u3066\u304F\u308C\u305F\u306E"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 113
+      debugIndex: 113
+      strings:
+      - 
+      - "\u6751\u9577"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u3053\u308C\u306F\u5831\u916C\u3058\u3083"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 114
+      debugIndex: 114
+      strings:
+      - 
+      - "\u6751\u9577"
+      - 
+      - 
+      - 
+      - 
+      - 
+      - 
+      - "\u53D7\u3051\u53D6\u3063\u3066\u304F\u308C"
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 115
+      debugIndex: 115
       strings:
       - EndScenario
       isEmpty: 0
@@ -2730,10 +2776,6 @@ MonoBehaviour:
       debugInfo: 
     name: Assets/UtageSystem/Scenarios/UtageSystem.xls:Start
     type: 1
-<<<<<<< HEAD
-    textLength: 1828
-=======
-    textLength: 1963
->>>>>>> RPG_Quest
+    textLength: 2044
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: e940c0ccb6ea833408238d7285d38444, type: 3}
