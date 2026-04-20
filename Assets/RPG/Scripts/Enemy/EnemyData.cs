@@ -16,4 +16,5 @@ public class EnemyData : ScriptableObject
 
     [Header("報酬設定")]
     public int expValue;
+    public ItemData dropItem;
 }

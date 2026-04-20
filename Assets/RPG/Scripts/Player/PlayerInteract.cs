@@ -60,11 +60,11 @@ public class PlayerInteract : MonoBehaviour
                     //時間帯チェック
                     if (!trigger.CanEnter())
                     {
-                        await UImanager.instance.ShowMessage($"鍵が閉まっていてはいれない...");
+                        await GlobalUIManager.instance.ShowMessage($"鍵が閉まっていてはいれない...");
                         return;
                     }
                     //選択の結果を取得する
-                    bool isYes = await UImanager.instance.ShowSelectionWindow($"{trigger.DestinationText}に行きますか？");
+                    bool isYes = await GlobalUIManager.instance.ShowSelectionWindow($"{trigger.DestinationText}に行きますか？");
 
                     if (isYes)
                     {
@@ -79,6 +79,21 @@ public class PlayerInteract : MonoBehaviour
             if (hit.collider.GetComponent<BulletinBoardObject>() != null)
             {
                 UImanager.instance.ShowBuletinBoard().Forget();
+                return;
+            }
+            //宝箱のとき
+            TreasureBox box = hit.collider.GetComponent<TreasureBox>();
+            if (box != null)
+            {
+                await box.Intaract();
+                return;
+            }
+            //女神像のとき
+            AlterPortal alter = hit.collider.GetComponent<AlterPortal>();
+            if (alter != null)
+            {
+                await alter.Intaract();
+                return;
             }
         }
     }

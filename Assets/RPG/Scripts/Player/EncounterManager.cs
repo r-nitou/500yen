@@ -78,7 +78,13 @@ public class EncounterManager : MonoBehaviour
         //GameManagerに情報を記録
         if (GameManager.instance != null)
         {
-            GameManager.instance.SetEncountData(currentScene, currentPos, result);
+            GameManager.instance.SetEncountData(
+                currentScene,
+                currentPos,
+                result,
+                "",
+                Vector3.zero
+                );
         }
 
         if (EncounterEffect.instance != null)

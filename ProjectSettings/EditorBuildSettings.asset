@@ -15,14 +15,11 @@ EditorBuildSettings:
     path: Assets/RPG/Scene/VillageScene.unity
     guid: 39f2d720062eb9247b923d65de7bf934
   - enabled: 1
-    path: Assets/RPG/Scene/FieldScene.unity
-    guid: a7000df00a20ebb4eb90a2efac98f8ba
-  - enabled: 1
     path: Assets/RPG/Scene/CaveScene.unity
     guid: 7691d8e085fae704fb7bd7f79a51c50e
   - enabled: 1
-    path: Assets/RPG/Scene/ChurchScene.unity
-    guid: a6776ae310510b44c9bf607d5878ce12
+    path: Assets/RPG/Scene/CaveScene_B1.unity
+    guid: 08e12567caa0685489cdc9797c0c8415
   - enabled: 1
     path: Assets/RPG/Scene/ToolShopScene.unity
     guid: 5217eea82b9fd7e44937db7d5bfc9b4e

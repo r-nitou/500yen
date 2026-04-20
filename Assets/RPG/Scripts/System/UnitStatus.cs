@@ -22,6 +22,11 @@ public class UnitStatus : MonoBehaviour
     [HideInInspector] public int baseDefense;
     [HideInInspector] public int baseSpeed;
 
+    [Header("装備補正")]
+    private int equipmentAttack;
+    private int equipmentDefense;
+    private int equipmentSpeed;
+
     [Header("戦闘補正(バフ・デバフ)")]
     public float attackBuff = 1.0f;
     public float defenseBuff = 1.0f;
@@ -37,9 +42,9 @@ public class UnitStatus : MonoBehaviour
     private EnemyData originData;
 
     //計算用プロパティ
-    public int Attack => Mathf.RoundToInt(baseAttack * attackBuff);
-    public int Defense => Mathf.RoundToInt(baseDefense * defenseBuff);
-    public int Speed => Mathf.RoundToInt(baseSpeed * speedBuff);
+    public int Attack => Mathf.RoundToInt((baseAttack + equipmentAttack) * attackBuff);
+    public int Defense => Mathf.RoundToInt((baseDefense + equipmentDefense) * defenseBuff);
+    public int Speed => Mathf.RoundToInt((baseSpeed + equipmentSpeed) * speedBuff);
 
     //PlayerDataからステータスを初期化する処理
     public void PlayerInitialize(PlayerData playerData)
@@ -50,6 +55,11 @@ public class UnitStatus : MonoBehaviour
         baseAttack = playerData.attack;
         baseDefense = playerData.defense;
         baseSpeed = playerData.speed;
+
+        equipmentAttack = playerData.TotalAttack - playerData.attack;
+        equipmentDefense = playerData.TotalDefense - playerData.defense;
+        equipmentSpeed = playerData.TotalSpeed - playerData.speed;
+
         isPlayer = true;
         OnStatusChanged?.Invoke();
 
@@ -93,49 +103,10 @@ public class UnitStatus : MonoBehaviour
         OnStatusChanged?.Invoke();
     }
 
-    //体力を回復する処理
-    public void Heal(int amount)
-    {
-        //体力回復
-        currentHP += amount;
-
-        //最大値を超えないようにする
-        if (currentHP > maxHP)
-        {
-            currentHP = maxHP;
-        }
-
-        UpdateHPUI(true);
-    }
-
-    //キャラクターを蘇生する処理
-    public void Revive(int healAmount)
-    {
-        //0にリセットしてから回復
-        currentHP = 0;
-        Heal(maxHP);
-    }
-
-    //全回復する処理
-    public void FullHeal()
-    {
-        if (isDead)
-        {
-            Revive(maxHP);
-        }
-        else
-        {
-            Heal(maxHP);
-        }
-    }
-
     //プレイヤーのHPUIを更新する処理
     public void UpdateHPUI(bool animate = true)
     {
-        if (hpImage == null && hpText == null)
-        {
-            return;
-        }
+        if (hpImage == null && hpText == null) return;
 
         float targetValue = (float)currentHP / maxHP;
 

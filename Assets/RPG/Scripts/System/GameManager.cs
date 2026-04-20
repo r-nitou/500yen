@@ -24,10 +24,6 @@ public class GameManager : MonoBehaviour
     public Vector3 lastEncountPosition;
     public List<EnemyData> nextBattleEnemies = new List<EnemyData>();
 
-    [Header("シンボルエンカウント用")]
-    public List<string> defeatedSymbolId = new List<string>();
-    public string currentSymbolId;
-    public bool isSymbolEncounter;
     public bool isInvincible; 
 
     [Header("FadeManagerの参照")]
@@ -37,8 +33,9 @@ public class GameManager : MonoBehaviour
     [Header("時間管理")]
     public DayPhase currentPhase = DayPhase.Morning;
 
-    [Header("インベントリ管理")]
+    [Header("スクリプト参照")]
     public InventoryManager inventoryManager;
+    public SymbolEncounterManager symbolEncounterManager;
 
     [Header("所持金ゴールド")]
     public int gold;
@@ -50,6 +47,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             inventoryManager = GetComponent<InventoryManager>();
+            symbolEncounterManager = GetComponent<SymbolEncounterManager>();
 
             currentHp = playerData.maxHP;
         }
@@ -65,12 +63,18 @@ public class GameManager : MonoBehaviour
     }
 
     //エンカウントしたときの情報を保存する処理
-    public void SetEncountData(string sceneName, Vector3 position, List<EnemyData> enemies, string symbolId = "")
+    public void SetEncountData(string sceneName, Vector3 position, List<EnemyData> enemies,
+                               string symbolId, Vector3 symbolPos)
     {
         lasstSceneName = sceneName;
         lastEncountPosition = position;
         nextBattleEnemies = enemies;
-        currentSymbolId = symbolId;
+
+        //シンボルエンカウントなら、SymbolEncounterManagerにデータを送る
+        if (!string.IsNullOrEmpty(symbolId))
+        {
+            symbolEncounterManager.SetEncountData(symbolId, enemies, symbolPos);
+        }
     }
 
     //バトル後のHPを保存する処理
@@ -87,18 +91,7 @@ public class GameManager : MonoBehaviour
     //シンボルエネミー撃破時処理
     public void DefeatedSymbolEnemy()
     {
-        if (isSymbolEncounter && !string.IsNullOrEmpty(currentSymbolId))
-        {
-            //撃破済みリストに追加
-            if (!defeatedSymbolId.Contains(currentSymbolId))
-            {
-                defeatedSymbolId.Add(currentSymbolId);
-            }
-        }
-
-        //フラグとIDをリセット
-        isSymbolEncounter = false;
-        currentSymbolId = "";
+        symbolEncounterManager.DefeatedSymbolEnemy();
     }
 
     //指定時間エンカウントを無効化する処理
@@ -109,6 +102,6 @@ public class GameManager : MonoBehaviour
         await UniTask.Delay((int)(duration * 1000));
 
         isInvincible = false;
-        isSymbolEncounter = false;
+        symbolEncounterManager.isSymbolEncounter = false;
     }
 }

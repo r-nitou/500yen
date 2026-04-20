@@ -331,7 +331,7 @@ public class BattleManager : MonoBehaviour
                     PlayerMove.instance);
 
                 //シンボルエンカウント時のみ無敵時間発生
-                if (GameManager.instance.isSymbolEncounter)
+                if (SymbolEncounterManager.instance.isSymbolEncounter)
                 {
                     GameManager.instance.StartInvincibleTimer(SAFE_TIME).Forget();
                 }
@@ -492,7 +492,7 @@ public class BattleManager : MonoBehaviour
         await GameManager.instance.Fade.FadeOut(FADEOUT_DURATION, effectImage);
 
         //体力回復
-        playerUnitStatus.FullHeal();
+        StatusManager.instance.RecoverHP(GameManager.instance.playerData.maxHP);
 
         //シーン遷移
         await SceneLoader.instance.ExcuteSceneTransition(homeSceneName, homeMarkerId, PlayerMove.instance);

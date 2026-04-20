@@ -12,8 +12,7 @@ public class UImanager : MonoBehaviour
     public static UImanager instance { get; set; }
 
     [Header("各UIスクリプトの参照")]
-    [SerializeField] private SelectionWindow selectionWindow;
-    [SerializeField] private CommonMessageWindow messageWindow;
+    
     [SerializeField] private BulletinBoardUI boardUi;
 
     private PlayerMove currentPlayer;
@@ -33,32 +32,6 @@ public class UImanager : MonoBehaviour
     private void Start()
     {
         currentPlayer = GlobalUIManager.instance.CurrentPlayer;
-    }
-
-    //行先ウィンドウを表示する処理
-    public async UniTask<bool> ShowSelectionWindow(string message)
-    {
-        //InputSystemの切り替え
-        GlobalUIManager.instance.SwitchToUIInput();
-
-        bool result = await selectionWindow.OpenWindow(message,currentPlayer.InputAction);
-
-        GlobalUIManager.instance.SwitchToPlayerInput();
-
-        return result;
-    }
-
-    //メッセージウィンドウを表示する処理
-    public async UniTask ShowMessage(string message)
-    {
-
-        //InputSystemの切り替え
-        GlobalUIManager.instance.SwitchToUIInput();
-
-        //ウィンドウを表示してキー入力を待つ
-        await messageWindow.OpenMessage(message, currentPlayer.InputAction);
-
-        GlobalUIManager.instance.SwitchToPlayerInput();
     }
 
     //掲示板を開く処理

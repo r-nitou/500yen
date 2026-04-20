@@ -2499,7 +2499,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 242385408}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2508,7 +2508,7 @@ RectTransform:
   - {fileID: 2046186303}
   - {fileID: 238417784}
   - {fileID: 90650814}
-  m_Father: {fileID: 415684695}
+  m_Father: {fileID: 428799533}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2571,7 +2571,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3069\u3053\u305D\u3053\u3078\u3044\u304D\u307E\u3059\u304B\uFF1F"
+  m_text: "\u5171\u901A\u30E1\u30C3\u30BB\u30FC\u30A6\u30A3\u30F3\u30C9\u30A6"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e96bb1788d7e48f4383c383951f78990, type: 2}
   m_sharedMaterial: {fileID: -104597094741140507, guid: e96bb1788d7e48f4383c383951f78990, type: 2}
@@ -3705,8 +3705,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 242385409}
-  - {fileID: 845582926}
   - {fileID: 581912995}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3846,6 +3844,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 651359391}
+  - {fileID: 845582926}
+  - {fileID: 242385409}
   m_Father: {fileID: 671784685}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5879,6 +5879,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlobalUIManager
   menuManager: {fileID: 651359392}
+  messageWindow: {fileID: 845582925}
+  selectionWindow: {fileID: 242385410}
 --- !u!1 &681094166
 GameObject:
   m_ObjectHideFlags: 0
@@ -7204,14 +7206,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845582924}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1876451626}
   - {fileID: 265977098}
-  m_Father: {fileID: 415684695}
+  m_Father: {fileID: 428799533}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7231,6 +7233,7 @@ GameObject:
   - component: {fileID: 846533686}
   - component: {fileID: 846533687}
   - component: {fileID: 846533688}
+  - component: {fileID: 846533689}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7255,13 +7258,11 @@ MonoBehaviour:
   lasstSceneName: 
   lastEncountPosition: {x: 0, y: 0, z: 0}
   nextBattleEnemies: []
-  defeatedSymbolId: []
-  currentSymbolId: 
-  isSymbolEncounter: 0
   isInvincible: 0
   fadeManager: {fileID: 846533686}
   currentPhase: 0
   inventoryManager: {fileID: 846533687}
+  symbolEncounterManager: {fileID: 0}
   gold: 10000
 --- !u!4 &846533685
 Transform:
@@ -7323,6 +7324,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29aef6763f62d7945934452b6952cdba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatusManager
+--- !u!114 &846533689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846533683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58caace61a5b5ab4793d3efd0082d7ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SymbolEncounterManager
+  defeatedSymbolId: []
+  currentSymbolId: 
+  isSymbolEncounter: 0
+  treasureBoxPrefab: {fileID: 246506166941585176, guid: 285bc56996c9df24fb6bcc5a78561cd6, type: 3}
+  openedChestIds: []
+  dropResultData:
+    spawnTreasureBoxPosition: {x: 0, y: 0, z: 0}
+    dropItem: {fileID: 0}
+    symbolId: 
 --- !u!1 &848398510
 GameObject:
   m_ObjectHideFlags: 0
@@ -33366,7 +33388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteract
   transitionLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 2176
   playerMove: {fileID: 1169325512}
 --- !u!95 &1169325517
 Animator:
@@ -41267,8 +41289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54b6e88116a88144b34626a926b7fc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UImanager
-  selectionWindow: {fileID: 242385410}
-  messageWindow: {fileID: 845582925}
   boardUi: {fileID: 581912996}
 --- !u!1 &1652965973
 GameObject:

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 public class GlobalUIManager : MonoBehaviour
 {
@@ -6,6 +7,8 @@ public class GlobalUIManager : MonoBehaviour
 
     [Header("各スクリプト参照")]
     [SerializeField] private MenuManager menuManager;
+    [SerializeField] private CommonMessageWindow messageWindow;
+    [SerializeField] private SelectionWindow selectionWindow;
 
     private PlayerMove currentPlayer;
     private bool isMenuOpen = false;
@@ -69,6 +72,32 @@ public class GlobalUIManager : MonoBehaviour
 
             SwitchToPlayerInput();
         }
+    }
+
+    //メッセージウィンドウを表示する処理
+    public async UniTask ShowMessage(string message)
+    {
+
+        //InputSystemの切り替え
+        GlobalUIManager.instance.SwitchToUIInput();
+
+        //ウィンドウを表示してキー入力を待つ
+        await messageWindow.OpenMessage(message, currentPlayer.InputAction);
+
+        GlobalUIManager.instance.SwitchToPlayerInput();
+    }
+
+    //行先ウィンドウを表示する処理
+    public async UniTask<bool> ShowSelectionWindow(string message)
+    {
+        //InputSystemの切り替え
+        SwitchToUIInput();
+
+        bool result = await selectionWindow.OpenWindow(message, currentPlayer.InputAction);
+
+        SwitchToPlayerInput();
+
+        return result;
     }
 
     //Playerを検索する処理

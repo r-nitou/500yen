@@ -232,7 +232,7 @@ public class PlayerMove : MonoBehaviour
                     UpdateAnimation(false);
                     if (trigger.TargetSceneName == "CaveScene") 
                     {
-                        await UImanager.instance.ShowMessage("暗くて先が見えない...");
+                        await GlobalUIManager.instance.ShowMessage("暗くて先が見えない...");
                     }
                     //メッセージを閉じたら移動可能にする
                     isMoveing = false;

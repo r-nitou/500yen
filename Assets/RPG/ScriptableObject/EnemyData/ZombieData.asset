@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490e7fefbe7a9004989e2fa2094372fd, type: 3}
   m_Name: ZombieData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  enemyID: MBE001
   enemyName: "\u30BE\u30F3\u30D3"
   enemySprite: {fileID: -7858649273832000142, guid: e7e6f2fb571464a42b6d9435e2ffc675, type: 3}
   level: 1
@@ -20,3 +21,4 @@ MonoBehaviour:
   defense: 10
   speed: 5
   expValue: 100
+  dropItem: {fileID: 11400000, guid: b66e3554a247fde4cbcace3ccd146a65, type: 2}
