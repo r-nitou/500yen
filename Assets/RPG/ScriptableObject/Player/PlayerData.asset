@@ -15,9 +15,12 @@ MonoBehaviour:
   playerName: "\u4E3B\u4EBA\u516C"
   level: 1
   maxHP: 100
-  attack: 15
+  attack: 5
   defense: 5
   speed: 5
+  equippedWeapon: {fileID: 11400000, guid: b66e3554a247fde4cbcace3ccd146a65, type: 2}
+  equippedArmor: {fileID: 11400000, guid: 0e5d6d17a1a1d95428c4637654901d08, type: 2}
+  equippedAccessory: {fileID: 0}
   currentExp: 0
   nextLevelExp: 100
   hpGain: 10

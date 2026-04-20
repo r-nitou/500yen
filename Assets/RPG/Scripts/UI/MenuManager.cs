@@ -14,6 +14,7 @@ public class MenuManager : MonoBehaviour
     [Header("各コマンド参照")]
     [SerializeField] private StatusWindowManager statusWindowManager;
     [SerializeField] private ItemWindowManager itemWindowManager;
+    [SerializeField] private EquipmentWindowManager equipmentWindowManager;
     [SerializeField] private QuestWindowManager questWindowManager;
 
     private bool isSubMenuOpen = false;
@@ -21,8 +22,8 @@ public class MenuManager : MonoBehaviour
     private int currentIndex = 0;
     private bool ishandlinginput = false;
 
-    private enum MenuState { Main,Item,Quest,Status }
-    private MenuState currentState = MenuState.Main;
+    public enum MenuState { Main,Item,Quest,Status,Equip }
+    public MenuState currentState = MenuState.Main;
 
     //メニューを開く処理
     public void OpenMenu()
@@ -32,6 +33,7 @@ public class MenuManager : MonoBehaviour
         UpdateMenuUI();
         ishandlinginput = true;
         isSubMenuOpen = false;
+        currentState = MenuState.Main;
     }
 
     //メニューを閉じる処理
@@ -57,6 +59,13 @@ public class MenuManager : MonoBehaviour
         Debug.Log("アイテム表示");
         isSubMenuOpen = true;
         itemWindowManager.OpenItemMenu();
+    }
+
+    private void OpenEquip()
+    {
+        currentState = MenuState.Equip;
+        isSubMenuOpen = true;
+        equipmentWindowManager.OpenEquipment();
     }
 
     //依頼ウィンドウを開く処理
@@ -87,6 +96,9 @@ public class MenuManager : MonoBehaviour
             case MenuState.Item:
                 itemWindowManager.OnNavigate(context);
                 break;
+            case MenuState.Equip:
+                equipmentWindowManager.OnNavigate(context);
+                break;
         }
     }
 
@@ -105,6 +117,9 @@ public class MenuManager : MonoBehaviour
             case MenuState.Item:
                 itemWindowManager.OnSubmit(context);
                 break;
+            case MenuState.Equip:
+                equipmentWindowManager.OnSubmit(context);
+                break;
         }
     }
 
@@ -115,14 +130,28 @@ public class MenuManager : MonoBehaviour
         
         if (isSubMenuOpen)
         {
-            currentState = MenuState.Main;
-            //どのサブウィンドウも閉じる
-            statusWindowManager.CloseStatus();
-            itemWindowManager.CloseItemMenu();
-            questWindowManager.CloseQuest();
+            if (currentState == MenuState.Equip)
+            {
+                bool returnToMain = equipmentWindowManager.OnCancel();
+                if (returnToMain)
+                {
+                    currentState = MenuState.Main;
+                    isSubMenuOpen = false;
+                    UpdateMenuUI();
+                }
+            }
+            else
+            {
+                //どのサブウィンドウも閉じる
+                statusWindowManager.CloseStatus();
+                itemWindowManager.CloseItemMenu();
+                equipmentWindowManager.CloseEquipment();
+                questWindowManager.CloseQuest();
 
-            isSubMenuOpen = false;
-            UpdateMenuUI();
+                currentState = MenuState.Main;
+                isSubMenuOpen = false;
+                UpdateMenuUI();
+            }
         }
         else
         {
@@ -155,7 +184,7 @@ public class MenuManager : MonoBehaviour
                 OpenStatus();
                 break;
             case 1:
-                Debug.Log("装備表示");
+                OpenEquip();
                 break;
             case 2:
                 OpenItem();

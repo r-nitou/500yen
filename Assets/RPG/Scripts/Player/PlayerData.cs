@@ -13,6 +13,11 @@ public class PlayerData : ScriptableObject
     public int defense = 10;
     public int speed = 5;
 
+    [Header("現在の装備品")]
+    public ItemData equippedWeapon;
+    public ItemData equippedArmor;
+    public ItemData equippedAccessory;
+
     [Header("成長データ")]
     public int currentExp = 0;
     public int nextLevelExp = 0;
@@ -21,6 +26,44 @@ public class PlayerData : ScriptableObject
     public int attackGain = 2;
     public int defenseGain = 1;
     public int sppedGain = 1;
+
+    //装備を含めた最終的なステータスを計算する処理
+    //攻撃力
+    public int TotalAttack
+    {
+        get
+        {
+            int boost = 0;
+            if (equippedWeapon != null) boost += equippedWeapon.attackBoost;
+            if (equippedArmor != null) boost += equippedArmor.attackBoost;
+            if (equippedAccessory != null) boost += equippedAccessory.attackBoost;
+            return attack + boost;
+        }
+    }
+    //防御力
+    public int TotalDefense
+    {
+        get
+        {
+            int boost = 0;
+            if (equippedWeapon != null) boost += equippedWeapon.defenseBoost;
+            if (equippedArmor != null) boost += equippedArmor.defenseBoost;
+            if (equippedAccessory != null) boost += equippedAccessory.defenseBoost;
+            return defense + boost;
+        }
+    }
+    //すばやさ
+    public int TotalSpeed
+    {
+        get
+        {
+            int boost = 0;
+            if (equippedWeapon != null) boost += equippedWeapon.speedBoost;
+            if (equippedArmor != null) boost += equippedArmor.speedBoost;
+            if (equippedAccessory != null) boost += equippedAccessory.speedBoost;
+            return speed + boost;
+        }
+    }
 
     //レベルアップに必要な経験値量を計算する処理
     public void CalculateNextLevelExp()

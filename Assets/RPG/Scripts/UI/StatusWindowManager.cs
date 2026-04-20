@@ -43,24 +43,12 @@ public class StatusWindowManager : MonoBehaviour
         nameText.text = data.playerName;
         levelText.text = $"Lv：{data.level}";
         hpText.text = $"HP：{currentHP}/{maxHP}";
-        attackText.text = $"攻撃：{data.attack}";
-        defenseText.text = $"防御：{data.defense}";
-        speedText.text = $"素早さ：{data.speed}";
+        attackText.text = $"攻撃：{data.TotalAttack}";
+        defenseText.text = $"防御：{data.TotalDefense}";
+        speedText.text = $"素早さ：{data.TotalSpeed}";
 
-        weaponText.text = "素手";
-        armorText.text = "普段着";
-        accessoryText.text = "なし";
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        weaponText.text = data.equippedWeapon != null ? data.equippedWeapon.itemName : "なし";
+        armorText.text = data.equippedArmor != null ? data.equippedArmor.itemName : "なし";
+        accessoryText.text = data.equippedAccessory != null ? data.equippedArmor.itemName : "なし";
     }
 }
