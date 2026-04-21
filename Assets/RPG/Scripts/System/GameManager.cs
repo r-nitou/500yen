@@ -3,13 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 //時間管理用フェーズ
 public enum DayPhase
 {
     Morning,
     DayTime,
     Night
+}
+
+//階層情報をまとめて管理するためのクラス
+[System.Serializable]
+public class FloorData
+{
+    public string floorName;
+    public string sceneName;
+    public string markerId;
 }
 public class GameManager : MonoBehaviour
 {
@@ -24,21 +32,26 @@ public class GameManager : MonoBehaviour
     public Vector3 lastEncountPosition;
     public List<EnemyData> nextBattleEnemies = new List<EnemyData>();
 
-    public bool isInvincible; 
-
-    [Header("FadeManagerの参照")]
-    public FadeManager fadeManager;
-    public FadeManager Fade => fadeManager;
-
-    [Header("時間管理")]
-    public DayPhase currentPhase = DayPhase.Morning;
+    public bool isInvincible;
 
     [Header("スクリプト参照")]
     public InventoryManager inventoryManager;
     public SymbolEncounterManager symbolEncounterManager;
+    public FadeManager fadeManager;
+
+    [Header("時間管理")]
+    public DayPhase currentPhase = DayPhase.Morning;
 
     [Header("所持金ゴールド")]
     public int gold;
+
+    [Header("到達済み階層")]
+    public List<FloorData> visitedFloorData = new List<FloorData>();
+
+    [Header("バトル設定")]
+    public bool isEscapeDisabled = false;
+    public FadeManager Fade => fadeManager;
+    
     private void Awake()
     {
         if (instance == null)
@@ -103,5 +116,29 @@ public class GameManager : MonoBehaviour
 
         isInvincible = false;
         symbolEncounterManager.isSymbolEncounter = false;
+    }
+
+    //すでに同じシーンが登録されていないか確認する処理
+    public bool IsFloorRegistered(string fName)
+    {
+        return visitedFloorData.Exists(f => f.markerId == fName);
+    }
+
+    //新しい階層を記録する処理
+    public void RegisterVisitedFloor(string fName,string sName,string mId)
+    {
+        if (!IsFloorRegistered(sName))
+        {
+            //新しく到達した階層を保存
+            FloorData newFloor = new FloorData
+            {
+                floorName = fName,
+                sceneName = sName,
+                markerId = mId
+            };
+
+            visitedFloorData.Add(newFloor);
+            Debug.Log($"<color=cyan>階層を記録しました:{fName}</color>");
+        }
     }
 }

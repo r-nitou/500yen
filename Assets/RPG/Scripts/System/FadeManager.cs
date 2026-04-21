@@ -7,12 +7,13 @@ public class FadeManager : MonoBehaviour
 {
     //共通のフェード処理
     //フェードアウト
-    public async UniTask FadeOut(float duration,Image target)
+    public async UniTask FadeOut(float duration, Image target, Color fadeColor = default)
     {
         if (target == null) return;
+        if (fadeColor == default) fadeColor = Color.black;
 
         target.gameObject.SetActive(true);
-        target.color = new Color(0, 0, 0, 0);
+        target.color = new Color(fadeColor.r, fadeColor.g, fadeColor.b, 0);
 
         await target.DOFade(1f, duration).SetEase(Ease.Linear).ToUniTask();
     }

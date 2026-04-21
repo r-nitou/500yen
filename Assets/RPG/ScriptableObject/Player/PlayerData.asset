@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   playerName: "\u4E3B\u4EBA\u516C"
-  level: 2
-  maxHP: 110
-  attack: 7
-  defense: 6
-  speed: 4
+  level: 1
+  maxHP: 200
+  attack: 80
+  defense: 30
+  speed: 3
   equippedWeapon: {fileID: 11400000, guid: b66e3554a247fde4cbcace3ccd146a65, type: 2}
   equippedArmor: {fileID: 11400000, guid: 0e5d6d17a1a1d95428c4637654901d08, type: 2}
   equippedAccessory: {fileID: 0}
-  currentExp: 10
-  nextLevelExp: 240
+  currentExp: 0
+  nextLevelExp: 100
   hpGain: 10
   attackGain: 2
-  defenseGain: 1
+  defenseGain: 2
   sppedGain: 1

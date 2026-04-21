@@ -8,6 +8,9 @@ public class EnemyData : ScriptableObject
     public Sprite enemySprite;
     public int level = 1;
 
+    [Header("ボス用")]
+    public GameObject battlePrefab;
+
     [Header("ステータス")]
     public int maxHp;
     public int attack;

@@ -19,15 +19,24 @@ public class CommonMessageWindow : MonoBehaviour
 
     public async UniTask OpenMessage(string message,PlayerInputAction input)
     {
-        //メッセージウィンドウを表示
-        messageText.text = message;
-        messageWindowObjct.SetActive(true);
-        isDecided = false;
+        await OpenDialogue(new string[] { message }, input);
+    }
 
+    public async UniTask OpenDialogue(string[] messages,PlayerInputAction input)
+    {
+        //メッセージウィンドウを表示
+        messageWindowObjct.SetActive(true);
         //イベント登録
         input.UI.Submit.performed += OnSubmit;
 
-        await UniTask.WaitUntil(() => isDecided);
+        foreach(string msg in messages)
+        {
+            //メッセージの表示
+            messageText.text = msg;
+            isDecided = false;
+
+            await UniTask.WaitUntil(() => isDecided);
+        }
 
         //イベント解除
         input.UI.Submit.performed -= OnSubmit;

@@ -240,7 +240,7 @@ public class BattleManager : MonoBehaviour
         //前回の表示をクリア
         foreach(var obj in activeEnemyObject)
         {
-            Destroy(obj);
+            Destroy(obj.gameObject);
         }
         activeEnemyObject.Clear();
 
@@ -250,19 +250,41 @@ public class BattleManager : MonoBehaviour
         //データの数だけ生成して配置
         foreach(EnemyData data in enemiesSpawn)
         {
-            GameObject enemyObj = Instantiate(enemyPrefab, enemyContainer);
-            UnitStatus status = enemyObj.GetComponent<UnitStatus>();
+            GameObject enemyObj;
+            //ボス用プレハブがあるかチェック
+            bool isSpecalPrefab = data.battlePrefab != null;
 
+            //生成処理分岐
+            if (isSpecalPrefab)
+            {
+                enemyObj = Instantiate(data.battlePrefab, enemyContainer);
+
+                enemyObj.transform.localPosition = data.battlePrefab.transform.localPosition;
+                enemyObj.transform.localScale = data.battlePrefab.transform.localScale;
+            }
+            else
+            {
+                enemyObj = Instantiate(enemyPrefab, enemyContainer);
+            }
+
+            UnitStatus status = enemyObj.GetComponent<UnitStatus>();
             if (status != null)
             {
                 status.EnemyInitialize(data);
                 activeEnemyObject.Add(status);
             }
 
-            //データの反映
-            Image sr = enemyObj.transform.Find("Graphic").GetComponent<Image>();
-            sr.sprite = data.enemySprite;
-            sr.preserveAspect = true;
+            if (!isSpecalPrefab)
+            {
+                Transform graphicTransform = enemyObj.transform.Find("Graphic");
+                if (graphicTransform != null)
+                {
+                    //データの反映
+                    Image sr = enemyObj.transform.Find("Graphic").GetComponent<Image>();
+                    sr.sprite = data.enemySprite;
+                    sr.preserveAspect = true;
+                }
+            }
         }
     }
 
@@ -311,6 +333,11 @@ public class BattleManager : MonoBehaviour
     {
         await LogManager.instance.DisplayLogText($"{playerUnitStatus.unitName}は逃げ出した！");
 
+        if (GameManager.instance.isEscapeDisabled)
+        {
+            await LogManager.instance.DisplayLogText("この敵からはにげられない");
+            await EnemyAction();
+        }
         //逃走成功判定
         if (CaluculateRunSuccess())
         {
@@ -453,6 +480,8 @@ public class BattleManager : MonoBehaviour
         currentPhase = BattlePhase.Result;
         await LogManager.instance.DisplayLogText("戦闘に勝利した");
 
+        GameManager.instance.isEscapeDisabled = false;
+
         //経験値獲得
         int totalExp = 0;
         foreach(var enemy in defatedEnemyDataList)
@@ -486,6 +515,8 @@ public class BattleManager : MonoBehaviour
     private async UniTask PlayerDefeat()
     {
         currentPhase = BattlePhase.Result;
+
+        GameManager.instance.isEscapeDisabled = false;
 
         await LogManager.instance.DisplayLogText($"{playerUnitStatus.unitName}は力尽きた...");
         //フェードアウト

@@ -95,6 +95,13 @@ public class PlayerInteract : MonoBehaviour
                 await alter.Intaract();
                 return;
             }
+            //英雄像のとき
+            WarpStatue warpStatue = hit.collider.GetComponent<WarpStatue>();
+            if (warpStatue != null)
+            {
+                await warpStatue.Intaract();
+                return;
+            }
         }
     }
 

@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AlterPortal : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class AlterPortal : MonoBehaviour
 
     [Header("演出設定")]
     [SerializeField] private string alterMessage = "女神像がある\n触れますか?";
+    [SerializeField] private float fadeDuration = 1.0f;
+    [SerializeField] private Image fadeTarget;
 
     private bool isTransitioning = false;
 
@@ -30,6 +33,8 @@ public class AlterPortal : MonoBehaviour
     public async UniTask MoveToNextFloor()
     {
         if (SceneLoader.instance == null) return;
+
+        await GameManager.instance.Fade.FadeOut(fadeDuration, fadeTarget, Color.white);
 
         //シーン遷移処理
         await SceneLoader.instance.ExcuteSceneTransition(

@@ -9,6 +9,7 @@ public class GlobalUIManager : MonoBehaviour
     [SerializeField] private MenuManager menuManager;
     [SerializeField] private CommonMessageWindow messageWindow;
     [SerializeField] private SelectionWindow selectionWindow;
+    [SerializeField] private WarpUIManager warpUIManager;
 
     private PlayerMove currentPlayer;
     private bool isMenuOpen = false;
@@ -87,6 +88,12 @@ public class GlobalUIManager : MonoBehaviour
         GlobalUIManager.instance.SwitchToPlayerInput();
     }
 
+    //ボス戦前イベント用処理
+    public async UniTask ShowBossMessage(string[] messages)
+    {
+        await messageWindow.OpenDialogue(messages, currentPlayer.InputAction);
+    }
+
     //行先ウィンドウを表示する処理
     public async UniTask<bool> ShowSelectionWindow(string message)
     {
@@ -97,6 +104,20 @@ public class GlobalUIManager : MonoBehaviour
 
         SwitchToPlayerInput();
 
+        return result;
+    }
+
+    //ワープリストを表示する処理
+    public async UniTask<FloorData> ShowWarpWindow()
+    {
+        if (warpUIManager == null) return null;
+
+        //InputSystemの切り替え
+        SwitchToUIInput();
+
+        FloorData result = await warpUIManager.OpenAndSelect(currentPlayer.InputAction);
+
+        SwitchToPlayerInput();
         return result;
     }
 
