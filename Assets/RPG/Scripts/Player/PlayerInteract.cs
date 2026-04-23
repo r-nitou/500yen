@@ -69,6 +69,11 @@ public class PlayerInteract : MonoBehaviour
                     if (isYes)
                     {
                         Debug.Log($"{trigger.TargetSceneName}シーンに遷移");
+                        //自宅移動時体力全回復
+                        if (trigger.TargetSceneName == "MyHouse") 
+                        {
+                            StatusManager.instance.RecoverHP(GameManager.instance.playerData.maxHP);
+                        }
                         await SceneLoader.instance.ExcuteSceneTransition(trigger.TargetSceneName, "", playerMove);
                     }
                 }

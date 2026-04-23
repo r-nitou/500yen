@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 490e7fefbe7a9004989e2fa2094372fd, type: 3}
-  m_Name: BED1
+  m_Name: BED2
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: "\u8D64\u9B3C"
-  enemySprite: {fileID: 7881032234632826052, guid: d393d08e0a964c140ba27c921f700658, type: 3}
+  enemySprite: {fileID: -222667870317282139, guid: 6dad00ce1d68f394c95b27eeca093522, type: 3}
   level: 1
-  battlePrefab: {fileID: 1429029763320244727, guid: 10bf38c770d42e6449c136e1e3e288b4, type: 3}
-  maxHp: 250
-  attack: 50
-  defense: 20
+  battlePrefab: {fileID: 1429029763320244727, guid: c6c69714c5a4562439fc4c50c7a949b2, type: 3}
+  maxHp: 500
+  attack: 40
+  defense: 80
   speed: 10
   expValue: 500
   dropItem: {fileID: 0}

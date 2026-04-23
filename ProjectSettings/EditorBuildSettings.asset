@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/RPG/Scene/BattleScene.unity
-    guid: 4490115e6ba117d43bef1ca8fac29a73
+    path: Assets/RPG/Scene/TitleScene.unity
+    guid: 2e69445d094591e43a8ef0c8fe2850d1
   - enabled: 1
     path: Assets/RPG/Scene/VillageScene.unity
     guid: 39f2d720062eb9247b923d65de7bf934
@@ -20,6 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/RPG/Scene/CaveScene_B1.unity
     guid: 08e12567caa0685489cdc9797c0c8415
+  - enabled: 1
+    path: Assets/RPG/Scene/CaveScene_B2.unity
+    guid: fcf4145665b904a48a0efa43e05e70e7
+  - enabled: 1
+    path: Assets/RPG/Scene/BattleScene.unity
+    guid: 4490115e6ba117d43bef1ca8fac29a73
   - enabled: 1
     path: Assets/RPG/Scene/ToolShopScene.unity
     guid: 5217eea82b9fd7e44937db7d5bfc9b4e

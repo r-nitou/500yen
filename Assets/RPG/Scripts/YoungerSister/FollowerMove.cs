@@ -12,6 +12,8 @@ public class FollowerMove : MonoBehaviour
     [Header("移動速度")]
     [SerializeField] private float moveSpeed = 5f;
 
+    private PlayerMove player;
+
     private Vector2 lookDirection = Vector2.zero;
     private CancellationToken token;
 
