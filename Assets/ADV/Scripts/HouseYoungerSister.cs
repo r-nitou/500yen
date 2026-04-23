@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,7 +33,10 @@ public class HouseYoungerSister: MonoBehaviour
     private YoungerSisterGaugeList gaugeList_ = null;
 
     [SerializeField, Header("表示を切り替えるボタンのリスト")]
-    private Button[] buttonList_ = null;
+    private YoungerEventButton[] buttonList_ = null;
+
+    [SerializeField]
+    private TextMeshProUGUI eventPowerText = null;
 
     [Header("遷移設定")]
     [SerializeField] 
@@ -60,6 +64,8 @@ public class HouseYoungerSister: MonoBehaviour
     {
         InitializeADV();
         gaugeList_.SetParameterForce(parameter_);
+        gaugeList_.SetActive(false);
+        eventPowerText.gameObject.SetActive(false);
         state_ = State.IDLE;
     }
 
@@ -111,7 +117,7 @@ public class HouseYoungerSister: MonoBehaviour
         state_ = State.TALK;
 
         // ボタンの非表示
-        foreach (Button button in buttonList_)
+        foreach (YoungerEventButton button in buttonList_)
         {
             button.gameObject.SetActive(false);
         }
@@ -127,18 +133,22 @@ public class HouseYoungerSister: MonoBehaviour
         {
             case YoungerSisterButtonType.PRACTICE:
                 parameter_.attack += 10;
+                eventPlayPower_ -= buttonList_[index].EventCost;
                 break;
 
             case YoungerSisterButtonType.MAKE_BENTO:
                 parameter_.defense += 10;
+                eventPlayPower_ -= buttonList_[index].EventCost;
                 break;
 
             case YoungerSisterButtonType.MAINTENANCE:
                 parameter_.speed += 10;
+                eventPlayPower_ -= buttonList_[index].EventCost;
                 break;
 
             case YoungerSisterButtonType.PRESENT:
                 parameter_.affection += 10;// TODO: プレゼントの内容によって変わるように
+                eventPlayPower_ -= buttonList_[index].EventCost;
                 break;
 
             case YoungerSisterButtonType.PAMPER:
@@ -146,6 +156,7 @@ public class HouseYoungerSister: MonoBehaviour
                 parameter_.attack -= 5;
                 parameter_.defense -= 5;
                 parameter_.speed -= 5;
+                eventPlayPower_ -= buttonList_[index].EventCost;
                 break;
 
             default:
@@ -153,7 +164,7 @@ public class HouseYoungerSister: MonoBehaviour
                 return;
         }
 
-        eventPlayPower_ -= 10;
+        eventPowerText.text = eventPlayPower_.ToString() + " Pt";
 
         // ADV再生
         InitializeADV();
@@ -178,10 +189,13 @@ public class HouseYoungerSister: MonoBehaviour
 
     private void OnEnterADVFinish()
     {
-        foreach (Button button in buttonList_)
+        foreach (YoungerEventButton button in buttonList_)
         {
             button.gameObject.SetActive(true);
         }
+
+        gaugeList_.SetActive(true);
+        eventPowerText.gameObject.SetActive(true);
     }
 
     private void OnEventFinish()

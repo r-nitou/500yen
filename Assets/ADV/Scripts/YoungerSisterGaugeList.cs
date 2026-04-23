@@ -36,4 +36,12 @@ public class YoungerSisterGaugeList : MonoBehaviour
         GetGauge(YoungerSisterGaugeType.DEFENSE).SetValueForce(     scrObject.GetDefenseRate());
         GetGauge(YoungerSisterGaugeType.SPEED).SetValueForce(       scrObject.GetSpeedRate());
     }
+
+    public void SetActive(bool active)
+    {
+        foreach (MentalGauge item in gaugeList_)
+        {
+            item.gameObject.SetActive(active);
+        }
+    }
 }

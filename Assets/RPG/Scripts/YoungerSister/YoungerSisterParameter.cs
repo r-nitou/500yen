@@ -5,7 +5,7 @@ public class YoungerSisterParameter : ScriptableObject
 {
     // パラメータの上下限
     public const int PARAM_MAX = 100;
-    public const int PARAM_MIN = -100;
+    public const int PARAM_MIN = 0;
 
     [Header("基本ステータス ---")]
     [Range(PARAM_MIN, PARAM_MAX)]
@@ -19,10 +19,10 @@ public class YoungerSisterParameter : ScriptableObject
 
     public void ResetParam()
     {
-        affection = 30;
-        attack = 10;
-        defense = 10;
-        speed = 10;
+        affection = 50;
+        attack = 30;
+        defense = 30;
+        speed = 30;
     }
 
     public float GetAffectionRate() { return (float)(affection) / (PARAM_MAX); }
