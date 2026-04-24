@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   playerName: "\u4E3B\u4EBA\u516C"
   level: 1
-  maxHP: 200
-  attack: 80
-  defense: 30
-  speed: 3
+  maxHP: 500
+  attack: 2000
+  defense: 500
+  speed: 50
   equippedWeapon: {fileID: 11400000, guid: b66e3554a247fde4cbcace3ccd146a65, type: 2}
   equippedArmor: {fileID: 11400000, guid: 0e5d6d17a1a1d95428c4637654901d08, type: 2}
   equippedAccessory: {fileID: 0}

@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
     [Header("バトル設定")]
     public bool isEscapeDisabled = false;
     public FadeManager Fade => fadeManager;
+    //ラスボスを倒したフラグ
+    public bool IslastBossDefated { get; set; } = false;
     
     private void Awake()
     {
@@ -105,6 +107,12 @@ public class GameManager : MonoBehaviour
     public void DefeatedSymbolEnemy()
     {
         symbolEncounterManager.DefeatedSymbolEnemy();
+    }
+
+    //ラスボス撃破フラグを立てるための関数
+    public void SetLastBossDefated()
+    {
+        IslastBossDefated = true;
     }
 
     //指定時間エンカウントを無効化する処理

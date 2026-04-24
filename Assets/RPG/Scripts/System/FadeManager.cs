@@ -19,9 +19,13 @@ public class FadeManager : MonoBehaviour
     }
 
     //フェードイン
-    public async UniTask FadeIn(float duration, Image target)
+    public async UniTask FadeIn(float duration, Image target, Color fadeColor = default)
     {
         if (target == null) return;
+        if (fadeColor == default) fadeColor = Color.black;
+
+        target.gameObject.SetActive(true);
+        target.color = new Color(fadeColor.r, fadeColor.g, fadeColor.b, 1);
 
         await target.DOFade(0f, duration).SetEase(Ease.Linear).ToUniTask();
         target.gameObject.SetActive(false);

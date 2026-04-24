@@ -107,6 +107,20 @@ public class PlayerInteract : MonoBehaviour
                 await warpStatue.Intaract();
                 return;
             }
+            //魔法陣のとき
+            SimpleWarp simpleWarp = hit.collider.GetComponent<SimpleWarp>();
+            if (simpleWarp != null)
+            {
+                await simpleWarp.Intaract();
+                return;
+            }
+            //石板のとき
+            ClearStele clearStele = hit.collider.GetComponent<ClearStele>();
+            if (clearStele != null)
+            {
+                await clearStele.Intaract();
+                return;
+            }
         }
     }
 
