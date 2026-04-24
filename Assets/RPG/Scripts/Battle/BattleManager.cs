@@ -113,10 +113,8 @@ public class BattleManager : MonoBehaviour
             playerUnitStatus.PlayerInitialize(GameManager.instance.playerData);
         }
         //敵生成
-        SetUpEnemies();
+        await SetUpEnemies();
 
-        //ログ表示
-        await LogManager.instance.DisplayLogText("モンスターがあらわれた！");
         //カットイン
         await HeroineCutIn();
         //プレイヤーコマンド選択
@@ -235,7 +233,7 @@ public class BattleManager : MonoBehaviour
     }
 
     //敵の生成処理
-    private void SetUpEnemies()
+    private async UniTask SetUpEnemies()
     {
         //前回の表示をクリア
         foreach(var obj in activeEnemyObject)
@@ -246,6 +244,8 @@ public class BattleManager : MonoBehaviour
 
         //敵リストを取得
         List<EnemyData> enemiesSpawn = GameManager.instance.nextBattleEnemies;
+        //演出待機用リスト
+        List<UniTask> spawnTasks = new List<UniTask>();
 
         //データの数だけ生成して配置
         foreach(EnemyData data in enemiesSpawn)
@@ -271,6 +271,8 @@ public class BattleManager : MonoBehaviour
             if (status != null)
             {
                 status.EnemyInitialize(data);
+                //出現演出の追加
+                spawnTasks.Add(status.PlayEnemySpawnEffect());
                 activeEnemyObject.Add(status);
             }
 
@@ -286,6 +288,14 @@ public class BattleManager : MonoBehaviour
                 }
             }
         }
+        //出現演出が終わるまで待機
+        if (spawnTasks.Count > 0)
+        {
+            await UniTask.WhenAll(spawnTasks);
+        }
+
+        //ログ表示
+        await LogManager.instance.DisplayLogText("モンスターがあらわれた！");
     }
 
     //プレイヤーの攻撃実行処理

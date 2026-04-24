@@ -76,12 +76,6 @@ public class PlayerMove : MonoBehaviour
             InputAction.Disable();
         }
     }
-        
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -110,7 +104,8 @@ public class PlayerMove : MonoBehaviour
     private bool CanMoveCheck(Vector3 position)
     {
         //障害物がないかチェック
-        return !Physics2D.OverlapCircle(position, COLLISION_RADIUS, obstacleLayer);
+        bool isMoveCheck = !Physics2D.OverlapCircle(position, COLLISION_RADIUS, obstacleLayer);
+        return isMoveCheck;
     }
 
     //プレイヤーを動かす処理

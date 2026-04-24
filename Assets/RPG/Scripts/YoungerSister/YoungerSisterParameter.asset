@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dccf94825385e0478a272ccde159fd2, type: 3}
   m_Name: YoungerSisterParameter
   m_EditorClassIdentifier: Assembly-CSharp::YoungerSisterParameter
-  affection: 100
-  attack: 100
-  defense: 50
-  speed: 10
+  affection: 50
+  attack: 80
+  defense: 20
+  speed: 0

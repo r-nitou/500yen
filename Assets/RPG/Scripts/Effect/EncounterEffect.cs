@@ -34,6 +34,8 @@ public class EncounterEffect : MonoBehaviour
         //プレイヤーの入力を無効化
         PlayerMove.instance.InputAction.Disable();
 
+        flashImage.gameObject.SetActive(true);
+
         //フラッシュエフェクトを再生
         for (int i = 0; i < FLASH_COUNT; i++) 
         {

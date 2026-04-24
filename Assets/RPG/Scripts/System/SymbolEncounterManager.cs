@@ -78,6 +78,12 @@ public class SymbolEncounterManager : MonoBehaviour
             if (!defeatedSymbolId.Contains(currentSymbolId))
             {
                 defeatedSymbolId.Add(currentSymbolId);
+
+                //ラスボスならクリアフラグを立てる
+                if (currentSymbolId == "B3") 
+                {
+                    GameManager.instance.SetLastBossDefated();
+                }
             }
         }
 
