@@ -8,6 +8,8 @@ public class CommonMessageWindow : MonoBehaviour
     [Header("UI参照")]
     [SerializeField] private GameObject messageWindowObjct;
     [SerializeField] private TMP_Text messageText;
+    [SerializeField] private GameObject nameTagObject;
+    [SerializeField] private TMP_Text nameTagText;
 
     private bool isDecided = false;
 
@@ -17,13 +19,15 @@ public class CommonMessageWindow : MonoBehaviour
         isDecided = true;
     }
 
-    public async UniTask OpenMessage(string message,PlayerInputAction input)
+    public async UniTask OpenMessage(string message, PlayerInputAction input, string speaker = "")
     {
-        await OpenDialogue(new string[] { message }, input);
+        await OpenDialogue(new string[] { message }, input, speaker);
     }
 
-    public async UniTask OpenDialogue(string[] messages,PlayerInputAction input)
+    public async UniTask OpenDialogue(string[] messages, PlayerInputAction input, string speaker = "")
     {
+        //ネームタグ表示・非表示切り替え
+        UpdateNameTag(speaker);
         //メッセージウィンドウを表示
         messageWindowObjct.SetActive(true);
         //イベント登録
@@ -41,5 +45,28 @@ public class CommonMessageWindow : MonoBehaviour
         //イベント解除
         input.UI.Submit.performed -= OnSubmit;
         messageWindowObjct.SetActive(false);
+    }
+
+    //ネームタグの表示、非表示を切り替える処理
+    public void UpdateNameTag(string tag)
+    {
+        if (string.IsNullOrEmpty(tag))
+        {
+            if (nameTagObject != null) 
+            {
+                nameTagObject.SetActive(false);
+            }
+        }
+        else
+        {
+            if(nameTagObject != null)
+            {
+                nameTagObject.SetActive(true);
+            }
+            if (nameTagText != null)
+            {
+                nameTagText.text = tag;
+            }
+        }
     }
 }

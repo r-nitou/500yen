@@ -94,10 +94,16 @@ public class GlobalUIManager : MonoBehaviour
         await messageWindow.OpenDialogue(messages, currentPlayer.InputAction);
     }
 
-    //クリア時イベント用処理
+    //クリアイベント用メッセージ処理
     public async UniTask ShowClearMessage(string[] messages)
     {
         await messageWindow.OpenDialogue(messages, currentPlayer.InputAction);
+    }
+
+    //ストリーイベント用メッセージ処理
+    public async UniTask ShowEventMessage(string[] messages,string speakerName = "")
+    {
+        await messageWindow.OpenDialogue(messages, currentPlayer.InputAction, speakerName);
     }
 
     //行先ウィンドウを表示する処理
