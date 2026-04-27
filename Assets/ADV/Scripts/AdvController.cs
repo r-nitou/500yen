@@ -11,7 +11,16 @@ public class AdvController : MonoBehaviour
     private UnityEvent onPlayFinish_ = new UnityEvent();//PlayADVの前に登録しておく
     public UnityEvent OnPlayFinish_ => onPlayFinish_; 
 
+    private float advMessageSpeed = 0.5f;
+
     private bool isPlaying = false;// 再生中フラグ
+
+    private bool isFastPlay = false;
+
+    private void Start()
+    {
+        advEngine.Config.MessageSpeed = advMessageSpeed;
+    }
 
     /// <summary>
     /// ボタンから呼び出すメソッド
@@ -32,6 +41,16 @@ public class AdvController : MonoBehaviour
         }
 
         StartCoroutine(PlayScenario(scenarioLabel));
+    }
+
+    /// <summary>
+    /// ボタンから呼び出すメソッド
+    /// </summary>
+    /// <param name="scenarioLabel">再生したいシナリオのラベル名（Excelで設定したもの）</param>
+    public void PlayADVFast(string scenarioLabel)
+    {
+        isFastPlay = true;
+        PlayADV(scenarioLabel);
     }
 
     public void StopADV()
@@ -64,6 +83,11 @@ public class AdvController : MonoBehaviour
         advEngine.JumpScenario(scenarioLabel);
         yield return null;
 
+        // 文字送りしない場合は 1F設定
+        float speed = (isFastPlay) ? 2.0f : advMessageSpeed;
+        Debug.Log($"AdvMessageSpeed: {advEngine.Config.MessageSpeed:F1} -> {speed:F1}");
+        advEngine.Config.MessageSpeed = speed;
+
         // 2. シナリオが終了するまで待機
         while (!advEngine.IsEndScenario)
         {
@@ -77,7 +101,12 @@ public class AdvController : MonoBehaviour
     private void OnPlayFinished()
     {
         Debug.Log("シナリオ再生が終了し、元の画面に戻りました。");
+        
         isPlaying = false;
+
+        isFastPlay = false;
+        advEngine.Config.MessageSpeed = advMessageSpeed;
+
         OnPlayFinish_?.Invoke();
         OnPlayFinish_.RemoveAllListeners();
     }

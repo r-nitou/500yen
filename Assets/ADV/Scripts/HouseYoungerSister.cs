@@ -305,17 +305,19 @@ public class HouseYoungerSister: MonoBehaviour
     {
         isTutorial_ = true;
         tutorial_.SetActive(true);
+
         eventPower_.gameObject.SetActive(false);
+        gaugeList_.SetActive(false);
 
         InitializeADV();
-        Debug.LogWarning("HYS::OpenTutorial->AddListener");
+        Debug.Log("HYS::OpenTutorial->AddListener");
         advController_.OnPlayFinish_.AddListener(CloseTutorial);
-        advController_.PlayADV("C1001_HOME_ENTER_H_001");
+        advController_.PlayADVFast("TUTORIAL_001");
     }
 
     private void CloseTutorial()
     {
-        Debug.LogWarning("HYS::CloseTutorial");
+        Debug.Log("HYS::CloseTutorial");
 
         isTutorial_ = false;
         tutorial_.SetActive(false);
