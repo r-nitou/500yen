@@ -1,0 +1,68 @@
+{
+    "version": 1,
+    "name": "ADVPlayerInput",
+    "maps": [
+        {
+            "name": "ADV",
+            "id": "8777e62a-8398-474c-a904-77f2fc6e6f3f",
+            "actions": [
+                {
+                    "name": "Decision",
+                    "type": "Button",
+                    "id": "ccbded71-94ef-41bc-a3e2-489aafa3925b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4cc828fa-d97d-4317-9f93-dba1df61c1ad",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Decision",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e341e21c-bac3-4d94-be7d-422e420263b0",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Decision",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e33292fc-ec8b-417d-9ec2-b6afac4c2b19",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Decision",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0835ff6f-1863-4bd8-9f36-e8420a9cae43",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Decision",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

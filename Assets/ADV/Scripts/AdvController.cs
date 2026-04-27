@@ -34,6 +34,19 @@ public class AdvController : MonoBehaviour
         StartCoroutine(PlayScenario(scenarioLabel));
     }
 
+    public void StopADV()
+    {
+        // 再生中でなければ何もしない
+        if (!isPlaying) return;
+
+        // Utage側のシナリオを強制終了する
+        advEngine.EndScenario();
+
+        OnPlayFinished();
+
+        Debug.Log("シナリオの強制終了メソッドが呼ばれました。");
+    }
+
     public bool IsPlaying()
     {
         return isPlaying;
@@ -58,6 +71,11 @@ public class AdvController : MonoBehaviour
         }
 
         // 3. シナリオ終了
+        OnPlayFinished();
+    }
+
+    private void OnPlayFinished()
+    {
         Debug.Log("シナリオ再生が終了し、元の画面に戻りました。");
         isPlaying = false;
         OnPlayFinish_?.Invoke();

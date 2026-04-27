@@ -2,6 +2,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public enum YoungerSisterButtonType
@@ -45,6 +46,12 @@ public class HouseYoungerSister: MonoBehaviour
     private string homeMarkerId_ = "HomeEntrance";
 
     [SerializeField]
+    private GameObject tutorial_ = null;
+
+    [SerializeField]
+    private Image eventPower_ = null;
+
+    [SerializeField]
     private Image fadeImage;
 
     private State state_ = State.IDLE;
@@ -52,6 +59,8 @@ public class HouseYoungerSister: MonoBehaviour
     private int eventPlayPower_ = 30;
 
     private bool needStartEnter_ = true;
+    private bool needStartTutorial_ = false;
+    private bool isTutorial_ = false;
     
     // 永続化用のキー（定数）
     private const string FIRST_EVENT_KEY = "HouseEnterIsFirst";
@@ -65,7 +74,7 @@ public class HouseYoungerSister: MonoBehaviour
         InitializeADV();
         gaugeList_.SetParameterForce(parameter_);
         gaugeList_.SetActive(false);
-        eventPowerText.gameObject.SetActive(false);
+        eventPower_.gameObject.SetActive(false);
         state_ = State.IDLE;
     }
 
@@ -75,19 +84,19 @@ public class HouseYoungerSister: MonoBehaviour
         {
             case State.IDLE:
                 // Startでは再生できなかったのでここで呼ぶ
-                if (advController_.CanPlay() && needStartEnter_)
+                if (needStartEnter_ && advController_.CanPlay())
                 {
                     needStartEnter_ = false;
 
                     // 初回か判定 //TODO: JSONに変わるっぽい
-                    if (PlayerPrefs.GetInt(FIRST_EVENT_KEY, 1) != 0)
+                    if (true || PlayerPrefs.GetInt(FIRST_EVENT_KEY, 1) != 0)
                     {
                         PlayerPrefs.SetInt(FIRST_EVENT_KEY, 0);// false >> 再生済み
                         PlayerPrefs.Save();
 
                         // 初回用のイベント
                         InitializeADV();
-                        advController_.OnPlayFinish_.AddListener(OnEnterADVFinish);
+                        advController_.OnPlayFinish_.AddListener(SetTutorialWait);
                         advController_.PlayADV("C1001_HOME_FRIST");
 
                         return;
@@ -96,9 +105,15 @@ public class HouseYoungerSister: MonoBehaviour
                     // 通常イベント
                     PlayEnterADV();
                 }
+                else if (needStartTutorial_ && advController_.CanPlay())
+                {
+                    OpenTutorial();
+                    return;
+                }
                 break;
 
             case State.TALK:
+                // ボタン待機中モココ
                 break;
 
             case State.STILL:
@@ -108,8 +123,6 @@ public class HouseYoungerSister: MonoBehaviour
                 Debug.Log("HouseYoungerSister::Update -> case文がdefaultです");
                 break;
         }
-
-        
     }
 
     private void InitializeADV()
@@ -195,7 +208,7 @@ public class HouseYoungerSister: MonoBehaviour
         }
 
         gaugeList_.SetActive(true);
-        eventPowerText.gameObject.SetActive(true);
+        eventPower_.gameObject.SetActive(true);
     }
 
     private void OnEventFinish()
@@ -239,7 +252,6 @@ public class HouseYoungerSister: MonoBehaviour
         // TODO: スチル再生の処理
         Debug.Log("HouseYoungerSister::StartStill -> スチル開始");
         state_ = State.STILL;
-
     }
 
     public void OnSleepEvent()
@@ -280,6 +292,42 @@ public class HouseYoungerSister: MonoBehaviour
         if (SceneLoader.instance != null)
         {
             await SceneLoader.instance.ExcuteSceneTransition(nextSceneName_, homeMarkerId_, PlayerMove.instance);
+        }
+    }
+
+    private void SetTutorialWait()
+    {
+        needStartTutorial_ = true;
+        state_ = State.IDLE;
+    }
+
+    public void OpenTutorial()
+    {
+        isTutorial_ = true;
+        tutorial_.SetActive(true);
+        eventPower_.gameObject.SetActive(false);
+
+        InitializeADV();
+        Debug.LogWarning("HYS::OpenTutorial->AddListener");
+        advController_.OnPlayFinish_.AddListener(CloseTutorial);
+        advController_.PlayADV("C1001_HOME_ENTER_H_001");
+    }
+
+    private void CloseTutorial()
+    {
+        Debug.LogWarning("HYS::CloseTutorial");
+
+        isTutorial_ = false;
+        tutorial_.SetActive(false);
+        advController_.StopADV();
+        OnEnterADVFinish();
+    }
+
+    public void OnInputTutorialFinish(InputAction.CallbackContext context)
+    {
+        if (isTutorial_ && context.started)
+        {
+            //CloseTutorial();
         }
     }
 }
