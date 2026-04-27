@@ -128,10 +128,7 @@ public class UnitStatus : MonoBehaviour
     //経験値を獲得する処理
     public async UniTask GainExp(int amount)
     {
-        if (!isPlayer)
-        {
-            return;
-        }
+        if (!isPlayer) return;
 
         PlayerData data = GameManager.instance.playerData;
         data.currentExp += amount;
@@ -172,10 +169,7 @@ public class UnitStatus : MonoBehaviour
     //敵用ダメージ演出
     public async UniTask PlayEnmeyDamageEffect()
     {
-        if (cachedGraphic == null)
-        {
-            return;
-        }
+        if (cachedGraphic == null) return;
 
         //点滅処理
         await cachedGraphic.DOColor(Color.red, 0.08f)
@@ -186,13 +180,28 @@ public class UnitStatus : MonoBehaviour
         cachedGraphic.color = Color.white;
     }
 
+    //敵出現演出
+    public async UniTask PlayEnemySpawnEffect()
+    {
+        if (cachedGraphic == null) return;
+
+        //最初は透明
+        cachedGraphic.color = new Color(0, 0, 0, 0);
+        //演出の流れを作成
+        Sequence spawnSeq = DOTween.Sequence();
+
+        //フェードイン
+        spawnSeq.Append(cachedGraphic.DOFade(1, 0.5f));
+        //元の色に戻る
+        spawnSeq.Join(cachedGraphic.DOColor(Color.white, 0.5f));
+
+        await spawnSeq.ToUniTask();
+    }
+
     //敵死亡時演出
     public async UniTask PlayEnemyDeathEffect()
     {
-        if (cachedGraphic == null)
-        {
-            return;
-        }
+        if (cachedGraphic == null) return;
 
         //再生中のアニメーションを終了する
         cachedGraphic.DOKill();
@@ -212,6 +221,5 @@ public class UnitStatus : MonoBehaviour
         deathSeq.Join(cachedGraphic.rectTransform.DOAnchorPosY(-30f, 0.5f).SetRelative());
 
         await deathSeq.ToUniTask();
-
     }
 }

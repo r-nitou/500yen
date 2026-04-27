@@ -35,6 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MyHouse.unity
     guid: 2fa32563039a7ab4a92fa3f3a4918912
+  - enabled: 1
+    path: Assets/RPG/Scene/ClearScene.unity
+    guid: 3f8cc5242bad63e4f8f4eed904d82b3f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
