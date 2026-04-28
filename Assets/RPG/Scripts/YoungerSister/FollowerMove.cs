@@ -77,10 +77,8 @@ public class FollowerMove : MonoBehaviour
     //シーン遷移時に向きを指定する処理
     public void SetDirection(Vector2 direction)
     {
-        if (animator == null)
-        {
-            return;
-        }
+        lookDirection = direction;
+        if (animator == null) return;
 
         animator.SetFloat("MoveX", direction.x);
         animator.SetFloat("MoveY", direction.y);

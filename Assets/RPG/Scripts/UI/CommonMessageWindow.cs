@@ -26,25 +26,31 @@ public class CommonMessageWindow : MonoBehaviour
 
     public async UniTask OpenDialogue(string[] messages, PlayerInputAction input, string speaker = "")
     {
+        Debug.Log($"話者:{speaker}");
         //ネームタグ表示・非表示切り替え
         UpdateNameTag(speaker);
+
         //メッセージウィンドウを表示
+
         messageWindowObjct.SetActive(true);
+        await UniTask.Yield(PlayerLoopTiming.Update);
+
         //イベント登録
         input.UI.Submit.performed += OnSubmit;
 
-        foreach(string msg in messages)
+        Canvas.ForceUpdateCanvases();
+        foreach (string msg in messages)
         {
             //メッセージの表示
             messageText.text = msg;
             isDecided = false;
-
+            Debug.Log(msg);
             await UniTask.WaitUntil(() => isDecided);
         }
-
         //イベント解除
         input.UI.Submit.performed -= OnSubmit;
         messageWindowObjct.SetActive(false);
+        nameTagObject.SetActive(false);
     }
 
     //ネームタグの表示、非表示を切り替える処理

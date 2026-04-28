@@ -36,21 +36,23 @@ public class TreasureBox : MonoBehaviour
             await GlobalUIManager.instance.ShowMessage("この宝箱はすでに開けている");
             return;
         }
-
-        isOpened = true;
-        //インベントリに追加
-        InventoryManager.instance.AddItem(contentItem, 1);
-
-        //開封をSymbolEncountManagerに知らせる
-        SymbolEncounterManager.instance.RegisterOpenedChest(mySymbolId);
-        //見た目の変化
-        if (spriteRenderer != null && openedSprite != null)
+        else
         {
-            spriteRenderer.sprite = openedSprite;
-        }
+            isOpened = true;
+            //インベントリに追加
+            InventoryManager.instance.AddItem(contentItem, 1);
 
-        //メッセージ表示
-        await GlobalUIManager.instance.ShowMessage($"{contentItem.itemName}を入手した!");
+            //開封をSymbolEncountManagerに知らせる
+            SymbolEncounterManager.instance.RegisterOpenedChest(mySymbolId);
+            //見た目の変化
+            if (spriteRenderer != null && openedSprite != null)
+            {
+                spriteRenderer.sprite = openedSprite;
+            }
+
+            //メッセージ表示
+            await GlobalUIManager.instance.ShowMessage($"{contentItem.itemName}を入手した!");
+        }
     }
 
     //アイテムを設定留守

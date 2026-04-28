@@ -1321,6 +1321,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2176
   playerMove: {fileID: 750827046}
+  isinteracting: 0
 --- !u!114 &750827046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1430,7 +1431,7 @@ MonoBehaviour:
   detectionRadius: 0.2
   targetLayer:
     serializedVersion: 2
-    m_Bits: 2176
+    m_Bits: 2048
 --- !u!1 &933955702
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,6 +2091,7 @@ MonoBehaviour:
   gold: 10000
   visitedFloorData: []
   isEscapeDisabled: 0
+  isNewGame: 0
 --- !u!4 &1697134192
 Transform:
   m_ObjectHideFlags: 0

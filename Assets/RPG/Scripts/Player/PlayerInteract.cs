@@ -17,6 +17,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private PlayerMove playerMove;
 
     private CancellationToken token;
+    public bool isinteracting = false;
 
     private void Awake()
     {
@@ -26,8 +27,17 @@ public class PlayerInteract : MonoBehaviour
 
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {
+        if (isinteracting) return;
         Debug.Log("入力検知：Interactボタンが押されました");
         CheckInteractable().Forget();
+    }
+
+    private void OnDestroy()
+    {
+        if (playerMove != null && playerMove.InputAction != null)
+        {
+            playerMove.InputAction.Player.Interact.performed -= OnInteractPerformed;
+        }
     }
 
     private void Start()
@@ -38,90 +48,100 @@ public class PlayerInteract : MonoBehaviour
     //プレイヤーの「調べる」を行う処理
     private async UniTaskVoid CheckInteractable()
     {
-        Debug.Log("調べるよ！");
-        //プレイヤーの向きから正面にレイを飛ばす
-        RaycastHit2D hit = Physics2D.Raycast(
-            transform.position,
-            playerMove.LookDirection,
-            INTERACT_DISTANCE,
-            transitionLayer
-            );
+        isinteracting = true;
 
-        //何か当たったか
-        if (hit.collider != null)
+        try
         {
-            //当たったオブジェクトにドアの設定がついているか
-            SceneTransitionTrigger trigger = hit.collider.GetComponent<SceneTransitionTrigger>();
-            if (trigger != null)
+            Debug.Log("調べるよ！");
+            //プレイヤーの向きから正面にレイを飛ばす
+            RaycastHit2D hit = Physics2D.Raycast(
+                transform.position,
+                playerMove.LookDirection,
+                INTERACT_DISTANCE,
+                transitionLayer
+                );
+
+            //何か当たったか
+            if (hit.collider != null)
             {
-                //ドアのタイプがマニュアル(民家とかのドア)だったら
-                if (trigger.Type == SceneTransitionTrigger.EntranceType.Manual)
+                //当たったオブジェクトにドアの設定がついているか
+                SceneTransitionTrigger trigger = hit.collider.GetComponent<SceneTransitionTrigger>();
+                if (trigger != null)
                 {
-                    //時間帯チェック
-                    if (!trigger.CanEnter())
+                    //ドアのタイプがマニュアル(民家とかのドア)だったら
+                    if (trigger.Type == SceneTransitionTrigger.EntranceType.Manual)
                     {
-                        await GlobalUIManager.instance.ShowMessage($"鍵が閉まっていてはいれない...");
-                        return;
-                    }
-                    //選択の結果を取得する
-                    bool isYes = await GlobalUIManager.instance.ShowSelectionWindow($"{trigger.DestinationText}に行きますか？");
-
-                    if (isYes)
-                    {
-                        Debug.Log($"{trigger.TargetSceneName}シーンに遷移");
-                        //自宅移動時体力全回復
-                        if (trigger.TargetSceneName == "MyHouse") 
+                        //時間帯チェック
+                        if (!trigger.CanEnter())
                         {
-                            StatusManager.instance.RecoverHP(GameManager.instance.playerData.maxHP);
+                            await GlobalUIManager.instance.ShowMessage("鍵が閉まっていてはいれない...");
+                            return;
                         }
-                        await SceneLoader.instance.ExcuteSceneTransition(trigger.TargetSceneName, "", playerMove);
-                    }
-                }
-                return;
-            }
+                        //選択の結果を取得する
+                        bool isYes = await GlobalUIManager.instance.ShowSelectionWindow($"{trigger.DestinationText}に行きますか？");
 
-            //掲示板のとき
-            if (hit.collider.GetComponent<BulletinBoardObject>() != null)
-            {
-                UImanager.instance.ShowBuletinBoard().Forget();
-                return;
-            }
-            //宝箱のとき
-            TreasureBox box = hit.collider.GetComponent<TreasureBox>();
-            if (box != null)
-            {
-                await box.Intaract();
-                return;
-            }
-            //女神像のとき
-            AlterPortal alter = hit.collider.GetComponent<AlterPortal>();
-            if (alter != null)
-            {
-                await alter.Intaract();
-                return;
-            }
-            //英雄像のとき
-            WarpStatue warpStatue = hit.collider.GetComponent<WarpStatue>();
-            if (warpStatue != null)
-            {
-                await warpStatue.Intaract();
-                return;
-            }
-            //魔法陣のとき
-            SimpleWarp simpleWarp = hit.collider.GetComponent<SimpleWarp>();
-            if (simpleWarp != null)
-            {
-                await simpleWarp.Intaract();
-                return;
-            }
-            //石板のとき
-            ClearStele clearStele = hit.collider.GetComponent<ClearStele>();
-            if (clearStele != null)
-            {
-                await clearStele.Intaract();
-                return;
+                        if (isYes)
+                        {
+                            Debug.Log($"{trigger.TargetSceneName}シーンに遷移");
+                            //自宅移動時体力全回復
+                            if (trigger.TargetSceneName == "MyHouse")
+                            {
+                                StatusManager.instance.RecoverHP(GameManager.instance.playerData.maxHP);
+                            }
+                            await SceneLoader.instance.ExcuteSceneTransition(trigger.TargetSceneName, "", playerMove);
+                        }
+                    }
+                    return;
+                }
+
+                //掲示板のとき
+                if (hit.collider.GetComponent<BulletinBoardObject>() != null)
+                {
+                    UImanager.instance.ShowBuletinBoard().Forget();
+                    return;
+                }
+                //宝箱のとき
+                TreasureBox box = hit.collider.GetComponent<TreasureBox>();
+                if (box != null)
+                {
+                    await box.Intaract();
+                    return;
+                }
+                //女神像のとき
+                AlterPortal alter = hit.collider.GetComponent<AlterPortal>();
+                if (alter != null)
+                {
+                    await alter.Intaract();
+                    return;
+                }
+                //英雄像のとき
+                WarpStatue warpStatue = hit.collider.GetComponent<WarpStatue>();
+                if (warpStatue != null)
+                {
+                    await warpStatue.Intaract();
+                    return;
+                }
+                //魔法陣のとき
+                SimpleWarp simpleWarp = hit.collider.GetComponent<SimpleWarp>();
+                if (simpleWarp != null)
+                {
+                    await simpleWarp.Intaract();
+                    return;
+                }
+                //石板のとき
+                ClearStele clearStele = hit.collider.GetComponent<ClearStele>();
+                if (clearStele != null)
+                {
+                    await clearStele.Intaract();
+                    return;
+                }
             }
         }
+        finally
+        {
+            isinteracting = false;
+        }
+        
     }
 
     // デバッグ用：エディタ上でレイの範囲を可視化

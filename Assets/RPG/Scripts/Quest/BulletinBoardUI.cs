@@ -1,6 +1,8 @@
-﻿using NUnit.Framework;
+﻿using Cysharp.Threading.Tasks;
+using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,10 +25,12 @@ public class BulletinBoardUI : MonoBehaviour
     [SerializeField] private TMP_Text actionButtonText;
 
     private QuestData selectedQuest;
+    private bool isTutorialShowing = false;
 
     //受注ボタンが押されたときの処理
     public void OnClickAccept()
     {
+        if (isTutorialShowing) return;
         if (selectedQuest == null) return;
 
         //現在この依頼を受けているか
@@ -50,12 +54,24 @@ public class BulletinBoardUI : MonoBehaviour
     //依頼掲示板を閉じるボタン
     public void OnCloseBoard()
     {
+        if (isTutorialShowing) return;
         gameObject.SetActive(false);
     }
 
     //掲示板の初期化処理
-    public void InitializeBoard()
+    public async UniTaskVoid InitializeBoard()
     {
+        //チュートリアルの表示処理
+        if (GameManager.instance != null && !GameManager.instance.hasShownBulletinTutorial)
+        {
+            isTutorialShowing = true;
+            await GlobalUIManager.instance.ShowTutorial("BulletinBoard");
+
+            GameManager.instance.hasShownBulletinTutorial = true;
+
+            GlobalUIManager.instance.SwitchToUIInput();
+            isTutorialShowing = false;
+        }
         RefreshQuestList();
 
         //１番上の依頼を初期選択する
