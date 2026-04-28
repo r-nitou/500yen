@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: YoungerSisterParameter
   m_EditorClassIdentifier: Assembly-CSharp::YoungerSisterParameter
   affection: 50
-  attack: 80
-  defense: 20
+  attack: 30
+  defense: 30
   speed: 0

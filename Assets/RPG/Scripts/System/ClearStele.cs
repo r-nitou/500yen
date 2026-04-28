@@ -21,14 +21,15 @@ public class ClearStele : MonoBehaviour
         //クリアフラグの確認
         if (GameManager.instance.IslastBossDefated)
         {
+            //プレイヤーの入力切替
+            GlobalUIManager.instance.SwitchToUIInput();
             //イベントメッセージの表示
             await GlobalUIManager.instance.ShowClearMessage(clearDialogues);
-
             //フェードアウト
             await GameManager.instance.Fade.FadeOut(fadeDuration, fadeaTarget, Color.white);
-
             //シーン遷移
             await SceneLoader.instance.ExcuteSceneTransition(clearSceneName, "", PlayerMove.instance);
+            GlobalUIManager.instance.SwitchToPlayerInput();
         }
     }
 }

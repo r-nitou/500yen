@@ -50,6 +50,13 @@ public class GameManager : MonoBehaviour
 
     [Header("バトル設定")]
     public bool isEscapeDisabled = false;
+
+    [Header("イベント用フラグ")]
+    public bool isNewGame = false;
+
+    [Header("チュートリアル用フラグ")]
+    public bool hasShownBulletinTutorial = false;
+    public bool hasShowFastTravelTutorial = false;
     public FadeManager Fade => fadeManager;
     //ラスボスを倒したフラグ
     public bool IslastBossDefated { get; set; } = false;
