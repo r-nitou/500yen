@@ -1,5 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GlobalUIManager : MonoBehaviour
 {
@@ -11,6 +13,9 @@ public class GlobalUIManager : MonoBehaviour
     [SerializeField] private SelectionWindow selectionWindow;
     [SerializeField] private WarpUIManager warpUIManager;
     [SerializeField] private TutorialManager tutorialManager;
+
+    [Header("表示対象シーン")]
+    [SerializeField] private string[] menuCanOpenScene = { "VillageScene", "CaveScene", "CaveScene_B1", "CaveScene_B2" };
 
     private PlayerMove currentPlayer;
     private bool isMenuOpen = false;
@@ -40,6 +45,10 @@ public class GlobalUIManager : MonoBehaviour
     void Update()
     {
         if (currentPlayer == null) return;
+
+        //メニューを開いていいシーンか
+        string activeScene = SceneManager.GetActiveScene().name;
+        if (!menuCanOpenScene.Contains(activeScene)) return;
 
         //メニューの開閉の監視
         if (currentPlayer.InputAction.Player.Menu.triggered && !isMenuOpen)
@@ -158,6 +167,7 @@ public class GlobalUIManager : MonoBehaviour
     //InputSystemをUI用に切り替える処理
     public void SwitchToUIInput()
     {
+        if (currentPlayer == null) FindPlayer();
         if (currentPlayer == null) return;
         currentPlayer.InputAction.Player.Disable();
         currentPlayer.InputAction.UI.Enable();
@@ -166,6 +176,7 @@ public class GlobalUIManager : MonoBehaviour
     //InputSystemをPlayer用に切り替える処理
     public void SwitchToPlayerInput()
     {
+        if (currentPlayer == null) FindPlayer();
         if (currentPlayer == null) return;
         currentPlayer.InputAction.Player.Enable();
         currentPlayer.InputAction.UI.Disable();

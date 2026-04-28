@@ -53,6 +53,7 @@ public class StoryEventManager : MonoBehaviour
     //オープニングイベントを再生する処理
     public async UniTask PlayOpeningEvent()
     {
+        await UniTask.Yield(PlayerLoopTiming.Update);
         if (openingDialogues == null || openingDialogues.Count == 0) return;
 
         //入力切替
@@ -72,6 +73,8 @@ public class StoryEventManager : MonoBehaviour
         {
             await PlayCameraPanEffect(openingTargets);
         }
+
+        await ObjectiveUIManager.instance.SetObjective("大きな家に行く");
 
         //入力切替
         if (GlobalUIManager.instance != null)

@@ -18,6 +18,9 @@ public class PlayerData : ScriptableObject
     public ItemData equippedArmor;
     public ItemData equippedAccessory;
 
+    [Header("ヒロインステータスボーナス")]
+    public YoungerSisterParameter sisterParameter;
+
     [Header("成長データ")]
     public int currentExp = 0;
     public int nextLevelExp = 0;
@@ -25,7 +28,7 @@ public class PlayerData : ScriptableObject
     public int hpGain = 10;
     public int attackGain = 2;
     public int defenseGain = 1;
-    public int sppedGain = 1;
+    public int speedGain = 1;
 
     //装備を含めた最終的なステータスを計算する処理
     //攻撃力
@@ -37,7 +40,10 @@ public class PlayerData : ScriptableObject
             if (equippedWeapon != null) boost += equippedWeapon.attackBoost;
             if (equippedArmor != null) boost += equippedArmor.attackBoost;
             if (equippedAccessory != null) boost += equippedAccessory.attackBoost;
-            return attack + boost;
+
+            int sisterBonus = sisterParameter != null ? sisterParameter.GetBonusAttack() : 0;
+
+            return attack + boost + sisterBonus;
         }
     }
     //防御力
@@ -49,7 +55,10 @@ public class PlayerData : ScriptableObject
             if (equippedWeapon != null) boost += equippedWeapon.defenseBoost;
             if (equippedArmor != null) boost += equippedArmor.defenseBoost;
             if (equippedAccessory != null) boost += equippedAccessory.defenseBoost;
-            return defense + boost;
+
+            int sisterBonus = sisterParameter != null ? sisterParameter.GetBonusDefense() : 0;
+
+            return defense + boost + sisterBonus;
         }
     }
     //すばやさ
@@ -61,7 +70,10 @@ public class PlayerData : ScriptableObject
             if (equippedWeapon != null) boost += equippedWeapon.speedBoost;
             if (equippedArmor != null) boost += equippedArmor.speedBoost;
             if (equippedAccessory != null) boost += equippedAccessory.speedBoost;
-            return speed + boost;
+
+            int sisterBonus = sisterParameter != null ? sisterParameter.GetBonusSpeed() : 0;
+
+            return speed + boost + sisterBonus;
         }
     }
 

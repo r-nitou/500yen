@@ -32,7 +32,7 @@ public class PlayerMove : MonoBehaviour
     //移動前の座標
     private Vector3 previousPosition;
 
-    private bool isMoveing;
+    public bool isMoveing;
     private CancellationToken token;
 
     //外部からプレイヤーの向きを参照できるようにする

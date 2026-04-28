@@ -31,4 +31,19 @@ public class YoungerSisterParameter : ScriptableObject
     public float GetSpeedRate() { return ((float)(speed) / PARAM_MAX) * GetAffectionRate(); }
 
     public void PrintLog() { Debug.Log($"--- 妹パラメーター ---\n" + $"好感度: {affection}, 攻撃力: {attack}, 防御力: {defense}, 素早さ: {speed}"); }
+
+    //好感度による加算倍率の計算
+    public float GetAffectionMultiplier()
+    {
+        if (affection <= 10) return 0.5f;
+        if (affection <= 30) return 0.75f;
+        if (affection <= 50) return 1.0f;
+        if (affection <= 70) return 1.25f;
+        return 1.5f;
+    }
+
+    //パラメータの最終ボーナス値
+    public int GetBonusAttack() => Mathf.FloorToInt(attack * GetAffectionMultiplier());
+    public int GetBonusDefense() => Mathf.FloorToInt(defense * GetAffectionMultiplier());
+    public int GetBonusSpeed() => Mathf.FloorToInt(speed * GetAffectionMultiplier());
 }
