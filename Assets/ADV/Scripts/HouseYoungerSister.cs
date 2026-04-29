@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System.Collections;
 
 public enum YoungerSisterButtonType
 {
@@ -213,21 +214,22 @@ public class HouseYoungerSister: MonoBehaviour
 
     private void OnEventFinish()
     {
+        Debug.Log($"OnEventFinish:(eventPlayPower_) {eventPlayPower_}");
+
         // パラメータの反映
         gaugeList_.SetParameter(parameter_);
 
         // イベント終了
         if (eventPlayPower_ <= 0)
         {
-            Debug.Log("HouseYoungerSister::今回の育成は終わりです。");
-            // セリフやモーションがあればここで再生
-            OnSleepEvent();
+            Debug.LogWarning("HouseYoungerSister::今回の育成は終わりです。");
+            // 次フレームで OnSleepEvent を呼ぶ（再入を避ける）
+            StartCoroutine(CallOnSleepEventNextFrame());
 
             return;
         }
 
         // まだ育成できる
-        Debug.Log($"妹強化用パワー: {eventPlayPower_}");
         OnEnterADVFinish();
     }
 
@@ -254,8 +256,17 @@ public class HouseYoungerSister: MonoBehaviour
         state_ = State.STILL;
     }
 
+    private IEnumerator CallOnSleepEventNextFrame()
+    {
+        yield return null; // 1フレーム待つ
+        OnSleepEvent();
+    }
+
     public void OnSleepEvent()
     {
+        Debug.Log("OnSleepEvent");
+        advController_.StopADV();
+        
         // adv再生後にシーン遷移
         InitializeADV();
         advController_.OnPlayFinish_.AddListener(OnFinishedSleepADV);
@@ -264,17 +275,18 @@ public class HouseYoungerSister: MonoBehaviour
 
     private void OnFinishedSleepADV()
     {
-        FadeTask();
+        Debug.Log("OnFinishedSleepADV");
+        StartFadeTask();
     }
 
     // ADVSceneLoadManagerから移動済
-    private async void FadeTask()
+    private async void StartFadeTask()
     {
-        Debug.Log("HouseYoungerSister::OnSleepSelected -> 睡眠イベント選択");
-
         await GameManager.instance.Fade.FadeOut(1.0f, fadeImage);
         await UniTask.Delay(TimeSpan.FromSeconds(1.0f));
         
+        Debug.Log("FadeTask Excute");
+
         // シーン移動
         ExcuteSleep().Forget();
     }

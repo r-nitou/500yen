@@ -28,6 +28,8 @@ public class AdvController : MonoBehaviour
     /// <param name="scenarioLabel">再生したいシナリオのラベル名（Excelで設定したもの）</param>
     public void PlayADV(string scenarioLabel)
     {
+        Debug.Log("PlayADV: " + scenarioLabel);
+
         // 既にシナリオ再生中、またはエンジンが初期化されていない場合は処理しない
         if (isPlaying)
         {
