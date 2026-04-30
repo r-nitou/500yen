@@ -32,7 +32,7 @@ public class PlayerMove : MonoBehaviour
     //移動前の座標
     private Vector3 previousPosition;
 
-    private bool isMoveing;
+    public bool isMoveing;
     private CancellationToken token;
 
     //外部からプレイヤーの向きを参照できるようにする
@@ -84,10 +84,7 @@ public class PlayerMove : MonoBehaviour
         moveInput = InputAction.Player.Move.ReadValue<Vector2>();
 
         //移動中でなければ入力を受け付ける
-        if (isMoveing)  
-        {
-            return;
-        }
+        if (isMoveing) return;
 
         //移動量が0でないなら
         if (moveInput != Vector2.zero)
@@ -193,10 +190,7 @@ public class PlayerMove : MonoBehaviour
     //アニメーションを更新する処理
     private void UpdateAnimation(bool moving)
     {
-        if (animator == null)
-        {
-            return;
-        }
+        if (animator == null) return;
 
         animator.SetFloat("MoveX", lookDirection.x);
         animator.SetFloat("MoveY", lookDirection.y);
@@ -239,10 +233,9 @@ public class PlayerMove : MonoBehaviour
     //シーン遷移時に向きを指定する処理
     public void SetDirection(Vector2 direction)
     {
-        if (animator == null)
-        {
-            return;
-        }
+        lookDirection = direction;
+
+        if (animator == null) return;
 
         animator.SetFloat("MoveX", direction.x);
         animator.SetFloat("MoveY", direction.y);

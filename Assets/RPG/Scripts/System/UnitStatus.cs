@@ -27,6 +27,11 @@ public class UnitStatus : MonoBehaviour
     private int equipmentDefense;
     private int equipmentSpeed;
 
+    [Header("妹補正")]
+    private int sisterAttack;
+    private int sisterDefense;
+    private int sisterSpeed;
+
     [Header("戦闘補正(バフ・デバフ)")]
     public float attackBuff = 1.0f;
     public float defenseBuff = 1.0f;
@@ -42,9 +47,9 @@ public class UnitStatus : MonoBehaviour
     private EnemyData originData;
 
     //計算用プロパティ
-    public int Attack => Mathf.RoundToInt((baseAttack + equipmentAttack) * attackBuff);
-    public int Defense => Mathf.RoundToInt((baseDefense + equipmentDefense) * defenseBuff);
-    public int Speed => Mathf.RoundToInt((baseSpeed + equipmentSpeed) * speedBuff);
+    public int Attack => baseAttack + equipmentAttack + sisterAttack;
+    public int Defense => baseDefense + equipmentDefense + sisterDefense;
+    public int Speed => baseSpeed + equipmentSpeed + sisterSpeed;
 
     //PlayerDataからステータスを初期化する処理
     public void PlayerInitialize(PlayerData playerData)
@@ -56,9 +61,20 @@ public class UnitStatus : MonoBehaviour
         baseDefense = playerData.defense;
         baseSpeed = playerData.speed;
 
-        equipmentAttack = playerData.TotalAttack - playerData.attack;
-        equipmentDefense = playerData.TotalDefense - playerData.defense;
-        equipmentSpeed = playerData.TotalSpeed - playerData.speed;
+        if (playerData.sisterParameter != null)
+        {
+            sisterAttack = playerData.sisterParameter.GetBonusAttack();
+            sisterDefense = playerData.sisterParameter.GetBonusDefense();
+            sisterSpeed = playerData.sisterParameter.GetBonusSpeed();
+        }
+        else
+        {
+            sisterAttack = sisterDefense = sisterSpeed = 0;
+        }
+
+        equipmentAttack = playerData.TotalAttack - playerData.attack - sisterAttack;
+        equipmentDefense = playerData.TotalDefense - playerData.defense - sisterDefense;
+        equipmentSpeed = playerData.TotalSpeed - playerData.speed - sisterSpeed;
 
         isPlayer = true;
         OnStatusChanged?.Invoke();
@@ -154,7 +170,7 @@ public class UnitStatus : MonoBehaviour
         maxHP += data.hpGain;
         baseAttack += data.attackGain;
         baseDefense += data.defenseGain;
-        baseSpeed += data.sppedGain;
+        baseSpeed += data.speedGain;
 
         //次のレベルアップに必要な経験値量を更新
         data.CalculateNextLevelExp();

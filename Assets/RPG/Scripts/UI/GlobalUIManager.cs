@@ -1,5 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GlobalUIManager : MonoBehaviour
 {
@@ -10,6 +12,10 @@ public class GlobalUIManager : MonoBehaviour
     [SerializeField] private CommonMessageWindow messageWindow;
     [SerializeField] private SelectionWindow selectionWindow;
     [SerializeField] private WarpUIManager warpUIManager;
+    [SerializeField] private TutorialManager tutorialManager;
+
+    [Header("表示対象シーン")]
+    [SerializeField] private string[] menuCanOpenScene = { "VillageScene", "CaveScene", "CaveScene_B1", "CaveScene_B2" };
 
     private PlayerMove currentPlayer;
     private bool isMenuOpen = false;
@@ -27,17 +33,22 @@ public class GlobalUIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        FindPlayer();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        FindPlayer();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
         if (currentPlayer == null) return;
+
+        //メニューを開いていいシーンか
+        string activeScene = SceneManager.GetActiveScene().name;
+        if (!menuCanOpenScene.Contains(activeScene)) return;
 
         //メニューの開閉の監視
         if (currentPlayer.InputAction.Player.Menu.triggered && !isMenuOpen)
@@ -80,12 +91,12 @@ public class GlobalUIManager : MonoBehaviour
     {
 
         //InputSystemの切り替え
-        GlobalUIManager.instance.SwitchToUIInput();
+        SwitchToUIInput();
 
         //ウィンドウを表示してキー入力を待つ
         await messageWindow.OpenMessage(message, currentPlayer.InputAction);
 
-        GlobalUIManager.instance.SwitchToPlayerInput();
+        SwitchToPlayerInput();
     }
 
     //ボス戦前イベント用処理
@@ -94,10 +105,17 @@ public class GlobalUIManager : MonoBehaviour
         await messageWindow.OpenDialogue(messages, currentPlayer.InputAction);
     }
 
-    //クリア時イベント用処理
+    //クリアイベント用メッセージ処理
     public async UniTask ShowClearMessage(string[] messages)
     {
         await messageWindow.OpenDialogue(messages, currentPlayer.InputAction);
+    }
+
+    //ストリーイベント用メッセージ処理
+    public async UniTask ShowEventMessage(string[] messages,string speakerName = "")
+    {
+        if (currentPlayer == null) FindPlayer();
+        await messageWindow.OpenDialogue(messages, currentPlayer.InputAction, speakerName);
     }
 
     //行先ウィンドウを表示する処理
@@ -127,6 +145,19 @@ public class GlobalUIManager : MonoBehaviour
         return result;
     }
 
+    //チュートリアルを表示する処理
+    public async UniTask ShowTutorial(string tutorialId)
+    {
+        if (currentPlayer == null) FindPlayer();
+
+        //InputSystemの切り替え
+        SwitchToUIInput();
+
+        await tutorialManager.OpenTutorial(tutorialId, currentPlayer.InputAction);
+
+        SwitchToPlayerInput();
+    }
+
     //Playerを検索する処理
     public void FindPlayer()
     {
@@ -136,6 +167,7 @@ public class GlobalUIManager : MonoBehaviour
     //InputSystemをUI用に切り替える処理
     public void SwitchToUIInput()
     {
+        if (currentPlayer == null) FindPlayer();
         if (currentPlayer == null) return;
         currentPlayer.InputAction.Player.Disable();
         currentPlayer.InputAction.UI.Enable();
@@ -144,6 +176,7 @@ public class GlobalUIManager : MonoBehaviour
     //InputSystemをPlayer用に切り替える処理
     public void SwitchToPlayerInput()
     {
+        if (currentPlayer == null) FindPlayer();
         if (currentPlayer == null) return;
         currentPlayer.InputAction.Player.Enable();
         currentPlayer.InputAction.UI.Disable();

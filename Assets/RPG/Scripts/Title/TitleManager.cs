@@ -117,6 +117,11 @@ public class TitleManager : MonoBehaviour
 
         //データの初期化
 
+        //ニューゲーム開始フラグを立てる
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.isNewGame = true;
+        }
         //シーン遷移開始
         inputAction.UI.Disable();
         await SceneLoader.instance.ExcuteSceneTransition(nextSceneName, newGameMarkerId, PlayerMove.instance);

@@ -19,6 +19,9 @@ public class StatusWindowManager : MonoBehaviour
     [SerializeField] private TMP_Text armorText;
     [SerializeField] private TMP_Text accessoryText;
 
+    [Header("所持金")]
+    [SerializeField] private TMP_Text moneyText;
+
     //[Header("ヒロイン")]
    
     //ステータスウィンドウを開く処理
@@ -49,6 +52,8 @@ public class StatusWindowManager : MonoBehaviour
 
         weaponText.text = data.equippedWeapon != null ? data.equippedWeapon.itemName : "なし";
         armorText.text = data.equippedArmor != null ? data.equippedArmor.itemName : "なし";
-        accessoryText.text = data.equippedAccessory != null ? data.equippedArmor.itemName : "なし";
+        accessoryText.text = data.equippedAccessory != null ? data.equippedAccessory.itemName : "なし";
+
+        moneyText.text = $"{GameManager.instance.gold.ToString()}G";
     }
 }

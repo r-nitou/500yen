@@ -1,6 +1,8 @@
 ﻿using Cysharp.Threading.Tasks;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SelectionWindow : MonoBehaviour
 {
@@ -14,43 +16,43 @@ public class SelectionWindow : MonoBehaviour
 
     private int currentIndex = 0;
 
+    private bool? result = null;
+
+    private void OnNavigate(InputAction.CallbackContext context)
+    {
+        Vector2 navigate = context.ReadValue<Vector2>();
+        if (navigate.x != 0 || navigate.y != 0)
+        {
+            int direction = (navigate.x > 0 || navigate.y < 0) ? 1 : -1;
+            currentIndex = (currentIndex + direction + menuTexts.Length) % menuTexts.Length;
+            UpdateVisuals();
+        }
+    }
+
+    private void OnSubmit(InputAction.CallbackContext context)
+    {
+        result = (currentIndex == 0);
+    }
+
     //UIManagerから呼ばれる表示処理
     public async UniTask<bool> OpenWindow(string message, PlayerInputAction inputActions)
     {
         gameObject.SetActive(true);
         messageText.text = message;
         currentIndex = 0;
+        result = null;
         UpdateVisuals();
 
-        bool? result = null;
+        await UniTask.Yield(PlayerLoopTiming.Update);
 
-        //プレイヤーが決定するまで待機
-        while (result == null)
-        {
-            //入力判定
-            if (inputActions.UI.Navigate.triggered)
-            {
-                Vector2 navigate = inputActions.UI.Navigate.ReadValue<Vector2>();
-                if (navigate.x != 0 || navigate.y != 0) 
-                {
-                    //入力方向に応じてインデックス更新
-                    int direction = (navigate.x > 0 || navigate.y < 0) ? 1 : -1;
-                    currentIndex = (currentIndex + direction + menuTexts.Length) % menuTexts.Length;
+        inputActions.UI.Navigate.performed += OnNavigate;
+        inputActions.UI.Submit.performed += OnSubmit;
 
-                    //UI更新
-                    UpdateVisuals();
-                }
-            }
+        await UniTask.WaitUntil(() => result != null);
 
-            //決定ボタンの判定
-            if (inputActions.UI.Submit.triggered)
-            {
-                //Yesならtureを返す
-                result = (currentIndex == 0);
-            }
-            //入力待ち
-            await UniTask.Yield(PlayerLoopTiming.Update);
-        }
+        inputActions.UI.Navigate.performed -= OnNavigate;
+        inputActions.UI.Submit.performed -= OnSubmit;
+
         gameObject.SetActive(false);
         return result.Value;
     }
