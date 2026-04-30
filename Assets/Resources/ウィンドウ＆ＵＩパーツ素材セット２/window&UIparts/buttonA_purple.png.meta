@@ -108,7 +108,7 @@ TextureImporter:
         width: 120
         height: 63
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -121,11 +121,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: buttonA_purple_1
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 35
+        width: 86
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50468bfae5a42024dbf35c88745ed3f1
+      internalID: -1647516143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e16d0d6777d54424f9679704caced270
     internalID: 0
     vertices: []
     indices: 
@@ -136,6 +158,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       buttonA_purple_0: -7623340947285728491
+      buttonA_purple_1: -1647516143
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

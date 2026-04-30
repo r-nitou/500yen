@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 63011f433803f774eba24f6dcda0b096
+guid: bb4e7087fe0b5264da2ab51621a18ab1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6019337945693321231
-    second: windowF_0
+      213: 2223324358175283784
+    second: HalfFade_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,89 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: windowF_0
+      name: HalfFade_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 36
-        height: 120
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1f78bebb704077ca0800000000000000
-      internalID: -6019337945693321231
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: windowF_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 120
-        height: 120
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bac516e7ef2119a4da7719f3a911f2dd
-      internalID: -2139903638
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: windowF_2
-      rect:
-        serializedVersion: 2
-        x: 84
-        y: 0
-        width: 36
-        height: 120
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9186e1c61af6d73429fd06a04ef70045
-      internalID: -723278550
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: windowF_3
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 0
-        width: 48
-        height: 120
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3bc215457ba787044a5392e5918643d3
-      internalID: -1529397459
+      spriteID: 84ad28d59b5dade10800000000000000
+      internalID: 2223324358175283784
       vertices: []
       indices: 
       edges: []
@@ -191,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6af14096cf59e9947a3a9a1c617ae1cc
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -201,10 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      windowF_0: -6019337945693321231
-      windowF_1: -2139903638
-      windowF_2: -723278550
-      windowF_3: -1529397459
+      HalfFade_0: 2223324358175283784
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

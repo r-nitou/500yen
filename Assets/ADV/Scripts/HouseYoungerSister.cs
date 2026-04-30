@@ -146,31 +146,41 @@ public class HouseYoungerSister: MonoBehaviour
         switch (eventType)
         {
             case YoungerSisterButtonType.PRACTICE:
-                parameter_.attack += 10;
-                eventPlayPower_ -= buttonList_[index].EventCost;
+                if (CheckEventPoint(index))
+                {
+                    parameter_.attack += 10;
+                }
                 break;
 
             case YoungerSisterButtonType.MAKE_BENTO:
-                parameter_.defense += 10;
-                eventPlayPower_ -= buttonList_[index].EventCost;
+                if (CheckEventPoint(index))
+                {
+                    parameter_.defense += 10;
+                }
                 break;
 
             case YoungerSisterButtonType.MAINTENANCE:
-                parameter_.speed += 10;
-                eventPlayPower_ -= buttonList_[index].EventCost;
+                if (CheckEventPoint(index))
+                {
+                    parameter_.speed += 10;
+                }
                 break;
 
             case YoungerSisterButtonType.PRESENT:
-                parameter_.affection += 10;// TODO: プレゼントの内容によって変わるように
-                eventPlayPower_ -= buttonList_[index].EventCost;
+                if (CheckEventPoint(index))
+                {
+                    parameter_.affection += 10;// TODO: プレゼントの内容によって変わるように
+                }
                 break;
 
             case YoungerSisterButtonType.PAMPER:
-                parameter_.affection += 10;
-                parameter_.attack -= 5;
-                parameter_.defense -= 5;
-                parameter_.speed -= 5;
-                eventPlayPower_ -= buttonList_[index].EventCost;
+                if (CheckEventPoint(index))
+                {
+                    parameter_.affection += 10;
+                    parameter_.attack -= 5;
+                    parameter_.defense -= 5;
+                    parameter_.speed -= 5;
+                }
                 break;
 
             default:
@@ -184,6 +194,16 @@ public class HouseYoungerSister: MonoBehaviour
         InitializeADV();
         advController_.OnPlayFinish_.AddListener(OnEventFinish);
         advController_.PlayADV("C1001_HOME_ACT_SUCCESS_" + index.ToString("000"));
+    }
+
+    private bool CheckEventPoint(int index)
+    {
+        if (eventPlayPower_ - buttonList_[index].EventCost >= 0)
+        {
+            eventPlayPower_ -= buttonList_[index].EventCost;
+            return true;
+        }
+        return false;
     }
 
     public void PlayEnterADV()
