@@ -278,8 +278,14 @@ public class HouseYoungerSister: MonoBehaviour
 
     private IEnumerator CallOnSleepEventNextFrame()
     {
-        yield return null; // 1フレーム待つ
+        // 再生できるようになるまで待つ
+        while (advController_.CanPlay() == false)
+        {
+            yield return null;
+        }
+
         OnSleepEvent();
+        yield return null;
     }
 
     public void OnSleepEvent()

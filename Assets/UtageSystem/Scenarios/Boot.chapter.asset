@@ -47,8 +47,8 @@ MonoBehaviour:
     - rowIndex: 1
       debugIndex: 1
       strings:
-      - "\u3086\u3063\u304D"
-      - "\u3086\u3063\u304D"
+      - "\u6709\u9999"
+      - "\u6709\u9999"
       - "\u901A\u5E38"
       - 
       - 
@@ -61,8 +61,8 @@ MonoBehaviour:
     - rowIndex: 2
       debugIndex: 2
       strings:
-      - "\u5E97\u4E3B"
-      - "\u5E97\u4E3B"
+      - "\u7F8E\u685C"
+      - "\u7F8E\u685C"
       - "\u901A\u5E38"
       - 
       - 
@@ -86,9 +86,37 @@ MonoBehaviour:
       isEmpty: 0
       isCommentOut: 0
       debugInfo: 
+    - rowIndex: 4
+      debugIndex: 4
+      strings:
+      - "\u82BD\u4F9D"
+      - "\u82BD\u4F9D"
+      - "\u901A\u5E38"
+      - 
+      - 
+      - 
+      - Bottom
+      - 1
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
+    - rowIndex: 5
+      debugIndex: 5
+      strings:
+      - "\u606D\u5E73"
+      - "\u606D\u5E73"
+      - "\u901A\u5E38"
+      - 
+      - 
+      - 
+      - Bottom
+      - 1
+      isEmpty: 0
+      isCommentOut: 0
+      debugInfo: 
     name: Assets/UtageSystem/Scenarios/UtageSystem.xls:Character
     type: 1
-    textLength: 207
+    textLength: 231
     headerRow: 0
     sourceAssetInEditor: {fileID: 102900000, guid: e940c0ccb6ea833408238d7285d38444, type: 3}
   - rows:
