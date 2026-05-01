@@ -67,7 +67,7 @@ public class HouseYoungerSister: MonoBehaviour
     private const string FIRST_EVENT_KEY = "HouseEnterIsFirst";
 
     // 開始時セリフのパターン数
-    private const int ENTER_TEXT_MAX = 4;
+    private const int ENTER_TEXT_MAX = 5;
 
 
     private void Awake()
@@ -90,7 +90,7 @@ public class HouseYoungerSister: MonoBehaviour
                     needStartEnter_ = false;
 
                     // 初回か判定 //TODO: JSONに変わるっぽい
-                    if (true || PlayerPrefs.GetInt(FIRST_EVENT_KEY, 1) != 0)
+                    if (PlayerPrefs.GetInt(FIRST_EVENT_KEY, 1) != 0)
                     {
                         PlayerPrefs.SetInt(FIRST_EVENT_KEY, 0);// false >> 再生済み
                         PlayerPrefs.Save();
@@ -213,7 +213,7 @@ public class HouseYoungerSister: MonoBehaviour
 
         // ランダムでテキストを選ぶ
         string randID = UnityEngine.Random.Range(1, ENTER_TEXT_MAX + 1).ToString("000");
-        string likeID = "H_";
+        string likeID = parameter_.GetAffectionForm().ToString() + "_";
         
         // (妹_家_開始時_ + 好感度 + id)
         advController_.PlayADV("C1001_HOME_ENTER_" + likeID + randID);
@@ -255,12 +255,13 @@ public class HouseYoungerSister: MonoBehaviour
 
     public void PlayTouchBodyADV()
     {
+        bool isDead = (parameter_.GetAffectionRate() <= 0.01f);
+
         InitializeADV();
         advController_.OnPlayFinish_.AddListener(OnEnterADVFinish);
 
         // タップされたらセリフやモーションがあればここで再生
-        int id = 1;
-        advController_.PlayADV("C1001_HOME_TOUCH_" + id.ToString("000"));
+        advController_.PlayADV("C1001_HOME_TOUCH_001");
     }
 
     public void StartStill()
