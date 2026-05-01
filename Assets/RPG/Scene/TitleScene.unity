@@ -12868,6 +12868,65 @@ RectTransform:
   m_AnchoredPosition: {x: -34, y: 29}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1776021675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1776021677}
+  - component: {fileID: 1776021676}
+  m_Layer: 0
+  m_Name: MusicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1776021676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776021675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff97933ec342d1a40b3335eee9c4dea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicManager
+  sceneBGMList:
+  - sceneName: TitleScene
+    bgmClip: {fileID: 8300000, guid: c4e4c05d8408e2a4b94205c7b4340190, type: 3}
+  - sceneName: VillageScene
+    bgmClip: {fileID: 8300000, guid: b3e4fe56d0a61ce48a3ce4a3a2c5cd6d, type: 3}
+  - sceneName: CaveScene
+    bgmClip: {fileID: 8300000, guid: 648e15ac7143c1e478aa1e6c8b288e4b, type: 3}
+  - sceneName: CaveScene_B1
+    bgmClip: {fileID: 8300000, guid: 648e15ac7143c1e478aa1e6c8b288e4b, type: 3}
+  - sceneName: CaveScene_B2
+    bgmClip: {fileID: 8300000, guid: 648e15ac7143c1e478aa1e6c8b288e4b, type: 3}
+  - sceneName: BattleScene
+    bgmClip: {fileID: 8300000, guid: 8265a4b5fac968943a02eba62ac4840e, type: 3}
+  fadeDuration: 1
+  defaultVolume: 0.5
+--- !u!4 &1776021677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776021675}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -16.89761, y: 3.29183, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1785450443
 GameObject:
   m_ObjectHideFlags: 0
@@ -15286,3 +15345,4 @@ SceneRoots:
   - {fileID: 536162933}
   - {fileID: 9416142}
   - {fileID: 417823555}
+  - {fileID: 1776021677}

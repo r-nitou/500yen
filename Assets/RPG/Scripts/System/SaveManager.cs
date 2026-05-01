@@ -66,7 +66,10 @@ public class SaveManager : MonoBehaviour
 
         //フラグ
         data.currentPhase = gameManager.currentPhase;
+
         data.isNewGame = gameManager.isNewGame;
+
+
         data.hasShownBulletinTutorial = gameManager.hasShownBulletinTutorial;
         data.hasShownFastTravelTutorial = gameManager.hasShownBulletinTutorial;
         data.islastBossDefeated = gameManager.IslastBossDefated;
