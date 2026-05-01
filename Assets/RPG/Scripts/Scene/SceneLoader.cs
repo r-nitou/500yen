@@ -28,7 +28,10 @@ public class SceneLoader : MonoBehaviour
     public async UniTask ExcuteSceneTransition(string trigger, string markerId, PlayerMove player)
     {
         //プレイヤーの操作停止
-        player.InputAction.Player.Disable();
+        if (player != null)
+        {
+            player.InputAction.Player.Disable();
+        }
 
         //時間の変更
         UpdatePhase(trigger);
@@ -37,11 +40,13 @@ public class SceneLoader : MonoBehaviour
         await SceneManager.LoadSceneAsync(trigger);
         Debug.Log($"{trigger}に行きます");
 
-        //指定されたIDの場所にキャラクターを配置する
-        SetCharacterToMarker(markerId, player);
-
-        //プレイヤーの操作を再開
-        player.InputAction.Player.Enable();
+        if (player != null)
+        {
+            //指定されたIDの場所にキャラクターを配置する
+            SetCharacterToMarker(markerId, player);
+            //プレイヤーの操作を再開
+            player.InputAction.Player.Enable();
+        }
     }
 
     //バトルから復帰するための処理
@@ -57,6 +62,14 @@ public class SceneLoader : MonoBehaviour
 
         //プレイヤー操作再開
         player.InputAction.Player.Enable();
+    }
+
+    //ロードのためのシーン読み込み処理
+    public async UniTask LoadSceneForReload(string sceneName)
+    {
+        //シーン遷移
+        await SceneManager.LoadSceneAsync(sceneName);
+        Debug.Log($"ロード用{sceneName}を読み込みました");
     }
 
     //キャラクターを指定の位置に飛ばす処理

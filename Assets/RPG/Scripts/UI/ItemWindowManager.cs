@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class ItemWindowManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class ItemWindowManager : MonoBehaviour
     [SerializeField] private Transform contentRoot;
     [SerializeField] private TMP_Text descriptionText;
     [SerializeField] private GameObject itemSlotPrefab;
+    [SerializeField] private ScrollRect scrollRect;
 
     [Header("サブウィンドウ参照")]
     [SerializeField] private ItemConfirmUI confirmUI;
@@ -167,5 +169,12 @@ public class ItemWindowManager : MonoBehaviour
         //選択中のアイテムの説明を表示
         var selectedItem = GameManager.instance.inventoryManager.PlayerInventory[currentIndex].item;
         descriptionText.text = selectedItem.description;
+
+        //選択インデックスに合わせてスクロールビューを動かす
+        if (scrollRect != null && uiSlots.Count > 1)
+        {
+            float scrollPos = 1f - ((float)currentIndex / (uiSlots.Count - 1));
+            scrollRect.verticalNormalizedPosition = scrollPos;
+        }
     }
 }
