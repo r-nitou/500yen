@@ -279,25 +279,35 @@ public class HouseYoungerSister: MonoBehaviour
 
     private IEnumerator CallOnSleepEventNextFrame()
     {
+        int f = 0;
+        Debug.Log("CallOnSleepEventNextFrame()");
+
+        // 【追加】確実に1フレーム待機し、AdvController側の RemoveAllListeners() を終わらせる
+        yield return null;
+
         // 再生できるようになるまで待つ
         while (advController_.CanPlay() == false)
         {
+            Debug.Log($"CallOnSleepEventNextFrame:(f) {f++}");
             yield return null;
         }
 
         OnSleepEvent();
-        yield return null;
     }
 
     public void OnSleepEvent()
     {
-        Debug.Log("OnSleepEvent");
         advController_.StopADV();
-        
+        Debug.Log($"OnSleepEvent: {advController_.CanPlay()}");
+
         // adv再生後にシーン遷移
-        InitializeADV();
-        advController_.OnPlayFinish_.AddListener(OnFinishedSleepADV);
-        advController_.PlayADV("C1001_HOME_SLEEP_01");
+        if (advController_.CanPlay())
+        {
+            InitializeADV();
+            advController_.OnPlayFinish_.AddListener(OnFinishedSleepADV);
+            advController_.PlayADV("C1001_HOME_SLEEP_01");
+            return;
+        }
     }
 
     private void OnFinishedSleepADV()
