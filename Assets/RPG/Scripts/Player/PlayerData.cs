@@ -82,4 +82,28 @@ public class PlayerData : ScriptableObject
     {
         nextLevelExp = Mathf.RoundToInt(level * 100 * Mathf.Pow(1.2f, level - 1));
     }
+
+    //プレイヤーのステータス初期化関数
+    public void ResetData()
+    {
+        level = 1;
+
+        //ベースステータスの初期化
+        maxHP = 100;
+        attack = 20;
+        defense = 10;
+        speed = 5;
+
+        equippedWeapon = null;
+        equippedArmor = null;
+        equippedAccessory = null;
+
+        currentExp = 0;
+        CalculateNextLevelExp();
+
+        if (sisterParameter != null)
+        {
+            sisterParameter.ResetParam();
+        }
+    }
 }
