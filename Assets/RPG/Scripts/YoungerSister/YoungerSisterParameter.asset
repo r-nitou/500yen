@@ -15,4 +15,4 @@ MonoBehaviour:
   affection: 50
   attack: 30
   defense: 30
-  speed: 0
+  speed: 30
