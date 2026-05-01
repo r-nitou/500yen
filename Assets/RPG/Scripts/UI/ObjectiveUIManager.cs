@@ -23,7 +23,7 @@ public class ObjectiveUIManager : MonoBehaviour
     [SerializeField] private string[] targetScene = { "VillageScene", "CaveScene", "CaveScene_B1", "CaveScene_B2" };
     [SerializeField] private float showDelay = 1.0f;
 
-    private string currentObjectiveString = "";
+    public string currentObjectiveString = "";
     private bool isShown = false;
     private float idleTimer = 0f;
 
