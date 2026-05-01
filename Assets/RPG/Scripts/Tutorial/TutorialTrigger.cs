@@ -13,6 +13,15 @@ public class TutorialTrigger : MonoBehaviour
     {
         isProcessing = true;
 
+        await UniTask.Yield(PlayerLoopTiming.Update);
+
+        if (GameManager.instance == null || GlobalUIManager.instance == null)
+        {
+            isProcessing = false;
+            Debug.Log("チュートリアルを開けない");
+            return;
+        }
+
         bool alreadyShown = false;
 
         if (tutorialId == "FastTravel") 

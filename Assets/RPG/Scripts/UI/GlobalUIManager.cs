@@ -158,6 +158,31 @@ public class GlobalUIManager : MonoBehaviour
         SwitchToPlayerInput();
     }
 
+    //セーブコマンドを選択したとき
+    public async void ExcuteSaveCommand()
+    {
+        //メニューの操作を切る
+        currentPlayer.InputAction.UI.Navigate.performed -= menuManager.OnNavigate;
+        currentPlayer.InputAction.UI.Submit.performed -= menuManager.OnSubmit;
+        currentPlayer.InputAction.UI.Cancel.performed -= menuManager.OnCancel;
+
+        //セーブを実行
+        SaveManager.instance.Save();
+
+        await UniTask.Yield(PlayerLoopTiming.Update);
+
+        //ログ表示
+        if (messageWindow != null)
+        {
+            await messageWindow.OpenMessage("セーブ完了", currentPlayer.InputAction);
+        }
+
+        //メニューの操作を復活させる
+        currentPlayer.InputAction.UI.Navigate.performed += menuManager.OnNavigate;
+        currentPlayer.InputAction.UI.Submit.performed += menuManager.OnSubmit;
+        currentPlayer.InputAction.UI.Cancel.performed += menuManager.OnCancel;
+    }
+
     //Playerを検索する処理
     public void FindPlayer()
     {

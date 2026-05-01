@@ -78,6 +78,10 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        // フレームレートを60に固定する
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+
         if (fadeManager == null)
         {
             fadeManager = GetComponent<FadeManager>();
@@ -154,6 +158,49 @@ public class GameManager : MonoBehaviour
 
             visitedFloorData.Add(newFloor);
             Debug.Log($"<color=cyan>階層を記録しました:{fName}</color>");
+        }
+    }
+
+    //ニューゲーム時に情報をリセットする
+    public void ResetForNewGame()
+    {
+        //フラグのリセット
+        isNewGame = true;
+
+        hasShowFastTravelTutorial = false;
+        hasShownBulletinTutorial = false;
+        IslastBossDefated = false;
+
+        //時間のリセット
+        currentPhase = DayPhase.Morning;
+
+        //リストのリセット
+        visitedFloorData.Clear();
+
+        if (symbolEncounterManager != null)
+        {
+            symbolEncounterManager.defeatedSymbolId.Clear();
+        }
+
+        if (inventoryManager != null)
+        {
+            inventoryManager.PlayerInventory.Clear();
+        }
+
+        //お金の初期化
+        gold = 1000;
+
+        //UIのリセット
+        if (ObjectiveUIManager.instance != null)
+        {
+            ObjectiveUIManager.instance.SetObjective("").Forget();
+        }
+
+        //プレイヤーの初期化
+        if (playerData != null)
+        {
+            playerData.ResetData();
+            currentHp = playerData.maxHP;
         }
     }
 }

@@ -237,4 +237,15 @@ public class SaveManager : MonoBehaviour
             ObjectiveUIManager.instance.SetObjective(data.currentObjective).Forget();
         }
     }
+
+    [ContextMenu("Deleate Game")]
+    //セーブデータの削除
+    public void DeleateSaveData()
+    {
+        if (File.Exists(saveFilePath))
+        {
+            File.Delete(saveFilePath);
+            Debug.Log("セーブデータを破棄しました");
+        }
+    }
 }
