@@ -1,5 +1,15 @@
 ﻿using UnityEngine;
 
+public enum YoungerSisterForm
+{
+	Normal = 0,	//通常
+	High_3,		//最高
+	High_2,		//とても高い
+	High_1,		//少し高い
+	Low_1,		//低い
+	Low_2,		//最低
+}
+
 [CreateAssetMenu(fileName = "YoungerSisterParameter", menuName = "Scriptable Objects/YoungerSisterParameter")]
 public class YoungerSisterParameter : ScriptableObject
 {
@@ -46,4 +56,17 @@ public class YoungerSisterParameter : ScriptableObject
     public int GetBonusAttack() => Mathf.FloorToInt(attack * GetAffectionMultiplier());
     public int GetBonusDefense() => Mathf.FloorToInt(defense * GetAffectionMultiplier());
     public int GetBonusSpeed() => Mathf.FloorToInt(speed * GetAffectionMultiplier());
+
+	// 好感度enumの獲得
+	public YoungerSisterForm GetAffectionForm()
+	{
+		float rate = GetAffectionRate();
+		if (rate > 0.94f) return YoungerSisterForm.High_3;
+		if (rate > 0.74f) return YoungerSisterForm.High_2;
+		if (rate > 0.60f) return YoungerSisterForm.High_1;
+		if (rate > 0.36f) return YoungerSisterForm.Normal;
+		if (rate > 0.16f) return YoungerSisterForm.Low_1;
+		
+		return YoungerSisterForm.Low_2;
+	}
 }
