@@ -63,7 +63,7 @@ public class ObjectiveUIManager : MonoBehaviour
     //スライドアニメーション再生処理
     public void PlaySlideAnim(float targetX,Ease easeType)
     {
-        //スライドイン
+        //スライド
         objectiveRect.DOKill();
         objectiveRect.DOAnchorPosX(targetX, slideDuration)
             .SetEase(easeType);
@@ -113,6 +113,16 @@ public class ObjectiveUIManager : MonoBehaviour
     {
         currentObjectiveString = newObjective;
         objectiveText.text = currentObjectiveString;
+
+        if (string.IsNullOrEmpty(newObjective))
+        {
+            isShown = false;
+            idleTimer = 0f;
+            objectiveRect.DOKill();
+            //スライドアウトさせる
+            await objectiveRect.DOAnchorPosX(hiddenPosX, slideDuration).SetEase(Ease.InCubic).ToUniTask();
+            return;
+        }
 
         isShown = true;
         idleTimer = showDelay;

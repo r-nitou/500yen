@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using TMPro;
 using Unity.VisualScripting;
@@ -44,7 +45,9 @@ public class TitleManager : MonoBehaviour
     {
         get
         {
-            return false;
+            //セーブデータの保存先パスを作成し、ファイルが存在するか返す
+            string path = Path.Combine(Application.persistentDataPath, "savedata.json");
+            return File.Exists(path);
         }
     }
 
@@ -99,13 +102,13 @@ public class TitleManager : MonoBehaviour
                 await StartNewGame();
                 break;
             case 1:
-                Debug.Log("Continue:未実装");
+                await LoadGame();
                 break;
             case 2:
                 Debug.Log("設定:未実装");
                 break;
             case 3:
-                Debug.Log("ゲーム終了:未実装");
+                QuitGame();
                 break;
         }
     }
@@ -116,15 +119,43 @@ public class TitleManager : MonoBehaviour
         await GameManager.instance.Fade.FadeOut(1.0f, fadeTarget, Color.white);
 
         //データの初期化
-
-        //ニューゲーム開始フラグを立てる
         if (GameManager.instance != null)
         {
-            GameManager.instance.isNewGame = true;
+            GameManager.instance.ResetForNewGame();
         }
+        if (SaveManager.instance != null)
+        {
+            SaveManager.instance.DeleateSaveData();
+        }
+
         //シーン遷移開始
         inputAction.UI.Disable();
         await SceneLoader.instance.ExcuteSceneTransition(nextSceneName, newGameMarkerId, PlayerMove.instance);
+    }
+
+    //つづきからゲームを始める処理
+    private async UniTask LoadGame()
+    {
+        //フェードアウト
+        await GameManager.instance.Fade.FadeOut(1.0f, fadeTarget, Color.white);
+
+        inputAction.UI.Disable();
+
+        if (SaveManager.instance != null)
+        {
+            SaveManager.instance.Load();
+        }
+    }
+
+    //ゲームを終了する処理
+    private void QuitGame()
+    {
+        Debug.Log("ゲーム終了");
+#if UNITY_EDITOR 
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 
     //メニューの構成を変える処理

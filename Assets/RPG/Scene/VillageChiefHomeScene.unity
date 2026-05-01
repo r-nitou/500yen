@@ -1018,6 +1018,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 449037484983069541, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 558476218859562113, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1041,6 +1045,10 @@ PrefabInstance:
     - target: {fileID: 777075760188120356, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
+      objectReference: {fileID: 0}
+    - target: {fileID: 906064103038239607, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1014111180340169204, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
       propertyPath: m_Type
@@ -1112,7 +1120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2119616503651393984, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2425945476342527635, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1192,7 +1200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2628784611288084058, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2672974795305234831, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1445,6 +1453,10 @@ PrefabInstance:
     - target: {fileID: 8392628838666854041, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
+      objectReference: {fileID: 0}
+    - target: {fileID: 8708523020952088884, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8806544513820443625, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
       propertyPath: m_sharedMaterial

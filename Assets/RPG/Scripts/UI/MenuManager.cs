@@ -2,6 +2,8 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
@@ -16,6 +18,11 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private ItemWindowManager itemWindowManager;
     [SerializeField] private EquipmentWindowManager equipmentWindowManager;
     [SerializeField] private QuestWindowManager questWindowManager;
+
+    [Header("演出設定")]
+    [SerializeField] private Image fadeTarget;
+    [SerializeField] private float fadeDuration;
+    [SerializeField] private string targetScene;
 
     private bool isSubMenuOpen = false;
 
@@ -76,6 +83,35 @@ public class MenuManager : MonoBehaviour
         isSubMenuOpen = true;
         questWindowManager.OpenQuest();
     }
+
+    //タイトルに戻る実行処理
+    private async void ExcuteReturnTitleCommand()
+    {
+        //セーブ実行
+        SaveManager.instance.Save();
+
+        if (fadeTarget != null)
+        {
+            //フェードアウト
+            await GameManager.instance.Fade.FadeOut(fadeDuration, fadeTarget);
+        }
+
+        //メニューを閉じる
+        if (GlobalUIManager.instance != null)
+        {
+            GlobalUIManager.instance.ToggleMenu(false);
+        }
+        //タイトルシーンの読み込み
+        await SceneLoader.instance.ExcuteSceneTransition(targetScene, "", PlayerMove.instance);
+
+        //フェード対象を元に戻す
+        if (fadeTarget != null)
+        {
+            await GameManager.instance.Fade.FadeIn(fadeDuration, fadeTarget);
+            fadeTarget.gameObject.SetActive(false);
+        }
+    }  
+
     //項目移動のイベント処理
     public void OnNavigate(InputAction.CallbackContext context)
     {
@@ -193,7 +229,10 @@ public class MenuManager : MonoBehaviour
                 OpenQuest();
                 break;
             case 4:
-                Debug.Log("タイトルに戻る");
+                GlobalUIManager.instance.ExcuteSaveCommand();
+                break;
+            case 5:
+                ExcuteReturnTitleCommand();
                 break;
         }
     }

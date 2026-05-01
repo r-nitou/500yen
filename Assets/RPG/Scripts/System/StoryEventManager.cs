@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class DialogueData
@@ -40,12 +41,35 @@ public class StoryEventManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+
+    //シーン読み込みのたびに呼ばれる
+    private void OnSceneLoaded(Scene scene,LoadSceneMode mode)
+    {
+        CheckAndPlayEvent();
+    }
+
     private void Start()
     {
-        //オープニングイベントの再生
-        if (GameManager.instance != null && GameManager.instance.isNewGame) 
+        CheckAndPlayEvent();
+    }
+
+    //イベント判定処理
+    private void CheckAndPlayEvent()
+    {
+        if (GameManager.instance != null && GameManager.instance.isNewGame)
         {
             GameManager.instance.isNewGame = false;
+
+            FetchSceneReferences();                                  
             PlayOpeningEvent().Forget();
         }
     }
@@ -116,5 +140,28 @@ public class StoryEventManager : MonoBehaviour
         //追従をカメラに戻してダミーを破棄
         virtualCamera.Follow = originalFollow;
         Destroy(dummyTarget);
+    }
+
+    //シーン内のオブジェクトを再取得する処理
+    private void FetchSceneReferences()
+    {
+        //カメラの再取得
+        if (virtualCamera == null)
+        {
+            virtualCamera = UnityEngine.Object.FindFirstObjectByType<CinemachineCamera>();
+        }
+
+        //ターゲットの再取得
+        GameObject targetsParet = GameObject.Find("Opening");
+        if (targetsParet != null)
+        {
+            List<Transform> targetList = new List<Transform>();
+            foreach (Transform child in targetsParet.transform) 
+            {
+                targetList.Add(child);
+            }
+            //リストを変換
+            openingTargets = targetList.ToArray();
+        }
     }
 }
