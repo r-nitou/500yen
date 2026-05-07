@@ -5534,6 +5534,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5176757246148278219, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
+      propertyPath: m_CancelAction
+      value: 
+      objectReference: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+    - target: {fileID: 5176757246148278219, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
+      propertyPath: m_RightClickAction
+      value: 
+      objectReference: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+    - target: {fileID: 5176757246148278219, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
+      propertyPath: m_MiddleClickAction
+      value: 
+      objectReference: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+    - target: {fileID: 5176757246148278219, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
+      propertyPath: m_ScrollWheelAction
+      value: 
+      objectReference: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
     - target: {fileID: 5214560392936052524, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
       propertyPath: m_Layer
       value: 5
@@ -6385,6 +6401,14 @@ PrefabInstance:
     - target: {fileID: 7948737302912176363, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950075479863435465, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
+      propertyPath: disableRightClick
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950075479863435465, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
+      propertyPath: disableMouseWheelBackLog
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7970947334271348247, guid: 9ddeddf8ad85c0b409d33e4fb095b548, type: 3}
       propertyPath: m_sharedMaterial

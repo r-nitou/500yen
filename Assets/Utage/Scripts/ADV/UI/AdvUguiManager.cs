@@ -45,9 +45,11 @@ namespace Utage
 		public bool DisableMouseWheelBackLog { get { return disableMouseWheelBackLog; } set { disableMouseWheelBackLog = value; } }
 		[SerializeField]
 		protected bool disableMouseWheelBackLog = false;
-		
-		
-		[Flags]
+
+        [SerializeField]
+        protected bool disableRightClick = false;
+
+        [Flags]
 		public enum InputUtilDisableFilter 
 		{
 			Update =  0x01 << 0,
@@ -199,7 +201,7 @@ namespace Utage
 					}
 					if (IsShowingMessageWindow || Engine.SelectionManager.IsWaitInput)
 					{	//入力待ち
-						if (InputUtil.IsInputGuiClose())
+						if (!disableRightClick && InputUtil.IsInputGuiClose())
 						{	//右クリックでウィンドウ閉じる
 							Status = UiStatus.HideMessageWindow;
 						}
