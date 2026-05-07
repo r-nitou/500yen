@@ -20,6 +20,7 @@ public class PlayerData : ScriptableObject
 
     [Header("ヒロインステータスボーナス")]
     public YoungerSisterParameter sisterParameter;
+    public bool sisterFirstEvent = true;
 
     [Header("成長データ")]
     public int currentExp = 0;

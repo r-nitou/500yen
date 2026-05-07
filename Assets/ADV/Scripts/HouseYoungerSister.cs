@@ -62,9 +62,6 @@ public class HouseYoungerSister: MonoBehaviour
     private bool needStartEnter_ = true;
     private bool needStartTutorial_ = false;
     private bool isTutorial_ = false;
-    
-    // 永続化用のキー（定数）
-    private const string FIRST_EVENT_KEY = "HouseEnterIsFirst";
 
     // 開始時セリフのパターン数
     private const int ENTER_TEXT_MAX = 5;
@@ -89,11 +86,10 @@ public class HouseYoungerSister: MonoBehaviour
                 {
                     needStartEnter_ = false;
 
-                    // 初回か判定 //TODO: JSONに変わるっぽい
-                    if (PlayerPrefs.GetInt(FIRST_EVENT_KEY, 1) != 0)
+                    // 初回か判定
+                    if (GameManager.instance.playerData.sisterFirstEvent)
                     {
-                        PlayerPrefs.SetInt(FIRST_EVENT_KEY, 0);// false >> 再生済み
-                        PlayerPrefs.Save();
+                        GameManager.instance.playerData.sisterFirstEvent = false;
 
                         // 初回用のイベント
                         InitializeADV();

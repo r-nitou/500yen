@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Utage;
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
@@ -148,6 +147,7 @@ public class SaveManager : MonoBehaviour
             sisterData.defense = data.heroineDefense;
             sisterData.speed = data.heroineSpeed;
         }
+        playerData.sisterFirstEvent = data.isNewGame;
 
         //フラグ
         gameManager.currentPhase = data.currentPhase;
